@@ -5,11 +5,22 @@ import {
   Button,
   Icon,
   Modal,
-} from "../../..//components/DS/Index";
+} from "../../../components/DS/Index";
 import { money } from "../../../helpers/functions";
 import Events from "../Events";
 
-function TableHeaderCell({ setSort, index, sort, th }: any) {
+type TableHeaderCellProps = {
+  setSort: (val: any) => void;
+  index: number;
+  sort: any;
+  th: any;
+};
+export function TableHeaderCell({
+  setSort,
+  index,
+  sort,
+  th,
+}: TableHeaderCellProps) {
   return (
     <th
       className="bl-th-sortable"
@@ -77,14 +88,22 @@ function TableCell({ td, eventsRef, showAll }: any) {
   );
 }
 
-function TableFooter({
+type TableFooterProps = {
+  perPage: string;
+  setPerPage: (val: number) => void;
+  onReload: () => void;
+  setPage: (val: number) => void;
+  page: number;
+  pagesCount: number;
+};
+export function TableFooter({
   perPage,
   setPerPage,
   onReload,
   setPage,
   page,
   pagesCount,
-}: any) {
+}: TableFooterProps) {
   return (
     <div className="bl-mt-5 bl-flex bl-justify-between bl-items-center">
       <div className="bl-flex bl-gap-3 bl-items-center">
@@ -155,7 +174,7 @@ function TableFooter({
   );
 }
 
-function AppData({
+export default function AppData({
   data,
   onReload,
   onBack,
@@ -467,7 +486,7 @@ function AppData({
 
               {table?.data?.length > 10 && (
                 <TableFooter
-                  perPage={PER_PAGE}
+                  perPage={"" + PER_PAGE}
                   setPerPage={setPerPage}
                   onReload={onReload}
                   setPage={setPage}
@@ -494,5 +513,3 @@ function AppData({
     </div>
   );
 }
-
-export default AppData;

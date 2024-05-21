@@ -3,7 +3,10 @@ import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Modal } from "../DS/Index";
 import Neuron from "./Neuron";
 
-function EventsHandler({ onExecuted }: any, ref: any) {
+type EventsProps = {
+  onExecuted?: null | (() => void);
+};
+function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
   const subneuronDefault: any = {
     neuronId: null,
     neuronKey: "",

@@ -221,7 +221,7 @@ const Neuron = ({
         } bl-justify-center `}
       >
         {loading && (
-          <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bbl-g-black/50 bl-backdrop-blur-sm ">
+          <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm ">
             <Loader size="md" />
           </div>
         )}
