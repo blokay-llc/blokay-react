@@ -12,19 +12,19 @@ import Events from "../Events";
 function TableHeaderCell({ setSort, index, sort, th }: any) {
   return (
     <th
-      className="th-sortable"
+      className="bl-th-sortable"
       onClick={() =>
         setSort({
           [index]: sort?.[index] == "DESC" ? "ASC" : "DESC",
         })
       }
     >
-      <div className="flex items-center gap-2">
+      <div className="bl-flex bl-items-center bl-gap-2">
         <span>{th}</span>
         {sort && sort[index] && (
           <AppIcon
             icon={sort?.[index] == "ASC" ? "arrow_top" : "arrow_bottom"}
-            className="h-4 w-4 dark:fill-stone-200 fill-stone-900"
+            className="bl-h-4 bl-w-4 dark:bl-fill-stone-200 bl-fill-stone-900"
           />
         )}
       </div>
@@ -34,7 +34,7 @@ function TableHeaderCell({ setSort, index, sort, th }: any) {
 
 function TableCell({ td, eventsRef, showAll }: any) {
   return (
-    <td className="text-sm">
+    <td className="bl-text-sm">
       {typeof td == "object" && (
         <>
           {td == null && <strong>NULL</strong>}
@@ -62,7 +62,7 @@ function TableCell({ td, eventsRef, showAll }: any) {
             <div>
               <div>{("" + td).substring(0, 50)}...</div>
               <div
-                className="underline font-bold text-stone-600 text-xs cursor-pointer"
+                className="bl-underline bl-font-bold bl-text-stone-600 bl-text-xs bl-cursor-pointer"
                 onClick={() => showAll(td)}
               >
                 Show all
@@ -86,8 +86,8 @@ function TableFooter({
   pagesCount,
 }: any) {
   return (
-    <div className="mt-5 flex justify-between items-center">
-      <div className="flex gap-3 items-center">
+    <div className="bl-mt-5 bl-flex bl-justify-between bl-items-center">
+      <div className="bl-flex bl-gap-3 bl-items-center">
         <AppSelect
           label="Por página"
           value={perPage}
@@ -106,23 +106,26 @@ function TableFooter({
         </AppSelect>
 
         <div
-          className="flex items-center bg-stone-200 dark:bg-stone-800 dark:hover:bg-stone-700 hover:bg-stone-300 rounded-xl size-10 justify-center shrink-0 "
+          className="bl-flex bl-items-center bl-bg-stone-200 dark:bl-bg-stone-800 dark:bl-hover:bg-stone-700 hover:bl-bg-stone-300 bl-rounded-xl bl-size-10 bl-justify-center bl-shrink-0 "
           onClick={() => {
             onReload && onReload();
           }}
         >
-          <AppIcon icon="refresh" className="size-6 fill-stone-600" />
+          <AppIcon icon="refresh" className="bl-size-6 bl-fill-stone-600" />
         </div>
       </div>
-      <div className="flex ml-auto gap-2 items-center">
+      <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
         {page > 1 && (
           <div
-            className="size-8 p-1 cursor-pointer hover:bg-stone-300 rounded-full bg-stone-50"
+            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50"
             onClick={() => {
               setPage(page - 1);
             }}
           >
-            <svg viewBox="0 0 24 24" className="fill-stone-900 w-full h-full">
+            <svg
+              viewBox="0 0 24 24"
+              className="bl-fill-stone-900 bl-w-full bl-h-full"
+            >
               <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
             </svg>
           </div>
@@ -134,12 +137,15 @@ function TableFooter({
 
         {page < pagesCount && (
           <div
-            className="size-8 p-1 cursor-pointer hover:bg-stone-300 rounded-full bg-stone-50"
+            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50"
             onClick={() => {
               setPage(page + 1);
             }}
           >
-            <svg viewBox="0 0 24 24" className="fill-slate-900 w-full h-full">
+            <svg
+              viewBox="0 0 24 24"
+              className="bl-fill-slate-900 bl-w-full bl-h-full"
+            >
               <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
             </svg>
           </div>
@@ -336,31 +342,31 @@ function AppData({
   const tableContentVals = tableContent();
 
   return (
-    <div className="">
-      <div className="">
-        <div className="mb-5">
+    <div>
+      <div>
+        <div className="bl-mb-5">
           <div>
-            <div className="justify-end flex items-center gap-3">
-              <div className="flex gap-3 items-center mr-auto">
+            <div className="bl-justify-end bl-flex bl-items-center bl-gap-3">
+              <div className="bl-flex bl-gap-3 bl-items-center bl-mr-auto">
                 {onBack && !autoExecuted && (
                   <div
-                    className="size-8 p-1 cursor-pointer border-2 border-stone-100 hover:border-stone-300 rounded-full bg-white shrink-0 dark:border-black dark:bg-black"
+                    className="bl-size-8 bl-p-1 bl-cursor-pointer bl-border-2 bl-border-stone-100 hover:bl-border-stone-300 bl-rounded-full bl-bg-white bl-shrink-0 dark:bl-border-black dark:bl-bg-black"
                     onClick={onBack}
                   >
                     <AppIcon
                       icon="left"
-                      className="fill-stone-800 dark:fill-stone-100 w-full h-full"
+                      className="bl-fill-stone-800 dark:bl-fill-stone-100 bl-w-full bl-h-full"
                     />
                   </div>
                 )}
 
-                <div className="text-stone-800 dark:text-stone-200">
+                <div className="bl-text-stone-800 dark:bl-text-stone-200">
                   {neuronName}
                 </div>
               </div>
 
               {data?.data?.length > 10 && (
-                <div className="ml-auto lg:w-1/3">
+                <div className="bl-ml-auto lg:bl-w-1/3">
                   <AppInput
                     type="text"
                     value={filters.search}
@@ -371,7 +377,7 @@ function AppData({
                     label="Search"
                     mb="0"
                     icon="search"
-                    className="input-search-main "
+                    className="bl-input-search-main "
                   />
                 </div>
               )}
@@ -390,14 +396,14 @@ function AppData({
           </div>
         </div>
 
-        <div className="boxx">
-          <div className="box-table">
-            <div className="">
-              <div className=" w-full">
-                <div className="">
-                  <div className="table overflow-x-scroll w-full">
+        <div className="bl-box">
+          <div className="bl-box-table">
+            <div>
+              <div className=" bl-w-full">
+                <div>
+                  <div className="bl-table bl-overflow-x-scroll b-w-full">
                     {(table.header?.length > 0 || table.data?.length > 0) && (
-                      <table className="w-full mb-2">
+                      <table className="bl-w-full bl-mb-2">
                         {table.header && (
                           <thead>
                             <tr>
@@ -437,7 +443,7 @@ function AppData({
                                 {footerRowVals.map(
                                   (item: any, index: number) => (
                                     <td key={index}>
-                                      <span className="text-sm font-bold">
+                                      <span className="bl-text-sm bl-font-bold">
                                         <span>{item?.val}</span>
                                       </span>
                                     </td>
@@ -451,7 +457,7 @@ function AppData({
                     )}
 
                     {!table.header?.length && !table.data?.length && (
-                      <div className=" text-center py-10 text-2xl text-stone-700 ">
+                      <div className=" bl-text-center bl-py-10 bl-text-2xl bl-text-stone-700 ">
                         No results to display.
                       </div>
                     )}

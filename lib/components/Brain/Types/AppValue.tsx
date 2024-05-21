@@ -7,13 +7,13 @@ function AppValue({ title, data }: any) {
     return arr;
   };
   return (
-    <div className="text-stone-800 dark:text-stone-200">
-      <h2 className="text-lg font-bold mb-4">{title}</h2>
-      <div className="flex flex-wrap items-center gap-3 lg:gap-10 justify-center">
+    <div className="bl-text-stone-800 dark:bl-text-stone-200">
+      <h2 className="bl-text-lg font-bold mb-4">{title}</h2>
+      <div className="bl-flex bl-flex-wrap bl-items-center bl-gap-3 lg:bl-gap-10 bl-justify-center">
         {getValues().map((val: any) => (
-          <div key={val.label} className="text-center">
-            <div className="text-2xl font-bold">{val.value}</div>
-            <div className="font-light">{val.label}</div>
+          <div key={val.label} className="bl-text-center">
+            <div className="bl-text-2xl bl-font-bold">{val.value}</div>
+            <div className="bl-font-light">{val.label}</div>
           </div>
         ))}
       </div>

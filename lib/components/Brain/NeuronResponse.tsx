@@ -14,7 +14,7 @@ const NeuronResponse = ({
 }: any) => {
   return (
     <>
-      <div className="  h-full overflow-y-auto p-5 ">
+      <div className="  bl-h-full bl-overflow-y-auto bl-p-5 ">
         {response?.type == "exception" && (
           <AppException data={response.content} />
         )}

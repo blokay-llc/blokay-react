@@ -23,44 +23,44 @@ const AppButton = function (props: any) {
   };
 
   const classBtn = () => {
-    let sizeClass = `py-1 px-2 text-sm`;
+    let sizeClass = `bl-py-1 bl-px-2 bl-text-sm`;
     if (size === "md") {
-      sizeClass = `py-2 px-2 text-sm`;
+      sizeClass = `bl-py-2 bl-px-2 bl-text-sm`;
     } else if (size === "sm") {
-      sizeClass = `py-1.5 px-2 text-xs md:text-sm`;
+      sizeClass = `bl-py-1.5 bl-px-2 bl-text-xs md:bl-text-sm`;
     } else if (size === "lg") {
-      sizeClass = `py-3 px-5 text-sm`;
+      sizeClass = `bl-py-3 bl-px-5 bl-text-sm`;
     }
 
     let colorClass = "";
     if (disabled)
       colorClass =
-        " bg-stone-100 dark:bg-stone-700 dark:text-stone-400 text-gray-500 cursor-not-allowed	 ";
+        " bl-bg-stone-100 dark:bl-bg-stone-700 dark:bl-text-stone-400 bl-text-gray-500 bl-cursor-not-allowed	 ";
     else {
       if (classColor) colorClass = classColor;
       else if (variant === "primary") {
-        colorClass = ` border-transparent  `;
+        colorClass = ` bl-border-transparent  `;
       } else if (variant === "secondary") {
         colorClass =
-          " text-stone-500 border-stone-300 dark:border-stone-700 border-2 ";
+          " bl-text-stone-500 bl-border-stone-300 dark:bl-border-stone-700 bl-border-2 ";
       } else if (variant === "third") {
         colorClass =
-          "text-black border-black rounded-none border-none hover:bg-gray-100 black-icon";
+          "bl-text-black bl-border-black bl-rounded-none bl-border-none hover:bl-bg-gray-100 bl-black-icon";
       } else if (variant === "neutral") {
         colorClass =
-          "text-gray-500 bg-neutral-200 hover:bg-neutral-300 border-transparent";
+          "bl-text-gray-500 bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-border-transparent";
       }
 
       if (variant === "primary") {
         colorClass =
-          " border-black bg-black dark:text-black dark:bg-white dark:hover:bg-stone-200 hover:bg-black text-white ";
+          " bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-stone-200 hover:bl-bg-black bl-text-white ";
       } else if (color == "green") {
         colorClass =
-          " border-green-300 bg-green-300 hover:bg-green-500 text-green-900 ";
+          " bl-border-green-300 bl-bg-green-300 hover:bl-bg-green-500 bl-text-green-900 ";
       }
     }
 
-    return `${sizeClass} ${colorClass} appearance-none rounded-lg md:rounded-lg inline-block focus:outline-none  font-base   ${extraProps.className}`;
+    return `${sizeClass} ${colorClass} bl-appearance-none bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base   ${extraProps.className}`;
   };
 
   const propsComputed = () => {
@@ -74,8 +74,8 @@ const AppButton = function (props: any) {
     <>
       {tag() === "button" && (
         <button
-          className={`${classBtn()}   ${!disabled ? "scale-hover" : ""} ${
-            disabled ? "disabled" : ""
+          className={`${classBtn()}   ${!disabled ? "bl-scale-hover" : ""} ${
+            disabled ? "bl-disabled" : ""
           }`}
           target={target}
           {...propsComputed()}
@@ -84,16 +84,20 @@ const AppButton = function (props: any) {
         >
           {text && (
             <span>
-              <div className="flex justify-center items-center gap-2">
+              <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
                 {icon && (
-                  <div style={{ flexShrink: 0 }} className="icon-btn">
+                  <div style={{ flexShrink: 0 }} className="bl-icon-btn">
                     {loading ? (
-                      <div className="mx-auto">
+                      <div className="bl-mx-auto">
                         <AppLoader size="sm" />
                       </div>
                     ) : (
-                      <div className={"h-4 md:h-4 w-4 icon-btn " + variant}>
-                        <AppIcon icon={icon} className="w-full h-full" />
+                      <div
+                        className={
+                          "bl-h-4 md:bl-h-4 w-4 bl-icon-btn " + variant
+                        }
+                      >
+                        <AppIcon icon={icon} className="bl-w-full bl-h-full" />
                       </div>
                     )}
                   </div>
@@ -107,8 +111,8 @@ const AppButton = function (props: any) {
       )}
       {tag() === "a" && (
         <a
-          className={`${classBtn()}  ${!disabled ? "scale-hover" : ""} ${
-            disabled ? "disabled" : ""
+          className={`${classBtn()}  ${!disabled ? "bl-scale-hover" : ""} ${
+            disabled ? "bl-disabled" : ""
           }`}
           target={target}
           {...propsComputed()}
@@ -116,14 +120,18 @@ const AppButton = function (props: any) {
         >
           {text && (
             <span>
-              <div className="flex justify-center items-center gap-2">
-                <div style={{ flexShrink: 0 }} className="icon-btn">
+              <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
+                <div style={{ flexShrink: 0 }} className="bl-icon-btn">
                   {loading ? (
-                    <div className="mx-auto">
+                    <div className="bl-mx-auto">
                       <AppLoader size="sm" />
                     </div>
                   ) : icon ? (
-                    <div className={"h-4 md:h-4 w-4 icon-btn " + variant}>
+                    <div
+                      className={
+                        "bl-h-4 md:bl-h-4 bl-w-4 bl-icon-btn " + variant
+                      }
+                    >
                       <AppIcon icon={icon} />
                     </div>
                   ) : null}

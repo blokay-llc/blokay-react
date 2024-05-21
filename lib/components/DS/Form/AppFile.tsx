@@ -69,17 +69,17 @@ const AppFile = ({
     if (filelist.length > 0) {
       uploadPhoto(filelist);
     }
-  }, [filelist]);
+  }, [uploadPhoto, filelist]);
 
   const renderImage = () => {
     if (loading) {
-      return <AppLoader className="mx-auto px-3" size="sm" />;
+      return <AppLoader className="bl-mx-auto bl-px-3" size="sm" />;
     } else if (previewImage()) {
       return (
         <img
           src={previewImage()}
           alt="preview"
-          className="rounded-lg mx-auto"
+          className="bl-rounded-lg bl-mx-auto"
           style={{ width: "50px", height: "50px" }}
         />
       );
@@ -87,21 +87,21 @@ const AppFile = ({
       return (
         <AppIcon
           icon="pdf"
-          className="h-10 fill-stone-800 dark:fill-stone-200"
+          className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
         />
       );
     } else if (["csv", "xls", "xlsx"].includes(ext())) {
       return (
         <AppIcon
           icon="excel"
-          className="h-10 fill-stone-800 dark:fill-stone-200"
+          className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
         />
       );
     } else {
       return (
         <AppIcon
           icon="upload"
-          className="h-10 fill-stone-800 dark:fill-stone-200"
+          className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
         />
       );
     }
@@ -109,23 +109,26 @@ const AppFile = ({
 
   return (
     <div
-      className={`p-2 rounded-lg inline-block bg-stone-100 dark:bg-stone-900 dark:border-stone-900 dark:hover:bg-black border-2 border-stone-200 hover:bg-stone-200 w-full  ${classSelector} ${size}`}
+      className={`bl-p-2 bl-rounded-lg bl-inline-block bl-bg-stone-100 dark:bl-bg-stone-900 dark:bl-border-stone-900 dark:hover:bl-bg-black bl-border-2 bl-border-stone-200 hover:bl-bg-stone-200 bl-w-full  ${classSelector} ${size}`}
     >
-      <input type="file" className="hidden" id={id} onChange={onChange} />
+      <input type="file" className="bl-hidden" id={id} onChange={onChange} />
 
-      <label htmlFor={id} className=" items-center gap-3 cursor-pointer flex">
-        <div className="prev">{renderImage()}</div>
+      <label
+        htmlFor={id}
+        className=" bl-items-center bl-gap-3 bl-cursor-pointer bl-flex"
+      >
+        <div className="bl-prev">{renderImage()}</div>
 
         <div>
           {label ? (
-            <div className="text-sm block py-1 text-stone-800 dark:text-stone-100 font-medium">
+            <div className="bl-text-sm bl-block bl-py-1 bl-text-stone-800 dark:bl-text-stone-100 bl-font-medium">
               {label}
             </div>
           ) : null}
 
-          <div className="text-left font-light text-xs text-stone-600 dark:text-stone-300">
-            <p className="md:hidden block">Click here to select a file</p>
-            <p className="hidden md:block">Touch here to select.</p>
+          <div className="bl-text-left bl-font-light bl-text-xs bl-text-stone-600 dark:bl-text-stone-300">
+            <p className="md:hidden bl-block">Click here to select a file</p>
+            <p className="hidden md:bl-block">Touch here to select.</p>
           </div>
         </div>
       </label>

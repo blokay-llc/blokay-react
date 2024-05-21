@@ -1,16 +1,16 @@
-.app-input {
-  @apply pb-1 pt-4 px-5 border-stone-200  outline-none  rounded-xl border w-full text-gray-700 font-medium appearance-none	 focus:bg-gray-100 dark:focus:bg-black bg-stone-200 hover:bg-stone-300 hover:border-stone-300 transition duration-100 dark:border-stone-950 dark:text-stone-200 dark:bg-stone-900 dark:hover:bg-black dark:hover:border-black placeholder-stone-200;
+.bl-app-input {
+  @apply bl-pb-1 bl-pt-4 bl-px-5 bl-border-stone-200  bl-outline-none  bl-rounded-xl bl-border bl-w-full bl-text-gray-700 bl-font-medium bl-appearance-none	 focus:bl-bg-gray-100 dark:focus:bl-bg-black bl-bg-stone-200 hover:bl-bg-stone-300 hover:bl-border-stone-300 bl-transition bl-duration-100 dark:bl-border-stone-950 dark:bl-text-stone-200 dark:bl-bg-stone-900 dark:hover:bl-bg-black dark:hover:bl-border-black bl-placeholder-stone-200;
 }
-.app-input:disabled {
-  @apply bg-stone-200 text-stone-400 border-stone-200 dark:border-black dark:bg-black dark:text-stone-700;
+.bl-app-input:disabled {
+  @apply bl-bg-stone-200 bl-text-stone-400 bl-border-stone-200 dark:bl-border-black dark:bl-bg-black dark:bl-text-stone-700;
 }
-.app-input::-webkit-input-placeholder,
-.app-input::placeholder {
+.bl-app-input::-webkit-input-placeholder,
+.bl-app-input::placeholder {
   color: transparent;
 }
 
-.app-input.error {
-  @apply border-red-500;
+.bl-app-input.error {
+  @apply bl-border-red-500;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {

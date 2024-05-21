@@ -55,7 +55,6 @@ function AppDoughnut({ data, title = "" }: any) {
 
   return (
     <div
-      className=""
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >

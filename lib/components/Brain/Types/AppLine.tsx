@@ -48,7 +48,6 @@ function AppLine({ data, title = "" }: any) {
     hoverBorderWidth: "3",
     pointRadius: [0],
     pointHoverRadius: [5],
-    // pointRadius: pointRadius,
     elements: {
       line: {
         tension: 0.4,
@@ -73,7 +72,6 @@ function AppLine({ data, title = "" }: any) {
 
   return (
     <div
-      className=""
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >

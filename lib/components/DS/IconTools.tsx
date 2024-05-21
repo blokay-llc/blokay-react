@@ -131,7 +131,7 @@ export default function IconTools({ icon, className, style = {} }: any) {
     ),
   };
   return (
-    <svg viewBox="0 0 128 128" className={`icon ${className}`} style={style}>
+    <svg viewBox="0 0 128 128" className={`bl-icon ${className}`} style={style}>
       {icons[icon]}
     </svg>
   );

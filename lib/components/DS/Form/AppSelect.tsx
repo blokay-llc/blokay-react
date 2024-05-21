@@ -22,11 +22,11 @@ export default function AppSelect({
   const id = genRandomString(10);
 
   return (
-    <div className="relative ">
+    <div className="bl-relative ">
       <label
         htmlFor={id}
-        className={` absolute left-4 appearance-none	 text-stone-600 dark:text-stone-500 
-          top-2 text-xs font-light`}
+        className={` bl-absolute bl-left-4 bl-appearance-none	 bl-text-stone-600 dark:bl-text-stone-500 
+          bl-top-2 bl-text-xs bl-font-light`}
         style={{ transitionDuration: "0.3s" }}
       >
         {label}
@@ -45,7 +45,7 @@ export default function AppSelect({
             extraProps.onFocus && extraProps.onFocus();
           }}
           value={value}
-          className={` app-input ${error ? "error" : ""}  ${
+          className={`bl-app-input ${error ? "bl-error" : ""}  ${
             extraProps.className
           }`}
           type="text"
@@ -54,7 +54,9 @@ export default function AppSelect({
           {children}
         </select>
 
-        {error && <div className="text-left text-red-500 text-sm">{error}</div>}
+        {error && (
+          <div className="bl-text-left bl-text-red-500 bl-text-sm">{error}</div>
+        )}
       </div>
     </div>
   );

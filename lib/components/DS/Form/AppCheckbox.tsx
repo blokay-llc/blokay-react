@@ -4,28 +4,28 @@ import "./form.css";
 
 export default function AppCheckbox({ label, value, ...extraProps }: any) {
   return (
-    <div className=" ">
-      <label className="rounded-lg bg-gray-50 border-2 border-gray-100 px-2 items-center py-1 flex gap-2  select-none dark:bg-stone-900 dark:border-stone-900">
+    <div>
+      <label className="bl-rounded-lg bl-bg-gray-50 bl-border-2 bl-border-gray-100 bl-px-2 bl-items-center bl-py-1 bl-flex bl-gap-2  bl-select-none dark:bl-bg-stone-900 dark:bl-border-stone-900">
         <input
           type="checkbox"
           onChange={() => {
             extraProps.onChange && extraProps.onChange(!value);
           }}
           value={value == true ? "true" : undefined}
-          className="hidden"
+          className="bl-hidden"
         />
         <div
-          className="size-6 rounded-lg border-2 border-gray-200 dark:border-stone-600"
+          className="bl-size-6 bl-rounded-lg bl-border-2 bl-border-gray-200 dark:bl-border-stone-600"
           style={{ flexShrink: 0 }}
         >
           {value && (
             <AppIcon
               icon="check"
-              className="fill-stone-900 dark:fill-stone-200"
+              className="bl-fill-stone-900 dark:bl-fill-stone-200"
             />
           )}
         </div>
-        <div className="text-sm font-light text-stone-600 dark:text-stone-300">
+        <div className="bl-text-sm bl-font-light bl-text-stone-600 dark:bl-text-stone-300">
           {label || extraProps.children}
         </div>
       </label>

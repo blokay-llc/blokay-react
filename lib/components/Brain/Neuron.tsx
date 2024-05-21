@@ -71,28 +71,36 @@ function NeuronForm({
   execNeuron,
 }: any) {
   return (
-    <div className="py-6 h-full flex items-center justify-center ">
-      <div className=" lg:max-w-96 lg:min-w-96 min-w-[90%] bg-white border-white/10 dark:border dark:bg-stone-800 rounded-xl px-5 pb-5 pt-10">
-        <div className="flex items-center gap-3">
+    <div className="bl-py-6 bl-h-full bl-flex bl-items-center bl-justify-center ">
+      <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-stone-800 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-10">
+        <div className="bl-flex bl-items-center bl-gap-3">
           {onBack && (
-            <div className="flex gap-3 items-center" onClick={() => onBack()}>
-              <div className="size-8 p-1 cursor-pointer hover:bg-slate-300 rounded-full bg-slate-200">
-                <AppIcon icon="left" className="fill-slate-900 w-full h-full" />
+            <div
+              className="bl-flex bl-gap-3 bl-items-center"
+              onClick={() => onBack()}
+            >
+              <div className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-slate-300 bl-rounded-full bl-bg-slate-200">
+                <AppIcon
+                  icon="left"
+                  className="bl-fill-slate-900 bl-w-full bl-h-full"
+                />
               </div>
               <div></div>
             </div>
           )}
-          <h2 className="text-base md:text-lg font-medium text-stone-600 dark:text-stone-300">
+          <h2 className="bl-text-base md:bl-text-lg bl-font-medium bl-text-stone-600 dark:bl-text-stone-300">
             {neuron.description}
           </h2>
         </div>
 
         {neuron.filters?.fields && (
-          <div className="grid grid-cols-2 w-full gap-3 mt-5">
+          <div className="bl-grid bl-grid-cols-2 bl-w-full bl-gap-3 bl-mt-5">
             {neuron.filters.fields.map((row: any, index: number) => (
               <div
                 key={index}
-                className={`${row.grid == 6 ? "col-span-1" : "col-span-2"} `}
+                className={`${
+                  row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
+                } `}
               >
                 <NeuronField
                   row={row}
@@ -105,12 +113,12 @@ function NeuronForm({
           </div>
         )}
 
-        <div className="mt-5 md:mt-5 border-t-2  border-gray-200 dark:border-stone-800 pt-5 text-center flex gap-3 md:gap-5">
+        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-5 bl-text-center bl-flex bl-gap-3 md:bl-gap-5">
           <AppButton
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
             variant="primary"
-            className="w-full"
+            className="bl-w-full"
             size="lg"
             color="blue"
           />
@@ -198,26 +206,26 @@ const Neuron = ({
   }, []);
 
   return (
-    <div className="h-full group relative border-2 border-stone-300 dark:border-stone-800 overflow-y-hidden  rounded-2xl pt-0">
+    <div className="bl-h-full bl-group bl-relative bl-border-2 bl-border-stone-300 dark:bl-border-stone-800 bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
       <div
-        className={`"overflow-y-auto max-h-full h-full flex w-full ${
-          !response ? "items-center" : ""
-        } justify-center `}
+        className={`bl-overflow-y-auto bl-max-h-full bl-h-full bl-flex bl-w-full ${
+          !response ? "bl-items-center" : ""
+        } bl-justify-center `}
       >
         {loading && (
-          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 bg-white/50 dark:bg-black/50 backdrop-blur-sm ">
+          <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bbl-g-black/50 bl-backdrop-blur-sm ">
             <AppLoader size="md" />
           </div>
         )}
 
         {(!loading || neuron?.id) && (
           <div
-            className={`w-full ${
-              editMode === "grid" ? "opacity-70 grayscale" : ""
+            className={`bl-w-full ${
+              editMode === "grid" ? "bl-opacity-70 bl-grayscale" : ""
             }`}
           >
             {!neuron?.id && (
-              <div className="text-center text-stone-600 text-lg">
+              <div className="bl-text-center bl-text-stone-600 bl-text-lg">
                 This doesn't exists
               </div>
             )}

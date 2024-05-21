@@ -6,11 +6,11 @@ const AppBox = function ({ title, icon, onClick }: any) {
   };
   return (
     <div
-      className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-100 cursor-pointer"
+      className="bl-flex bl-items-center bl-gap-3 bl-p-3 bl-rounded-lg hover:bl-bg-gray-100 bl-cursor-pointer"
       onClick={handleClick}
     >
       <div>
-        <AppIcon className="w-6 h-6" icon={icon} />
+        <AppIcon className="bl-w-6 bl-h-6" icon={icon} />
       </div>
       <h2>{title}</h2>
     </div>
