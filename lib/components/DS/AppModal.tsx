@@ -1,4 +1,4 @@
-import { forwardRef, useState, useImperativeHandle } from "react";
+import { forwardRef, useState, useImperativeHandle, ReactNode } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "./Index";
 import { CSSTransition } from "react-transition-group";
@@ -11,7 +11,7 @@ type ModalProps = {
   classSection?: string | null;
   size?: "sm" | "md" | "lg";
   children?: any;
-  footer?: any;
+  footer?: ReactNode | null;
   clickBack?: null | (() => void);
   onClose?: null | (() => void);
 };
@@ -22,7 +22,7 @@ function Modal(
     classSection = null,
     size = "sm",
     children,
-    footer,
+    footer = null,
     clickBack = null,
     onClose = null,
   }: ModalProps,

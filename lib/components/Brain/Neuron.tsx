@@ -128,14 +128,22 @@ function NeuronForm({
   );
 }
 
+type NeuronProps = {
+  neuronId?: string | null;
+  neuronKey?: string | null;
+  defaultForm?: any;
+  onExec?: null | ((response: any) => void);
+  onBack?: null | (() => void);
+  editMode?: string;
+};
 const Neuron = ({
-  neuronId,
-  neuronKey,
-  defaultForm,
-  onExec,
-  onBack,
+  neuronId = null,
+  neuronKey = null,
+  defaultForm = {},
+  onExec = null,
+  onBack = null,
   editMode = "",
-}: any) => {
+}: NeuronProps) => {
   const [form, setForm] = useState({ ...defaultForm });
   const [neuron, setNeuron]: any = useState(null);
   const [response, setResponse] = useState(null);
