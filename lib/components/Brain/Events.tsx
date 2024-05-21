@@ -1,4 +1,3 @@
-"use client";
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Modal } from "../DS/Index";
 import Neuron from "./Neuron";

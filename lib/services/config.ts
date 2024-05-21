@@ -1,4 +1,3 @@
-"use client";
 let env = "dev";
 
 if (

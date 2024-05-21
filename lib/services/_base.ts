@@ -1,4 +1,3 @@
-"use client";
 import { VERSION, ENV, API_PROD, API_SANDBOX, API_DEV } from "./config";
 
 let country = "";
@@ -46,12 +45,13 @@ const dataURLS = getServerUrl();
 export const SERVER_URL = dataURLS.SERVER_URL;
 
 export const getOS = () => {
-  var userAgent = window.navigator.userAgent,
-    platform = window.navigator.platform,
+  let os = null;
+
+  const platform = window.navigator.platform,
     macosPlatforms = ["Macintosh", "MacIntel", "MacPPC", "Mac68K"],
     windowsPlatforms = ["Win32", "Win64", "Windows", "WinCE"],
     iosPlatforms = ["iPhone", "iPad", "iPod"],
-    os = null;
+    userAgent = window.navigator.userAgent;
   if (macosPlatforms.indexOf(platform) !== -1) {
     os = "Mac OS";
   } else if (iosPlatforms.indexOf(platform) !== -1) {
@@ -72,7 +72,7 @@ export const postRequest = async function (
   user: any = null,
   extraOpts: any = {}
 ) {
-  let opts: any = {
+  const opts: any = {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -125,7 +125,7 @@ export const postMultimedia = async function (
   form: any,
   user: any
 ) {
-  let opts: any = {
+  const opts: any = {
     method: "POST",
     headers: {},
     body: form,
@@ -144,7 +144,7 @@ export const postMultimedia = async function (
 };
 
 export const postFile = async function (endpoint: string, data: any) {
-  let opts: any = {
+  const opts: any = {
     method: "POST",
     headers: {
       Accept: "application/json",

@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import { Icon, Loader } from "../Index";
 import { postMultimedia } from "../../../services/_base";

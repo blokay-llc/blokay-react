@@ -1,8 +1,17 @@
-"use client";
 import { Icon } from "../Index";
 import "./form.css";
 
-export default function AppCheckbox({ label, value, ...extraProps }: any) {
+type AppCheckboxProps = {
+  [x: string]: any;
+  label?: string;
+  value: boolean;
+  onChange?: (value: boolean) => void;
+};
+export default function AppCheckbox({
+  label = "",
+  value,
+  ...extraProps
+}: AppCheckboxProps) {
   return (
     <div>
       <label className="bl-rounded-lg bl-bg-gray-50 bl-border-2 bl-border-gray-100 bl-px-2 bl-items-center bl-py-1 bl-flex bl-gap-2  bl-select-none dark:bl-bg-stone-900 dark:bl-border-stone-900">

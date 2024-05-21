@@ -1,4 +1,9 @@
-export default function Icon({ icon, className, style = {} }: any) {
+type Props = {
+  style?: any;
+  icon: string;
+  className?: string;
+};
+export default function Icon({ icon = "", className = "", style = {} }: Props) {
   return (
     <svg viewBox="0 0 24 24" className={`bl-icon ${className}`} style={style}>
       {icon === "home" ? (

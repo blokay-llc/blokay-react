@@ -1,4 +1,3 @@
-"use client";
 import AppData from "./Types/AppData";
 import AppLine from "./Types/AppLine";
 import AppValue from "./Types/AppValue";

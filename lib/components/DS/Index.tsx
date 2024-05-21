@@ -7,6 +7,7 @@ import Checkbox from "./Form/AppCheckbox";
 import Loader from "./Loader/Index";
 import Box from "./AppBox";
 import Icon from "./AppIcon";
+import IconTools from "./IconTools";
 import NoItems from "./AppNoItems";
 
 export {
@@ -20,4 +21,5 @@ export {
   Icon,
   NoItems,
   Checkbox,
+  IconTools,
 };

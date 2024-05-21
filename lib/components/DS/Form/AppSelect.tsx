@@ -1,4 +1,3 @@
-"use client";
 import "./form.css";
 
 function genRandomString(length: number): string {

@@ -1,4 +1,3 @@
-"use client";
 import { useState, useEffect } from "react";
 import { brainGet, brainExec } from "../../services/brain";
 import {
