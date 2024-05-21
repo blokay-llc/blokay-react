@@ -7,7 +7,6 @@ import AppCheckbox from "./Form/AppCheckbox";
 import AppLoader from "./Loader/Index";
 import AppBox from "./AppBox";
 import AppIcon from "./AppIcon";
-import AppTabs from "./AppTabs";
 import AppNoItems from "./AppNoItems";
 
 export {
@@ -19,7 +18,6 @@ export {
   AppLoader,
   AppBox,
   AppIcon,
-  AppTabs,
   AppNoItems,
   AppCheckbox,
 };

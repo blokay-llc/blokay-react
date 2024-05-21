@@ -1,4 +1,4 @@
 import "./index.css";
-import MyButtonComponent from "./components/Button";
+import AppButton from "./components/DS/Form/AppButton";
 
-export { MyButtonComponent };
+export { AppButton };
