@@ -13,13 +13,25 @@ function genRandomString(length: number): string {
   return result;
 }
 
+type AppInputProps = {
+  [x: string]: any;
+  label: string;
+  value?: string;
+  icon?: string;
+  error?: string;
+  onChange?: (value: string) => void;
+  onBlur?: () => void;
+  onFocus?: () => void;
+  type?: "text" | "password" | "number" | "date";
+};
+
 export default function AppInput({
   label,
   value,
-  icon = null,
-  error = null,
+  icon = "",
+  error = "",
   ...extraProps
-}: any) {
+}: AppInputProps) {
   const [activeLabel, setActiveLabel] = useState(false);
   const [id] = useState(genRandomString(10));
 

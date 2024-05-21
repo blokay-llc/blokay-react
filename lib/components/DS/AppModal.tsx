@@ -6,25 +6,25 @@ import { CSSTransition } from "react-transition-group";
 const container = typeof document != "undefined" ? document.body : null;
 
 type ModalProps = {
-  title?: string;
+  title?: string | null;
   position?: "top" | "center" | "bottom";
-  classSection?: string;
+  classSection?: string | null;
   size?: "sm" | "md" | "lg";
-  clickBack?: () => void;
   children?: any;
   footer?: any;
-  onClose?: () => void;
+  clickBack?: null | (() => void);
+  onClose?: null | (() => void);
 };
 function Modal(
   {
-    title,
-    position,
-    classSection,
-    size,
-    clickBack,
+    title = "",
+    position = "center",
+    classSection = null,
+    size = "sm",
     children,
     footer,
-    onClose,
+    clickBack = null,
+    onClose = null,
   }: ModalProps,
   ref: any
 ) {
@@ -120,7 +120,7 @@ function Modal(
                     <div className="bl-flex bl-items-center bl-justify-start bl-gap-3">
                       <div
                         className="bl-action-icon"
-                        onClick={clickBack}
+                        onClick={() => clickBack && clickBack()}
                         style={{ display: clickBack ? "bl-block" : "bl-none" }}
                       >
                         <svg viewBox="0 0 24 24">
