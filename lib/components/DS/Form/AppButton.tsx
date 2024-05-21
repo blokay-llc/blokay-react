@@ -1,4 +1,4 @@
-import { AppLoader, AppIcon } from "../Index";
+import { Loader, Icon } from "../Index";
 
 const AppButton = function (props: any) {
   const {
@@ -89,7 +89,7 @@ const AppButton = function (props: any) {
                   <div style={{ flexShrink: 0 }} className="bl-icon-btn">
                     {loading ? (
                       <div className="bl-mx-auto">
-                        <AppLoader size="sm" />
+                        <Loader size="sm" />
                       </div>
                     ) : (
                       <div
@@ -97,7 +97,7 @@ const AppButton = function (props: any) {
                           "bl-h-4 md:bl-h-4 w-4 bl-icon-btn " + variant
                         }
                       >
-                        <AppIcon icon={icon} className="bl-w-full bl-h-full" />
+                        <Icon icon={icon} className="bl-w-full bl-h-full" />
                       </div>
                     )}
                   </div>
@@ -124,7 +124,7 @@ const AppButton = function (props: any) {
                 <div style={{ flexShrink: 0 }} className="bl-icon-btn">
                   {loading ? (
                     <div className="bl-mx-auto">
-                      <AppLoader size="sm" />
+                      <Loader size="sm" />
                     </div>
                   ) : icon ? (
                     <div
@@ -132,7 +132,7 @@ const AppButton = function (props: any) {
                         "bl-h-4 md:bl-h-4 bl-w-4 bl-icon-btn " + variant
                       }
                     >
-                      <AppIcon icon={icon} />
+                      <Icon icon={icon} />
                     </div>
                   ) : null}
                 </div>

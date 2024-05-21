@@ -11,14 +11,21 @@ function genRandomString(length: number): string {
   return result;
 }
 
+export type AppSelectProps = {
+  [x: string]: any;
+  label: string;
+  value: string;
+  placeholder?: string;
+  children: any;
+  error?: string | null;
+};
 export default function AppSelect({
   label,
   value,
-  placeholder,
   children,
   error = null,
   ...extraProps
-}: any) {
+}: AppSelectProps) {
   const id = genRandomString(10);
 
   return (
@@ -48,8 +55,6 @@ export default function AppSelect({
           className={`bl-app-input ${error ? "bl-error" : ""}  ${
             extraProps.className
           }`}
-          type="text"
-          placeholder={placeholder}
         >
           {children}
         </select>

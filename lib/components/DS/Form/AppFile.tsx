@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import { AppIcon, AppLoader } from "../Index";
+import { Icon, Loader } from "../Index";
 import { postMultimedia } from "../../../services/_base";
 
 const AppFile = ({
@@ -73,7 +73,7 @@ const AppFile = ({
 
   const renderImage = () => {
     if (loading) {
-      return <AppLoader className="bl-mx-auto bl-px-3" size="sm" />;
+      return <Loader className="bl-mx-auto bl-px-3" size="sm" />;
     } else if (previewImage()) {
       return (
         <img
@@ -85,21 +85,21 @@ const AppFile = ({
       );
     } else if (ext() === "pdf") {
       return (
-        <AppIcon
+        <Icon
           icon="pdf"
           className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
         />
       );
     } else if (["csv", "xls", "xlsx"].includes(ext())) {
       return (
-        <AppIcon
+        <Icon
           icon="excel"
           className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
         />
       );
     } else {
       return (
-        <AppIcon
+        <Icon
           icon="upload"
           className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
         />

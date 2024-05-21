@@ -1,5 +1,5 @@
 "use client";
-import { AppIcon } from "../Index";
+import { Icon } from "../Index";
 import "./form.css";
 
 export default function AppCheckbox({ label, value, ...extraProps }: any) {
@@ -19,7 +19,7 @@ export default function AppCheckbox({ label, value, ...extraProps }: any) {
           style={{ flexShrink: 0 }}
         >
           {value && (
-            <AppIcon
+            <Icon
               icon="check"
               className="bl-fill-stone-900 dark:bl-fill-stone-200"
             />

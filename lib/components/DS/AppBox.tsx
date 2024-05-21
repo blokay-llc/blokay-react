@@ -1,4 +1,4 @@
-import { AppIcon } from "./Index";
+import { Icon } from "./Index";
 
 const AppBox = function ({ title, icon, onClick }: any) {
   const handleClick = (e: any) => {
@@ -10,7 +10,7 @@ const AppBox = function ({ title, icon, onClick }: any) {
       onClick={handleClick}
     >
       <div>
-        <AppIcon className="bl-w-6 bl-h-6" icon={icon} />
+        <Icon className="bl-w-6 bl-h-6" icon={icon} />
       </div>
       <h2>{title}</h2>
     </div>

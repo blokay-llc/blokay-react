@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react";
 import { brainGet, brainExec } from "../../services/brain";
 import {
-  AppButton,
-  AppInput,
-  AppSelect,
-  AppLoader,
-  AppIcon,
-  AppFile,
+  Button,
+  Input,
+  Select,
+  Loader,
+  Icon,
+  File,
 } from "../../components/DS/Index";
 import NeuronResponse from "./NeuronResponse";
 
@@ -18,7 +18,7 @@ function NeuronField({ row, form, errors, setForm }: any) {
 
   if (row.type == "file") {
     return (
-      <AppFile
+      <File
         value={form[row.name]}
         error={errors[row.name]}
         onChangeFiles={(val: any) => {
@@ -31,7 +31,7 @@ function NeuronField({ row, form, errors, setForm }: any) {
 
   if (row.type == "select") {
     return (
-      <AppSelect
+      <Select
         value={form[row.name]}
         error={errors[row.name]}
         onChange={(val: string) => {
@@ -46,12 +46,12 @@ function NeuronField({ row, form, errors, setForm }: any) {
               {opt.label}
             </option>
           ))}
-      </AppSelect>
+      </Select>
     );
   }
 
   return (
-    <AppInput
+    <Input
       type={row.type}
       value={form[row.name]}
       error={errors[row.name]}
@@ -80,7 +80,7 @@ function NeuronForm({
               onClick={() => onBack()}
             >
               <div className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-slate-300 bl-rounded-full bl-bg-slate-200">
-                <AppIcon
+                <Icon
                   icon="left"
                   className="bl-fill-slate-900 bl-w-full bl-h-full"
                 />
@@ -114,7 +114,7 @@ function NeuronForm({
         )}
 
         <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-5 bl-text-center bl-flex bl-gap-3 md:bl-gap-5">
-          <AppButton
+          <Button
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
             variant="primary"
@@ -214,7 +214,7 @@ const Neuron = ({
       >
         {loading && (
           <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bbl-g-black/50 bl-backdrop-blur-sm ">
-            <AppLoader size="md" />
+            <Loader size="md" />
           </div>
         )}
 

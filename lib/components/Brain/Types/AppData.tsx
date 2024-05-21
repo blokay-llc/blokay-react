@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import {
-  AppSelect,
-  AppInput,
-  AppButton,
-  AppIcon,
-  AppModal,
+  Select,
+  Input,
+  Button,
+  Icon,
+  Modal,
 } from "../../..//components/DS/Index";
 import { money } from "../../../helpers/functions";
 import Events from "../Events";
@@ -22,7 +22,7 @@ function TableHeaderCell({ setSort, index, sort, th }: any) {
       <div className="bl-flex bl-items-center bl-gap-2">
         <span>{th}</span>
         {sort && sort[index] && (
-          <AppIcon
+          <Icon
             icon={sort?.[index] == "ASC" ? "arrow_top" : "arrow_bottom"}
             className="bl-h-4 bl-w-4 dark:bl-fill-stone-200 bl-fill-stone-900"
           />
@@ -88,7 +88,7 @@ function TableFooter({
   return (
     <div className="bl-mt-5 bl-flex bl-justify-between bl-items-center">
       <div className="bl-flex bl-gap-3 bl-items-center">
-        <AppSelect
+        <Select
           label="Por página"
           value={perPage}
           onChange={(val: string) => {
@@ -103,7 +103,7 @@ function TableFooter({
           <option value={20}>20</option>
           <option value={50}>50</option>
           <option value={100}>100</option>
-        </AppSelect>
+        </Select>
 
         <div
           className="bl-flex bl-items-center bl-bg-stone-200 dark:bl-bg-stone-800 dark:bl-hover:bg-stone-700 hover:bl-bg-stone-300 bl-rounded-xl bl-size-10 bl-justify-center bl-shrink-0 "
@@ -111,7 +111,7 @@ function TableFooter({
             onReload && onReload();
           }}
         >
-          <AppIcon icon="refresh" className="bl-size-6 bl-fill-stone-600" />
+          <Icon icon="refresh" className="bl-size-6 bl-fill-stone-600" />
         </div>
       </div>
       <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
@@ -353,7 +353,7 @@ function AppData({
                     className="bl-size-8 bl-p-1 bl-cursor-pointer bl-border-2 bl-border-stone-100 hover:bl-border-stone-300 bl-rounded-full bl-bg-white bl-shrink-0 dark:bl-border-black dark:bl-bg-black"
                     onClick={onBack}
                   >
-                    <AppIcon
+                    <Icon
                       icon="left"
                       className="bl-fill-stone-800 dark:bl-fill-stone-100 bl-w-full bl-h-full"
                     />
@@ -367,7 +367,7 @@ function AppData({
 
               {data?.data?.length > 10 && (
                 <div className="bl-ml-auto lg:bl-w-1/3">
-                  <AppInput
+                  <Input
                     type="text"
                     value={filters.search}
                     onChange={(val: string) => {
@@ -383,7 +383,7 @@ function AppData({
               )}
 
               {table.data.length > 0 && (
-                <AppButton
+                <Button
                   variant="secondary"
                   type="button"
                   color="blue"
@@ -486,11 +486,11 @@ function AppData({
           onReload && onReload();
         }}
       />
-      <AppModal size="lg" position="center" ref={modalShowTextRef}>
+      <Modal size="lg" position="center" ref={modalShowTextRef}>
         <div>
           <pre>{textAll}</pre>
         </div>
-      </AppModal>
+      </Modal>
     </div>
   );
 }

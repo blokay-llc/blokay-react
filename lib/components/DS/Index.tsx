@@ -1,23 +1,23 @@
-import AppModal from "./AppModal";
-import AppButton from "./Form/AppButton";
-import AppInput from "./Form/AppInput";
-import AppFile from "./Form/AppFile";
-import AppSelect from "./Form/AppSelect";
-import AppCheckbox from "./Form/AppCheckbox";
-import AppLoader from "./Loader/Index";
-import AppBox from "./AppBox";
-import AppIcon from "./AppIcon";
-import AppNoItems from "./AppNoItems";
+import Modal from "./AppModal";
+import Button from "./Form/AppButton";
+import Input from "./Form/AppInput";
+import File from "./Form/AppFile";
+import Select from "./Form/AppSelect";
+import Checkbox from "./Form/AppCheckbox";
+import Loader from "./Loader/Index";
+import Box from "./AppBox";
+import Icon from "./AppIcon";
+import NoItems from "./AppNoItems";
 
 export {
-  AppModal,
-  AppButton,
-  AppInput,
-  AppFile,
-  AppSelect,
-  AppLoader,
-  AppBox,
-  AppIcon,
-  AppNoItems,
-  AppCheckbox,
+  Modal,
+  Button,
+  Input,
+  File,
+  Select,
+  Loader,
+  Box,
+  Icon,
+  NoItems,
+  Checkbox,
 };

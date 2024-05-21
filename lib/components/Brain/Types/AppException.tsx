@@ -1,6 +1,6 @@
 "use client";
 import { useRef } from "react";
-import { AppIcon, AppModal } from "../../../components/DS/Index";
+import { Icon, Modal } from "../../../components/DS/Index";
 
 function ShowError({ type, message, fullDescription }: any) {
   return (
@@ -46,13 +46,13 @@ export default function AppException({ data }: any) {
           modalRef.current.showModal();
         }}
       >
-        <AppIcon icon="error" className="bl-size-4 bl-fill-white" />
+        <Icon icon="error" className="bl-size-4 bl-fill-white" />
         <div> Error</div>
       </div>
 
-      <AppModal size="lg" position="center" ref={modalRef}>
+      <Modal size="lg" position="center" ref={modalRef}>
         <ErrorDecide error={data} />
-      </AppModal>
+      </Modal>
     </>
   );
 }

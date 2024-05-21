@@ -1,9 +1,20 @@
 import { forwardRef, useState, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
-import { AppIcon } from "./Index";
+import { Icon } from "./Index";
 import { CSSTransition } from "react-transition-group";
 
 const container = typeof document != "undefined" ? document.body : null;
+
+type ModalProps = {
+  title?: string;
+  position?: "top" | "center" | "bottom";
+  classSection?: string;
+  size?: "sm" | "md" | "lg";
+  clickBack?: () => void;
+  children?: any;
+  footer?: any;
+  onClose?: () => void;
+};
 function Modal(
   {
     title,
@@ -13,8 +24,8 @@ function Modal(
     clickBack,
     children,
     footer,
-    onClose = null,
-  }: any,
+    onClose,
+  }: ModalProps,
   ref: any
 ) {
   const [showing, setShowing] = useState(false);
@@ -122,7 +133,7 @@ function Modal(
                       className="hover:bl-bg-stone-200 dark:hover:bl-bg-stone-800 bl-p-1 bl-rounded-full bl-cursor-pointer"
                       onClick={hideModal}
                     >
-                      <AppIcon
+                      <Icon
                         className="bl-w-6 bl-h-6 bl-fill-black dark:bl-fill-stone-200"
                         icon={position !== "bottom" ? "close" : "arrow_bottom"}
                       />

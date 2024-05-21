@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bl-icon-btn {
+  @apply bl-fill-white dark:bl-fill-black;
+}
+.bl-icon-btn.secondary {
+  @apply bl-fill-stone-600;
+}
+
+.bl-table {
+  @apply bl-bg-white dark:bl-bg-stone-800 bl-p-4 bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto bl-rounded-2xl bl-shadow bl-w-full;
+}
+.bl-table table {
+  @apply bl-w-full bl-text-stone-800 dark:bl-text-stone-300;
+}
+.bl-table table thead tr th {
+  @apply bl-px-3 bl-text-xs bl-text-stone-500 bl-bg-stone-200 dark:bl-bg-stone-950 dark:bl-text-stone-300 bl-uppercase bl-h-10;
+}
+.bl-table table thead tr th:first-child {
+  @apply bl-rounded-l-xl;
+}
+.bl-table table thead tr th:last-child {
+  @apply bl-rounded-r-xl;
+}
+
+.bl-table table tbody tr td {
+  @apply bl-p-3;
+}
+
+.bl-table table tbody tr:first-child {
+  @apply bl-rounded-t-xl;
+}
+.bl-table table tbody tr:last-child {
+  @apply bl-rounded-b-xl;
+}
+
+.bl-table table tbody tr td,
+.bl-table table tbody tr th {
+  @apply bl-font-light;
+}
+
+.bl-table table tbody tr td a {
+  @apply bl-text-sky-600;
+}
+
+.bl-table table tbody button {
+  @apply bl-bg-stone-200 hover:bl-bg-stone-300 bl-text-stone-600 bl-py-1 bl-px-3 bl-text-sm bl-rounded-lg;
+}
+
+.bl-modalx-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+.bl-modalx-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.bl-modalx-exit {
+  opacity: 1;
+}
+.bl-modalx-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.bl-modal-back-enter {
+  opacity: 0;
+}
+.bl-modal-back-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+.bl-modal-back-exit {
+  opacity: 1;
+}
+.bl-modal-back-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}

@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
-import { AppModal } from "../DS/Index";
+import { Modal } from "../DS/Index";
 import Neuron from "./Neuron";
 
 function EventsHandler({ onExecuted }: any, ref: any) {
@@ -33,7 +33,7 @@ function EventsHandler({ onExecuted }: any, ref: any) {
 
   return (
     <>
-      <AppModal size="lg" position="center" ref={modalRef}>
+      <Modal size="lg" position="center" ref={modalRef}>
         {(subneuron.neuronKey || subneuron.neuronId) && (
           <Neuron
             neuronId={subneuron.neuronId}
@@ -51,7 +51,7 @@ function EventsHandler({ onExecuted }: any, ref: any) {
             }}
           />
         )}
-      </AppModal>
+      </Modal>
     </>
   );
 }

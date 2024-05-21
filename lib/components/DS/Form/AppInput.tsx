@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { AppIcon } from "../Index";
+import { Icon } from "../Index";
 import "./form.css";
 
 function genRandomString(length: number): string {
@@ -27,10 +27,10 @@ export default function AppInput({
     <div className="bl-w-full">
       <div className="bl-relative ">
         {icon && (
-          <AppIcon
+          <Icon
             className={`bl-size-6 ${
               error ? "bl-fill-red-400" : "bl-fill-gray-400"
-            } bl-bsolute bl-bottom-2.5 bl-right-4`}
+            } bl-absolute bl-bottom-2.5 bl-right-4`}
             icon={icon}
           />
         )}
@@ -41,7 +41,7 @@ export default function AppInput({
             if (el) el.focus();
           }}
           htmlFor={id}
-          className={` bl-select-none absolute  text-stone-500 dark:text-stone-400 ${
+          className={` bl-select-none bl-absolute  bl-text-stone-500 dark:bl-text-stone-400 ${
             activeLabel || value || extraProps.type === "date"
               ? " bl-top-2 bl-text-xs bl-left-5 bl-font-medium"
               : " bl-top-3 bl-pt-0.5 bl-left-5 bl-font-light bl-text-stone-600 dark:bl-text-stone-500 "
