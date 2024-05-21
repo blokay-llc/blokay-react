@@ -58,3 +58,11 @@ function MyView() {
   };
 }
 ```
+
+## Author
+
+[Blokay](https://blokay.com)
+
+## License
+
+MIT
