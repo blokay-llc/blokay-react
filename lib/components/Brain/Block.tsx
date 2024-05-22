@@ -120,7 +120,6 @@ type BlockProps = {
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
   editMode?: string;
-  jwtToken?: string;
 };
 const Block = ({
   neuronId = null,
@@ -129,7 +128,6 @@ const Block = ({
   onExec = null,
   onBack = null,
   editMode = "",
-  jwtToken = "",
 }: BlockProps) => {
   const [form, setForm] = useState({ ...defaultForm });
   const [neuron, setNeuron]: any = useState(null);
@@ -140,8 +138,7 @@ const Block = ({
 
   const [autoexecuted, setAutoxecuted]: any = useState(false);
 
-  const jwtTokenComputed =
-    jwtToken || localStorage.getItem("jwt_token_session") || "";
+  const jwtTokenComputed = localStorage.getItem("jwt_token_session") || "";
 
   const getNeuron = ({ neuronId, neuronKey }: any) => {
     if (!neuronId && !neuronKey) return;
@@ -259,7 +256,6 @@ const Block = ({
 
             {response && (
               <BlockResponse
-                jwtToken={jwtTokenComputed}
                 response={response}
                 neuron={neuron}
                 onReload={() => {

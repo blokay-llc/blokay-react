@@ -1,10 +1,9 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Modal } from "../DS/Index";
-import Neuron from "./Block";
+import Block from "./Block";
 
 type EventsProps = {
   onExecuted?: null | (() => void);
-  jwtToken: string;
 };
 function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
   const subneuronDefault: any = {
@@ -38,7 +37,7 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
     <>
       <Modal size="lg" position="center" ref={modalRef}>
         {(subneuron.neuronKey || subneuron.neuronId) && (
-          <Neuron
+          <Block
             neuronId={subneuron.neuronId}
             neuronKey={subneuron.neuronKey}
             defaultForm={subneuron.form}

@@ -10,7 +10,6 @@ const BlockResponse = ({
   onReload,
   onBack,
   autoExecuted,
-  jwtToken,
 }: any) => {
   return (
     <>
@@ -26,7 +25,6 @@ const BlockResponse = ({
             onReload={onReload}
             onBack={onBack}
             autoExecuted={autoExecuted}
-            jwtToken={jwtToken}
           />
         )}
 
