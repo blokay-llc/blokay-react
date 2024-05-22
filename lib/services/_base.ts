@@ -69,7 +69,7 @@ export const getOS = () => {
 export const postRequest = async function (
   endpoint: string,
   data: any,
-  user: any = null,
+  jwtToken: any = null,
   extraOpts: any = {}
 ) {
   const opts: any = {
@@ -85,20 +85,9 @@ export const postRequest = async function (
       city,
       _version: VERSION,
       _channel: `${getOS()}`,
-      _geolocation: user
-        ? {
-            lat: user.lat,
-            lon: user.lon,
-            accuracy: user.accuracy,
-          }
-        : null,
-      _token: user?.token,
+      _token: jwtToken,
     }),
   };
-
-  if (user) {
-    opts.headers.Authorization = "Bearer " + user.token;
-  }
 
   const baseUrl = SERVER_URL;
 
