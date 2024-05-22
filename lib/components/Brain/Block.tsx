@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { brainGet, brainExec } from "../../services/brain";
 import { Button, Input, Select, Loader, Icon, File } from "../DS/Index";
-import NeuronResponse from "./NeuronResponse";
+import BlockResponse from "./BlockResponse";
 
 function NeuronField({ row, form, errors, setForm }: any) {
   if (row.type == "hidden") {
@@ -120,24 +120,24 @@ function NeuronForm({
   );
 }
 
-type NeuronProps = {
+type BlockProps = {
   neuronId?: string | null;
   neuronKey?: string | null;
   defaultForm?: any;
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
   editMode?: string;
-  jwtToken: string;
+  jwtToken?: string;
 };
-const Neuron = ({
+const Block = ({
   neuronId = null,
   neuronKey = null,
   defaultForm = {},
   onExec = null,
   onBack = null,
   editMode = "",
-  jwtToken,
-}: NeuronProps) => {
+  jwtToken = "",
+}: BlockProps) => {
   const [form, setForm] = useState({ ...defaultForm });
   const [neuron, setNeuron]: any = useState(null);
   const [response, setResponse] = useState(null);
@@ -145,11 +145,14 @@ const Neuron = ({
   const [errors, setErrors]: any = useState({});
   const [autoexecuted, setAutoxecuted]: any = useState(false);
 
+  const jwtTokenComputed =
+    jwtToken || localStorage.getItem("jwt_token_session") || "";
+
   const getNeuron = ({ neuronId, neuronKey }: any) => {
     if (!neuronId && !neuronKey) return;
     if (loading) return;
     setLoading(true);
-    brainGet({ neuronId, neuronKey }, jwtToken)
+    brainGet({ neuronId, neuronKey }, jwtTokenComputed)
       .then((result: any) => {
         const n = result.Neuron;
         const autoExec =
@@ -195,7 +198,7 @@ const Neuron = ({
         neuronId: n.id,
         form,
       },
-      jwtToken
+      jwtTokenComputed
     )
       .then((result: any) => {
         setResponse(result.response);
@@ -249,7 +252,8 @@ const Neuron = ({
               )}
 
             {response && (
-              <NeuronResponse
+              <BlockResponse
+                jwtToken={jwtTokenComputed}
                 response={response}
                 neuron={neuron}
                 onReload={() => {
@@ -271,4 +275,4 @@ const Neuron = ({
     </div>
   );
 };
-export default Neuron;
+export default Block;

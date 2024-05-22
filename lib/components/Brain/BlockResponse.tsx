@@ -4,7 +4,7 @@ import AppValue from "./Types/AppValue";
 import AppException from "./Types/AppException";
 import AppDoughnut from "./Types/AppDoughnut";
 
-const NeuronResponse = ({
+const BlockResponse = ({
   neuron,
   response,
   onReload,
@@ -21,12 +21,12 @@ const NeuronResponse = ({
 
         {response?.type == "table" && (
           <AppData
-            jwtToken={jwtToken}
             neuronName={neuron?.description}
             data={response.content}
             onReload={onReload}
             onBack={onBack}
             autoExecuted={autoExecuted}
+            jwtToken={jwtToken}
           />
         )}
 
@@ -55,4 +55,4 @@ const NeuronResponse = ({
     </>
   );
 };
-export default NeuronResponse;
+export default BlockResponse;

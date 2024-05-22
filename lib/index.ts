@@ -5,7 +5,7 @@ import useSession from "./hooks/useSession";
 import createSession from "./helpers/createSession";
 import logout from "./helpers/logout";
 import Block from "./components/Brain/Block";
-import NeuronResponse from "./components/Brain/NeuronResponse";
+import BlockResponse from "./components/Brain/BlockResponse";
 import Events from "./components/Brain/Events";
 
 const setJWT = (token: string) => {
@@ -23,5 +23,5 @@ export {
   //  blocks
   Events,
   Block,
-  NeuronResponse,
+  BlockResponse,
 };
