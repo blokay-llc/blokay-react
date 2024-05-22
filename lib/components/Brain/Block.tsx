@@ -1,13 +1,6 @@
 import { useState, useEffect } from "react";
 import { brainGet, brainExec } from "../../services/brain";
-import {
-  Button,
-  Input,
-  Select,
-  Loader,
-  Icon,
-  File,
-} from "../../components/DS/Index";
+import { Button, Input, Select, Loader, Icon, File } from "../DS/Index";
 import NeuronResponse from "./NeuronResponse";
 
 function NeuronField({ row, form, errors, setForm }: any) {

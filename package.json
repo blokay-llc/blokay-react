@@ -1,13 +1,14 @@
 {
   "name": "@blokay/react",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publish": "npm publish --access public"
   },
   "dependencies": {
     "chart.js": "^4.4.3",
@@ -48,5 +49,9 @@
     "typescript": "^5.2.2",
     "vite": "^5.2.0",
     "vite-plugin-dts": "^3.9.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/blokay-llc/blokay-react.git"
   }
 }

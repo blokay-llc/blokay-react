@@ -1,7 +1,7 @@
 import "./index.css";
 
 import useSession from "./hooks/useSession";
-import Neuron from "./components/Brain/Neuron";
+import Block from "./components/Brain/Block";
 import NeuronResponse from "./components/Brain/NeuronResponse";
 import Events from "./components/Brain/Events";
 import * as DS from "./components/DS/Index";
@@ -24,6 +24,6 @@ export {
 
   //  blocks
   Events,
-  Neuron,
+  Block,
   NeuronResponse,
 };

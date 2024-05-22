@@ -1,6 +1,6 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Modal } from "../DS/Index";
-import Neuron from "./Neuron";
+import Neuron from "./Block";
 
 type EventsProps = {
   onExecuted?: null | (() => void);
