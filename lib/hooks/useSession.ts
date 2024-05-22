@@ -13,9 +13,15 @@ export default function useSession() {
     }
   };
 
+  const setJWT = (token: string) => {
+    localStorage.setItem(key, token);
+    const decoded = decodeJWT(token);
+    setSession(decoded);
+  };
+
   useEffect(() => {
     getSession();
   }, []);
 
-  return { session, setSession };
+  return { session, setSession, setJWT };
 }
