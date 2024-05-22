@@ -3,7 +3,7 @@ import { brainGet, brainExec } from "../../services/brain";
 import { Button, Input, Select, Loader, Icon, File } from "../DS/Index";
 import BlockResponse from "./BlockResponse";
 
-function NeuronField({ row, form, errors, setForm }: any) {
+function BlockField({ row, form, errors, setForm }: any) {
   if (row.type == "hidden") {
     return <></>;
   }
@@ -54,14 +54,7 @@ function NeuronField({ row, form, errors, setForm }: any) {
     />
   );
 }
-function NeuronForm({
-  onBack,
-  neuron,
-  form,
-  setForm,
-  errors,
-  execNeuron,
-}: any) {
+function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
   return (
     <div className="bl-py-6 bl-h-full bl-flex bl-items-center bl-justify-center ">
       <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-stone-800 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-10">
@@ -94,7 +87,7 @@ function NeuronForm({
                   row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
                 } `}
               >
-                <NeuronField
+                <BlockField
                   row={row}
                   form={form}
                   errors={errors}
@@ -143,6 +136,8 @@ const Block = ({
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors]: any = useState({});
+  const [exception, setException]: any = useState(null);
+
   const [autoexecuted, setAutoxecuted]: any = useState(false);
 
   const jwtTokenComputed =
@@ -169,7 +164,8 @@ const Block = ({
           setLoading(false);
         }
       })
-      .catch(() => {
+      .catch((error: any) => {
+        setException(error);
         setLoading(false);
       });
   };
@@ -204,6 +200,9 @@ const Block = ({
         setResponse(result.response);
         onExec && onExec(result.response);
       })
+      .catch((error: any) => {
+        setException(error);
+      })
       .finally(() => {
         setLoading(false);
       });
@@ -215,6 +214,13 @@ const Block = ({
 
   return (
     <div className="bl-h-full bl-group bl-relative bl-border-2 bl-border-stone-300 dark:bl-border-stone-800 bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
+      {exception && (
+        <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm ">
+          <div className="bl-text-center bl-text-stone-600 bl-text-lg">
+            {JSON.stringify(exception)}
+          </div>
+        </div>
+      )}
       <div
         className={`bl-overflow-y-auto bl-max-h-full bl-h-full bl-flex bl-w-full ${
           !response ? "bl-items-center" : ""
@@ -241,7 +247,7 @@ const Block = ({
               !response &&
               (neuron.filters.autoExec == false ||
                 neuron.filters?.fields?.length > 0) && (
-                <NeuronForm
+                <BlockForm
                   onBack={onBack}
                   neuron={neuron}
                   form={form}

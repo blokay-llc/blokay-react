@@ -17,5 +17,5 @@ export default function useSession() {
     getSession();
   }, []);
 
-  return session;
+  return { session, setSession };
 }

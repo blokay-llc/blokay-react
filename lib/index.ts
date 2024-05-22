@@ -1,6 +1,9 @@
 import "./index.css";
 
 import * as DS from "./components/DS/Index";
+import { BlokayProvider } from "./components/BlokayProvider";
+import SignIn from "./components/Session/SignIn";
+import SignOut from "./components/Session/SignOut";
 import useSession from "./hooks/useSession";
 import createSession from "./helpers/createSession";
 import logout from "./helpers/logout";
@@ -14,6 +17,9 @@ const setJWT = (token: string) => {
 
 export {
   DS,
+  SignIn,
+  SignOut,
+  BlokayProvider,
   // session
   setJWT,
   createSession,
