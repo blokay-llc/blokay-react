@@ -1,11 +1,11 @@
 import "./index.css";
 
 import * as DS from "./components/DS/Index";
-import { BlokayProvider } from "./components/BlokayProvider";
+import { BlokayProvider, Context } from "./components/BlokayProvider";
 import SignIn from "./components/Session/SignIn";
 import SignOut from "./components/Session/SignOut";
+import SignForm from "./components/Session/SignForm";
 import useSession from "./hooks/useSession";
-import createSession from "./helpers/createSession";
 import logout from "./helpers/logout";
 import Block from "./components/Brain/Block";
 import BlockResponse from "./components/Brain/BlockResponse";
@@ -19,10 +19,11 @@ export {
   DS,
   SignIn,
   SignOut,
+  SignForm,
   BlokayProvider,
+  Context,
   // session
   setJWT,
-  createSession,
   useSession,
   logout,
 
