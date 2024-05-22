@@ -10,6 +10,7 @@ const NeuronResponse = ({
   onReload,
   onBack,
   autoExecuted,
+  jwtToken,
 }: any) => {
   return (
     <>
@@ -20,6 +21,7 @@ const NeuronResponse = ({
 
         {response?.type == "table" && (
           <AppData
+            jwtToken={jwtToken}
             neuronName={neuron?.description}
             data={response.content}
             onReload={onReload}

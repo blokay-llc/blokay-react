@@ -134,6 +134,7 @@ type NeuronProps = {
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
   editMode?: string;
+  jwtToken: string;
 };
 const Neuron = ({
   neuronId = null,
@@ -142,6 +143,7 @@ const Neuron = ({
   onExec = null,
   onBack = null,
   editMode = "",
+  jwtToken,
 }: NeuronProps) => {
   const [form, setForm] = useState({ ...defaultForm });
   const [neuron, setNeuron]: any = useState(null);
@@ -154,7 +156,7 @@ const Neuron = ({
     if (!neuronId && !neuronKey) return;
     if (loading) return;
     setLoading(true);
-    brainGet({ neuronId, neuronKey })
+    brainGet({ neuronId, neuronKey }, jwtToken)
       .then((result: any) => {
         const n = result.Neuron;
         const autoExec =
@@ -195,10 +197,13 @@ const Neuron = ({
     setLoading(true);
     setErrors({});
 
-    brainExec({
-      neuronId: n.id,
-      form,
-    })
+    brainExec(
+      {
+        neuronId: n.id,
+        form,
+      },
+      jwtToken
+    )
       .then((result: any) => {
         setResponse(result.response);
         onExec && onExec(result.response);

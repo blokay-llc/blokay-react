@@ -175,6 +175,7 @@ export function TableFooter({
 }
 
 export default function AppData({
+  jwtToken,
   data,
   onReload,
   onBack,
@@ -500,6 +501,7 @@ export default function AppData({
       </div>
 
       <Events
+        jwtToken={jwtToken}
         ref={eventsRef}
         onExecuted={() => {
           onReload && onReload();

@@ -4,8 +4,9 @@ import Neuron from "./Neuron";
 
 type EventsProps = {
   onExecuted?: null | (() => void);
+  jwtToken: string;
 };
-function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
+function EventsHandler({ onExecuted = null, jwtToken }: EventsProps, ref: any) {
   const subneuronDefault: any = {
     neuronId: null,
     neuronKey: "",
@@ -38,6 +39,7 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
       <Modal size="lg" position="center" ref={modalRef}>
         {(subneuron.neuronKey || subneuron.neuronId) && (
           <Neuron
+            jwtToken={jwtToken}
             neuronId={subneuron.neuronId}
             neuronKey={subneuron.neuronKey}
             defaultForm={subneuron.form}
