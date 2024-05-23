@@ -212,7 +212,7 @@ const Block = ({
   return (
     <div className="bl-h-full bl-group bl-relative bl-border-2 bl-border-stone-300 dark:bl-border-stone-800 bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
       {exception && (
-        <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm ">
+        <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
           <div className="bl-text-center bl-text-stone-600 bl-text-lg">
             {JSON.stringify(exception)}
           </div>
