@@ -169,11 +169,11 @@ export function TableFooter({
   );
 }
 
-export default function AppData({
+export default function Table({
   data,
   onReload,
   onBack,
-  neuronName = "",
+  blockName = "",
   autoExecuted,
 }: any) {
   const modalShowTextRef: any = useRef();
@@ -245,7 +245,7 @@ export default function AppData({
       const row = rowArray.join(",");
       csvContent += row + "\r\n";
     });
-    download(csvContent, `${encodeURIComponent(neuronName)}.csv`);
+    download(csvContent, `${encodeURIComponent(blockName)}.csv`);
   };
 
   const getContent = () => {
@@ -375,7 +375,7 @@ export default function AppData({
                 )}
 
                 <div className="bl-text-stone-800 dark:bl-text-stone-200">
-                  {neuronName}
+                  {blockName}
                 </div>
               </div>
 

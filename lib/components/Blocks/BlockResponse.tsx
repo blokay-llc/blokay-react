@@ -5,7 +5,7 @@ import Exception from "./Types/Exception";
 import ChartDoughnut from "./Types/ChartDoughnut";
 
 const BlockResponse = ({
-  neuron,
+  neuron: block,
   response,
   onReload,
   onBack,
@@ -18,7 +18,7 @@ const BlockResponse = ({
 
         {response?.type == "table" && (
           <Table
-            neuronName={neuron?.description}
+            blockName={block?.description}
             data={response.content}
             onReload={onReload}
             onBack={onBack}
@@ -28,21 +28,21 @@ const BlockResponse = ({
 
         {response?.type == "line" && (
           <ChartLine
-            title={neuron.description}
+            title={block.description}
             data={response.content}
             onReload={onReload}
           />
         )}
         {response?.type == "doughnut" && (
           <ChartDoughnut
-            title={neuron.description}
+            title={block.description}
             data={response.content}
             onReload={onReload}
           />
         )}
         {response?.type == "value" && (
           <Values
-            title={neuron.description}
+            title={block.description}
             data={response.content}
             onReload={onReload}
           />
