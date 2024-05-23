@@ -16,7 +16,6 @@ export {
   SignForm,
   BlokayProvider,
   Context,
-  //  blocks
   Events,
   Block,
   BlockResponse,

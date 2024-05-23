@@ -1,14 +1,14 @@
-import Modal from "./AppModal";
-import Button from "./Form/AppButton";
-import Input from "./Form/AppInput";
-import File from "./Form/AppFile";
-import Select from "./Form/AppSelect";
-import Checkbox from "./Form/AppCheckbox";
+import Modal from "./Modal";
+import Button from "./Form/Button";
+import Input from "./Form/Input";
+import File from "./Form/File";
+import Select from "./Form/Select";
+import Checkbox from "./Form/Checkbox";
 import Loader from "./Loader/Index";
-import Box from "./AppBox";
-import Icon from "./AppIcon";
+import Box from "./Box";
+import Icon from "./Icon";
 import IconTools from "./IconTools";
-import NoItems from "./AppNoItems";
+import NoItems from "./NoItems";
 
 export {
   Modal,

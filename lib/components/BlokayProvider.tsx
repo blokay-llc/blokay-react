@@ -23,7 +23,7 @@ const BlokayProvider = ({
     if (jwtToken) {
       setJWT(jwtToken);
     }
-  }, [jwtToken, setJWT]);
+  }, [jwtToken]);
 
   return (
     <Context.Provider value={{ businessId, session, setSession }}>
