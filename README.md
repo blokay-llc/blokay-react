@@ -8,33 +8,41 @@ npm install @blokay/react
 
 ## Usage
 
-### Create Session
-
-```ts
-import { createSession } from "@blokay/react";
-let data: any = {}; // send any data
-let session = await createSession(data);
-```
-
-### Call block
+### Configure Blokay Provider
 
 ```tsx
-import { Block, useSession } from "@blokay/react";
+import { BlokayProvider } from "@blokay/react";
+let data: any = {}; // send any data
+let session = await createSession(data);
+const businessId = process.env.VITE_BLOKAY_BUSINESS_ID;
 
-function MyView() {
-  let session = useSession();
+render(
+  <BlokayProvider businessId={businessId}>
+    <App />
+  </BlokayProvider>
+);
+```
 
+### SignIn SignOut, Call Block
+
+```tsx
+import { SignIn, SignOut, SignForm, Block } from "@blokay/react";
+
+function View() {
   return (
-    <Block
-      neuronKey="view.users"
-      session={session}
-      onSuccess={(data) => console.log(data)}
-      onError={(error) => console.log(error)}
-    />
+    <div>
+      <SignIn>
+        <Block neuronKey="reporte.cuentas.proveedor" />
+      </SignIn>
+      <SignOut>
+        <SignForm />
+      </SignOut>
+    </div>
   );
 }
 ```
 
+<!--
 ### Get Raw JSON
 
 ```ts
@@ -57,7 +65,7 @@ function MyView() {
     });
   };
 }
-```
+``` -->
 
 ## Author
 
