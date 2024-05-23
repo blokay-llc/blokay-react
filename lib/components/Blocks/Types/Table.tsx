@@ -1,12 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 
-import {
-  Select,
-  Input,
-  Button,
-  Icon,
-  Modal,
-} from "../../../components/DS/Index";
+import { Select, Input, Button, Icon, Modal } from "../../DS/Index";
 import { money } from "../../../helpers/functions";
 import Events from "../Events";
 

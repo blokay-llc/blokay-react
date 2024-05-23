@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { brainGet, brainExec } from "../../services/brain";
-import { Button, Input, Select, Loader, Icon, File } from "../DS/Index";
+import * as DS from "../DS/Index";
 import BlockResponse from "./BlockResponse";
 
 function BlockField({ row, form, errors, setForm }: any) {
@@ -10,9 +10,7 @@ function BlockField({ row, form, errors, setForm }: any) {
 
   if (row.type == "file") {
     return (
-      <File
-        value={form[row.name]}
-        error={errors[row.name]}
+      <DS.File
         onChangeFiles={(val: any) => {
           setForm({ ...form, [row.name]: val.url });
         }}
@@ -23,7 +21,7 @@ function BlockField({ row, form, errors, setForm }: any) {
 
   if (row.type == "select") {
     return (
-      <Select
+      <DS.Select
         value={form[row.name]}
         error={errors[row.name]}
         onChange={(val: string) => {
@@ -38,12 +36,12 @@ function BlockField({ row, form, errors, setForm }: any) {
               {opt.label}
             </option>
           ))}
-      </Select>
+      </DS.Select>
     );
   }
 
   return (
-    <Input
+    <DS.Input
       type={row.type}
       value={form[row.name]}
       error={errors[row.name]}
@@ -65,7 +63,7 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
               onClick={() => onBack()}
             >
               <div className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-slate-300 bl-rounded-full bl-bg-slate-200">
-                <Icon
+                <DS.Icon
                   icon="left"
                   className="bl-fill-slate-900 bl-w-full bl-h-full"
                 />
@@ -99,7 +97,7 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
         )}
 
         <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-5 bl-text-center bl-flex bl-gap-3 md:bl-gap-5">
-          <Button
+          <DS.Button
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
             variant="primary"
@@ -225,7 +223,7 @@ const Block = ({
       >
         {loading && (
           <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm ">
-            <Loader size="md" />
+            <DS.Loader size="md" />
           </div>
         )}
 

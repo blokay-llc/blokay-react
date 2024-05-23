@@ -2,7 +2,17 @@ import { useState, useEffect } from "react";
 import { Icon, Loader } from "../Index";
 import { postMultimedia } from "../../../services/_base";
 
-const AppFile = ({
+type FileProps = {
+  label?: string;
+  preview?: string;
+  classSelector?: string;
+  endpoint?: string;
+  size?: string;
+  onError?: any;
+  onDone?: any;
+  onChangeFiles?: any;
+};
+const File = ({
   label,
   preview,
   classSelector,
@@ -11,23 +21,23 @@ const AppFile = ({
   onError,
   onDone,
   onChangeFiles,
-}: any) => {
+}: FileProps) => {
   const [loading, setLoading] = useState(false);
   const [prev, setPrev] = useState("");
   const [filelist, setFileList]: any = useState([]);
   const [id] = useState((Math.random() + 1).toString(36).substring(7));
 
-  const ext = () => {
+  const ext = (): string => {
     const file = prev || preview;
-    return file ? file.split(".").pop() : null;
+    return file ? file.split(".").pop() || "" : "";
   };
-  const previewImage = () => {
-    const file = prev || preview;
+  const previewImage = (): string => {
+    const file = prev || preview || "";
 
     if (["png", "jpeg", "jpg", "bmp", "webp"].includes(ext())) {
       return file;
     }
-    return null;
+    return "";
   };
 
   const onChange = () => {
@@ -135,4 +145,4 @@ const AppFile = ({
   );
 };
 
-export default AppFile;
+export default File;

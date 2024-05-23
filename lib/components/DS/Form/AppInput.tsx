@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Icon } from "../Index";
-import "./form.css";
 
 function genRandomString(length: number): string {
   const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -12,7 +11,7 @@ function genRandomString(length: number): string {
   return result;
 }
 
-type AppInputProps = {
+type InputProps = {
   [x: string]: any;
   label: string;
   value?: string;
@@ -24,13 +23,13 @@ type AppInputProps = {
   type?: "text" | "password" | "number" | "date";
 };
 
-export default function AppInput({
+export default function Input({
   label,
   value,
   icon = "",
   error = "",
   ...extraProps
-}: AppInputProps) {
+}: InputProps) {
   const [activeLabel, setActiveLabel] = useState(false);
   const [id] = useState(genRandomString(10));
 

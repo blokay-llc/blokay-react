@@ -1,5 +1,4 @@
 import { Icon } from "../Index";
-import "./form.css";
 
 type AppCheckboxProps = {
   [x: string]: any;

@@ -1,6 +1,11 @@
 import { Icon } from "./Index";
 
-const AppBox = function ({ title, icon, onClick }: any) {
+type BoxProps = {
+  title: string;
+  icon: string;
+  onClick?: any;
+};
+const Box = function ({ title, icon, onClick }: BoxProps) {
   const handleClick = (e: any) => {
     onClick && onClick(e);
   };
@@ -17,4 +22,4 @@ const AppBox = function ({ title, icon, onClick }: any) {
   );
 };
 
-export default AppBox;
+export default Box;

@@ -1,9 +1,26 @@
 import { useState } from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
 
-import { Doughnut } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
-ChartJS.register(Tooltip, Legend, ArcElement);
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+);
 
 const colors = [
   "#ea5d0c",
@@ -13,7 +30,7 @@ const colors = [
   "#4f46e5",
   "#c026d3",
 ];
-function AppDoughnut({ data, title = "" }: any) {
+function ChartLine({ data, title = "" }: any) {
   const [hover, setHover] = useState(false);
 
   const dataLine = {
@@ -22,7 +39,8 @@ function AppDoughnut({ data, title = "" }: any) {
       pointBorderColor: colors[index],
       label: row.label,
       data: row.vals,
-      backgroundColor: colors,
+      borderColor: colors[index],
+      backgroundColor: colors[index],
     })),
   };
 
@@ -30,7 +48,6 @@ function AppDoughnut({ data, title = "" }: any) {
     hoverBorderWidth: "3",
     pointRadius: [0],
     pointHoverRadius: [5],
-    // pointRadius: pointRadius,
     elements: {
       line: {
         tension: 0.4,
@@ -58,9 +75,9 @@ function AppDoughnut({ data, title = "" }: any) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <Doughnut options={hover ? optionsHover : options} data={dataLine} />
+      <Line options={hover ? optionsHover : options} data={dataLine} />
     </div>
   );
 }
 
-export default AppDoughnut;
+export default ChartLine;

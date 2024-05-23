@@ -12,13 +12,11 @@ const AppButton = function (props: any) {
     icon,
     text,
     classColor,
-    color = "yellow",
     ...extraProps
   } = props;
 
   const tag = () => {
     if (href) return "a";
-    if (to) return "router-link"; // Assuming you are using React Router
     return "button";
   };
 
@@ -54,9 +52,6 @@ const AppButton = function (props: any) {
       if (variant === "primary") {
         colorClass =
           " bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-stone-200 hover:bl-bg-black bl-text-white ";
-      } else if (color == "green") {
-        colorClass =
-          " bl-border-green-300 bl-bg-green-300 hover:bl-bg-green-500 bl-text-green-900 ";
       }
     }
 

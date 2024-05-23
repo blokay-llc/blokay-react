@@ -1,5 +1,3 @@
-import "./form.css";
-
 function genRandomString(length: number): string {
   const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
   const charLength = chars.length;
@@ -10,7 +8,7 @@ function genRandomString(length: number): string {
   return result;
 }
 
-export type AppSelectProps = {
+export type SelectProps = {
   [x: string]: any;
   label: string;
   value: string;
@@ -18,13 +16,13 @@ export type AppSelectProps = {
   children: any;
   error?: string | null;
 };
-export default function AppSelect({
+export default function Select({
   label,
   value,
   children,
   error = null,
   ...extraProps
-}: AppSelectProps) {
+}: SelectProps) {
   const id = genRandomString(10);
 
   return (

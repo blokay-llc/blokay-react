@@ -12,10 +12,7 @@ npm install @blokay/react
 
 ```tsx
 import { BlokayProvider } from "@blokay/react";
-let data: any = {}; // send any data
-let session = await createSession(data);
 const businessId = process.env.VITE_BLOKAY_BUSINESS_ID;
-
 render(
   <BlokayProvider businessId={businessId}>
     <App />
@@ -32,7 +29,7 @@ function View() {
   return (
     <div>
       <SignIn>
-        <Block neuronKey="reporte.cuentas.proveedor" />
+        <Block neuronKey="test" />
       </SignIn>
       <SignOut>
         <SignForm />

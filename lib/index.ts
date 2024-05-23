@@ -5,9 +5,9 @@ import { BlokayProvider, Context } from "./components/BlokayProvider";
 import SignIn from "./components/Session/SignIn";
 import SignOut from "./components/Session/SignOut";
 import SignForm from "./components/Session/SignForm";
-import Block from "./components/Brain/Block";
-import BlockResponse from "./components/Brain/BlockResponse";
-import Events from "./components/Brain/Events";
+import Block from "./components/Blocks/Block";
+import BlockResponse from "./components/Blocks/BlockResponse";
+import Events from "./components/Blocks/Events";
 
 export {
   DS,

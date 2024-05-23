@@ -1,8 +1,8 @@
-import AppData from "./Types/AppData";
-import AppLine from "./Types/AppLine";
-import AppValue from "./Types/AppValue";
-import AppException from "./Types/AppException";
-import AppDoughnut from "./Types/AppDoughnut";
+import Table from "./Types/Table";
+import ChartLine from "./Types/ChartLine";
+import Values from "./Types/Values";
+import Exception from "./Types/Exception";
+import ChartDoughnut from "./Types/ChartDoughnut";
 
 const BlockResponse = ({
   neuron,
@@ -14,12 +14,10 @@ const BlockResponse = ({
   return (
     <>
       <div className="  bl-h-full bl-overflow-y-auto bl-p-5 ">
-        {response?.type == "exception" && (
-          <AppException data={response.content} />
-        )}
+        {response?.type == "exception" && <Exception data={response.content} />}
 
         {response?.type == "table" && (
-          <AppData
+          <Table
             neuronName={neuron?.description}
             data={response.content}
             onReload={onReload}
@@ -29,21 +27,21 @@ const BlockResponse = ({
         )}
 
         {response?.type == "line" && (
-          <AppLine
+          <ChartLine
             title={neuron.description}
             data={response.content}
             onReload={onReload}
           />
         )}
         {response?.type == "doughnut" && (
-          <AppDoughnut
+          <ChartDoughnut
             title={neuron.description}
             data={response.content}
             onReload={onReload}
           />
         )}
         {response?.type == "value" && (
-          <AppValue
+          <Values
             title={neuron.description}
             data={response.content}
             onReload={onReload}

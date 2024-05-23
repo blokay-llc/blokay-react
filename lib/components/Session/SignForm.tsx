@@ -14,7 +14,16 @@ async function createSession(businessId: any, data: any) {
   return content;
 }
 
-export default function SignForm({ children, form: formProp, className }: any) {
+type SignFormProps = {
+  children?: any;
+  form?: any;
+  className?: string;
+};
+export default function SignForm({
+  children,
+  form: formProp,
+  className,
+}: SignFormProps) {
   const [form, setForm] = useState({ username: "", password: "" });
   const { setSession, businessId } = useContext(Context);
   const submit = async (event: any) => {
