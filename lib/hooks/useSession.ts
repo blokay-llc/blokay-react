@@ -19,9 +19,14 @@ export default function useSession() {
     setSession(decoded);
   };
 
+  const logout = () => {
+    localStorage.removeItem(key);
+    setSession(null);
+  };
+
   useEffect(() => {
     getSession();
   }, []);
 
-  return { session, setSession, setJWT };
+  return { session, setSession, setJWT, logout };
 }
