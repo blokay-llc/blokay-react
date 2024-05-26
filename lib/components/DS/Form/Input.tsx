@@ -1,15 +1,5 @@
-import { useState } from "react";
+import { useState, useId } from "react";
 import { Icon } from "../Index";
-
-function genRandomString(length: number): string {
-  const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const charLength = chars.length;
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * charLength));
-  }
-  return result;
-}
 
 type InputProps = {
   [x: string]: any;
@@ -31,7 +21,7 @@ export default function Input({
   ...extraProps
 }: InputProps) {
   const [activeLabel, setActiveLabel] = useState(false);
-  const [id] = useState(genRandomString(10));
+  const id = useId();
 
   return (
     <div className="bl-w-full">

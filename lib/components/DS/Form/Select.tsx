@@ -1,12 +1,4 @@
-function genRandomString(length: number): string {
-  const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const charLength = chars.length;
-  let result = "";
-  for (let i = 0; i < length; i++) {
-    result += chars.charAt(Math.floor(Math.random() * charLength));
-  }
-  return result;
-}
+import { useId } from "react";
 
 export type SelectProps = {
   [x: string]: any;
@@ -23,7 +15,7 @@ export default function Select({
   error = null,
   ...extraProps
 }: SelectProps) {
-  const id = genRandomString(10);
+  const id = useId();
 
   return (
     <div className="bl-relative ">
