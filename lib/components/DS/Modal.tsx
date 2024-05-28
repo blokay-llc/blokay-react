@@ -174,6 +174,5 @@ function Modal(
     : null;
 }
 
-const AppModal = forwardRef(Modal);
-
-export default AppModal;
+const ModalRef = forwardRef(Modal);
+export default ModalRef;

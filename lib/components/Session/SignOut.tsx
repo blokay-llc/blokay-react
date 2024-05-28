@@ -1,7 +1,10 @@
 import { useContext } from "react";
 import { Context } from "../BlokayProvider";
 
-export default function SignOut({ children }: any) {
+type SignOutProps = {
+  children?: any;
+};
+export default function SignOut({ children }: SignOutProps) {
   const { session } = useContext(Context);
 
   if (session) {

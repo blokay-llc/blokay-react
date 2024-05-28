@@ -1,4 +1,5 @@
-function AppValue({ title, data }: any) {
+import { Props } from "./props";
+function Values({ title, data }: Props) {
   const getValues = () => {
     const arr = [];
     for (const index in data) {
@@ -21,4 +22,4 @@ function AppValue({ title, data }: any) {
   );
 }
 
-export default AppValue;
+export default Values;

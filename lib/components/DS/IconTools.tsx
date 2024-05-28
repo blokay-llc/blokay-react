@@ -1,4 +1,9 @@
-export default function IconTools({ icon, className, style = {} }: any) {
+type Props = {
+  [x: string]: any;
+  icon: string;
+  className?: string;
+};
+export default function IconTools({ icon, className, style = {} }: Props) {
   const icons: any = {
     angular: (
       <g id="surface1">

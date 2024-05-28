@@ -1,7 +1,10 @@
 import { useContext } from "react";
 import { Context } from "../BlokayProvider";
 
-export default function SignIn({ children }: any) {
+type SignInProps = {
+  children?: any;
+};
+export default function SignIn({ children }: SignInProps) {
   const { session } = useContext(Context);
 
   if (!session) {

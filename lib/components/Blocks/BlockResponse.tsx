@@ -4,49 +4,40 @@ import Values from "./Types/Values";
 import Exception from "./Types/Exception";
 import ChartDoughnut from "./Types/ChartDoughnut";
 
+type BlockResponseProps = {
+  neuron: any;
+  response: any;
+  onReload: any;
+  onBack: any;
+  autoExecuted: boolean;
+};
 const BlockResponse = ({
   neuron: block,
   response,
   onReload,
   onBack,
   autoExecuted,
-}: any) => {
+}: BlockResponseProps) => {
+  const components: any = {
+    table: Table,
+    line: ChartLine,
+    doughnut: ChartDoughnut,
+    value: Values,
+    exception: Exception,
+  };
+  const Component = components[response?.type || "exception"] || Exception;
+
   return (
     <>
       <div className="  bl-h-full bl-overflow-y-auto bl-p-5 ">
-        {response?.type == "exception" && <Exception data={response.content} />}
-
-        {response?.type == "table" && (
-          <Table
-            blockName={block?.description}
-            data={response.content}
-            onReload={onReload}
-            onBack={onBack}
-            autoExecuted={autoExecuted}
-          />
-        )}
-
-        {response?.type == "line" && (
-          <ChartLine
-            title={block.description}
-            data={response.content}
-            onReload={onReload}
-          />
-        )}
-        {response?.type == "doughnut" && (
-          <ChartDoughnut
-            title={block.description}
-            data={response.content}
-            onReload={onReload}
-          />
-        )}
-        {response?.type == "value" && (
-          <Values
-            title={block.description}
-            data={response.content}
-            onReload={onReload}
-          />
-        )}
+        <Component
+          data={response.content}
+          blockName={block?.description}
+          onReload={onReload}
+          onBack={onBack}
+          title={block.description}
+          autoExecuted={autoExecuted}
+        />
       </div>
     </>
   );

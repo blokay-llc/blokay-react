@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 import { Doughnut } from "react-chartjs-2";
+import { Props } from "./props";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
 
@@ -13,7 +14,8 @@ const colors = [
   "#4f46e5",
   "#c026d3",
 ];
-function ChartDoughnut({ data, title = "" }: any) {
+
+function ChartDoughnut({ data, title = "" }: Props) {
   const [hover, setHover] = useState(false);
 
   const dataLine = {

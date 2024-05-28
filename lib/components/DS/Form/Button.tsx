@@ -1,6 +1,22 @@
 import { Loader, Icon } from "../Index";
 
-const AppButton = function (props: any) {
+type Props = {
+  [x: string]: any;
+  disabled?: boolean;
+  size?: string;
+  variant?: string;
+  href?: string;
+  to?: string;
+  target?: string;
+  loading?: boolean;
+  icon?: string;
+  text?: string;
+  classColor?: string;
+  children?: any;
+  onClick?: any;
+};
+
+const Button = function (props: Props) {
   const {
     disabled = false,
     size,
@@ -12,6 +28,7 @@ const AppButton = function (props: any) {
     icon,
     text,
     classColor,
+    onClick,
     ...extraProps
   } = props;
 
@@ -20,7 +37,7 @@ const AppButton = function (props: any) {
     return "button";
   };
 
-  const classBtn = () => {
+  const classNameSize = () => {
     let sizeClass = `bl-py-1 bl-px-2 bl-text-sm`;
     if (size === "md") {
       sizeClass = `bl-py-2 bl-px-2 bl-text-sm`;
@@ -29,130 +46,83 @@ const AppButton = function (props: any) {
     } else if (size === "lg") {
       sizeClass = `bl-py-3 bl-px-5 bl-text-sm`;
     }
+    return sizeClass;
+  };
 
+  const classNameColor = () => {
     let colorClass = "";
-    if (disabled)
+
+    if (classColor) {
+      colorClass = classColor;
+    } else if (disabled) {
       colorClass =
-        " bl-bg-stone-100 dark:bl-bg-stone-700 dark:bl-text-stone-400 bl-text-gray-500 bl-cursor-not-allowed	 ";
-    else {
-      if (classColor) colorClass = classColor;
-      else if (variant === "primary") {
-        colorClass = ` bl-border-transparent  `;
-      } else if (variant === "secondary") {
-        colorClass =
-          " bl-text-stone-500 bl-border-stone-300 dark:bl-border-stone-700 bl-border-2 ";
-      } else if (variant === "third") {
-        colorClass =
-          "bl-text-black bl-border-black bl-rounded-none bl-border-none hover:bl-bg-gray-100 bl-black-icon";
-      } else if (variant === "neutral") {
-        colorClass =
-          "bl-text-gray-500 bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-border-transparent";
-      }
-
-      if (variant === "primary") {
-        colorClass =
-          " bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-stone-200 hover:bl-bg-black bl-text-white ";
-      }
+        " bg-disabled bl-bg-stone-100 dark:bl-bg-stone-700 dark:bl-text-stone-400 bl-text-gray-500 bl-cursor-not-allowed	 ";
+    } else if (variant === "primary") {
+      colorClass = `  bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-stone-200 hover:bl-bg-black bl-text-white   `;
+    } else if (variant === "secondary") {
+      colorClass =
+        " bl-text-stone-700 dark:bl-text-stone-300 bl-border-black/30 dark:bl-border-white/30 bl-border-2 ";
+    } else if (variant === "third") {
+      colorClass =
+        "bl-text-black bl-border-black bl-rounded-none bl-border-none hover:bl-bg-gray-100 bl-black-icon";
+    } else if (variant === "neutral") {
+      colorClass =
+        "bl-text-gray-500 bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-border-transparent";
     }
-
-    return `${sizeClass} ${colorClass} bl-appearance-none bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base   ${extraProps.className}`;
+    return colorClass;
+  };
+  const classBtn = () => {
+    return `bl-appearance-none bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover ${extraProps.className}`;
   };
 
   const propsComputed = () => {
     const propsObj: any = { type: props.type || "button" };
     if (href) propsObj.href = href;
-    if (to) propsObj.to = to; // Assuming you are using React Router
+    if (to) propsObj.to = to;
     return propsObj;
   };
 
+  const classNameIcon = () => {
+    let color = "";
+    if (variant === "primary") {
+      color = ` bl-h-full bl-fill-white dark:bl-fill-black  `;
+    } else if (variant === "secondary" || variant === "third") {
+      color = ` bl-h-full bl-fill-black dark:bl-fill-white  `;
+    }
+
+    return `bl-h-full bl-h-4 md:bl-h-4 w-4 ${color}`;
+  };
+  const ComponentName = tag();
+
   return (
-    <>
-      {tag() === "button" && (
-        <button
-          className={`${classBtn()}   ${!disabled ? "bl-scale-hover" : ""} ${
-            disabled ? "bl-disabled" : ""
-          }`}
-          target={target}
-          {...propsComputed()}
-          onClick={props.onClick}
-          disabled={disabled}
-        >
-          {text && (
-            <span>
-              <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
-                {icon && (
-                  <div style={{ flexShrink: 0 }} className="bl-icon-btn">
-                    {loading ? (
-                      <div className="bl-mx-auto">
-                        <Loader size="sm" />
-                      </div>
-                    ) : (
-                      <div
-                        className={
-                          "bl-h-4 md:bl-h-4 w-4 bl-icon-btn " + variant
-                        }
-                      >
-                        <Icon icon={icon} className="bl-w-full bl-h-full" />
-                      </div>
-                    )}
+    <ComponentName
+      className={`${classBtn()} ${classNameColor()} ${classNameSize()}`}
+      target={target}
+      {...propsComputed()}
+      onClick={onClick}
+      disabled={disabled}
+    >
+      {text && (
+        <span>
+          <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
+            {icon && (
+              <div style={{ flexShrink: 0 }} className="bl-icon-btn">
+                {loading ? (
+                  <div className="bl-mx-auto">
+                    <Loader size="sm" />
                   </div>
+                ) : (
+                  <Icon icon={icon} className={classNameIcon()} />
                 )}
-                <span>{text}</span>
               </div>
-            </span>
-          )}
-          {!text && props.children} {/* Render the slot content */}
-        </button>
+            )}
+            <span>{text}</span>
+          </div>
+        </span>
       )}
-      {tag() === "a" && (
-        <a
-          className={`${classBtn()}  ${!disabled ? "bl-scale-hover" : ""} ${
-            disabled ? "bl-disabled" : ""
-          }`}
-          target={target}
-          {...propsComputed()}
-          onClick={props.onClick}
-        >
-          {text && (
-            <span>
-              <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
-                <div style={{ flexShrink: 0 }} className="bl-icon-btn">
-                  {loading ? (
-                    <div className="bl-mx-auto">
-                      <Loader size="sm" />
-                    </div>
-                  ) : icon ? (
-                    <div
-                      className={
-                        "bl-h-4 md:bl-h-4 bl-w-4 bl-icon-btn " + variant
-                      }
-                    >
-                      <Icon icon={icon} />
-                    </div>
-                  ) : null}
-                </div>
-                <span>{text}</span>
-              </div>
-            </span>
-          )}
-          {!text && props.children}
-        </a>
-      )}
-    </>
+      {!text && props.children}
+    </ComponentName>
   );
 };
 
-// AppButton.propTypes = {
-//   disabled: PropTypes.bool,
-//   size: PropTypes.string,
-//   variant: PropTypes.string,
-//   href: PropTypes.string,
-//   to: PropTypes.object,
-//   target: PropTypes.string,
-//   loading: PropTypes.bool,
-//   icon: PropTypes.string,
-//   text: PropTypes.string,
-//   classColor: PropTypes.string,
-// };
-
-export default AppButton;
+export default Button;

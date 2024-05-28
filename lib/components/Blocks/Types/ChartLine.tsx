@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Props } from "./props";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,7 +10,6 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-
 import { Line } from "react-chartjs-2";
 
 ChartJS.register(
@@ -30,7 +30,7 @@ const colors = [
   "#4f46e5",
   "#c026d3",
 ];
-function ChartLine({ data, title = "" }: any) {
+function ChartLine({ data, title = "" }: Props) {
   const [hover, setHover] = useState(false);
 
   const dataLine = {

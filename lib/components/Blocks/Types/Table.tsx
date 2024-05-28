@@ -3,7 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Select, Input, Button, Icon, Modal } from "../../DS/Index";
 import { money } from "../../../helpers/functions";
 import Events from "../Events";
-
+import { Props } from "./props";
 type TableHeaderCellProps = {
   setSort: (val: any) => void;
   index: number;
@@ -175,7 +175,7 @@ export default function Table({
   onBack,
   blockName = "",
   autoExecuted,
-}: any) {
+}: Props) {
   const modalShowTextRef: any = useRef();
   const eventsRef: any = useRef();
   const [sort, setSort]: any = useState(null);

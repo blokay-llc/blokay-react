@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import { Icon, Modal } from "../../DS/Index";
+import { Props } from "./props";
 
 function ShowError({ type, message, fullDescription }: any) {
   return (
@@ -33,7 +34,7 @@ function ErrorDecide({ error }: any) {
   return <ShowError type={error?.name} message={error?.message} />;
 }
 
-export default function AppException({ data }: any) {
+export default function Exception({ data }: Props) {
   const modalRef: any = useRef();
 
   return (
