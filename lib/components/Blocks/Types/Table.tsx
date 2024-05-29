@@ -400,7 +400,6 @@ export default function Table({
                 <Button
                   variant="secondary"
                   type="button"
-                  color="blue"
                   size="lg"
                   text="CSV"
                   onClick={() => generateCSV()}

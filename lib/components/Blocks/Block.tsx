@@ -103,7 +103,6 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
             variant="primary"
             className="bl-w-full"
             size="lg"
-            color="blue"
           />
         </div>
       </div>

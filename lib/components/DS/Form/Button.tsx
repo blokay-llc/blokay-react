@@ -1,7 +1,6 @@
 import { Loader, Icon } from "../Index";
 
 type Props = {
-  [x: string]: any;
   disabled?: boolean;
   size?: string;
   variant?: string;
@@ -14,10 +13,13 @@ type Props = {
   classColor?: string;
   children?: any;
   onClick?: any;
+  className?: string;
+  type?: string;
 };
 
 const Button = function (props: Props) {
   const {
+    type,
     disabled = false,
     size,
     variant,
@@ -29,7 +31,7 @@ const Button = function (props: Props) {
     text,
     classColor,
     onClick,
-    ...extraProps
+    className,
   } = props;
 
   const tag = () => {
@@ -72,11 +74,11 @@ const Button = function (props: Props) {
     return colorClass;
   };
   const classBtn = () => {
-    return `bl-appearance-none bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover ${extraProps.className}`;
+    return `bl-appearance-none bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover ${className}`;
   };
 
   const propsComputed = () => {
-    const propsObj: any = { type: props.type || "button" };
+    const propsObj: any = { type: type || "button" };
     if (href) propsObj.href = href;
     if (to) propsObj.to = to;
     return propsObj;
@@ -102,7 +104,7 @@ const Button = function (props: Props) {
       onClick={onClick}
       disabled={disabled}
     >
-      {text && (
+      {(text || icon) && (
         <span>
           <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
             {icon && (
@@ -116,7 +118,7 @@ const Button = function (props: Props) {
                 )}
               </div>
             )}
-            <span>{text}</span>
+            {text && <span>{text}</span>}
           </div>
         </span>
       )}

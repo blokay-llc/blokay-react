@@ -66,7 +66,7 @@ export default function Input({
               extraProps.onFocus && extraProps.onFocus();
             }}
             value={value || ""}
-            className={`bl-app-input bl-appearance-none   ${
+            className={`bl-app-input bl-appearance-none ${
               error ? "bl-error" : ""
             } ${extraProps.className} `}
             type={extraProps.type}
@@ -74,7 +74,9 @@ export default function Input({
         </div>
       </div>
       {error && (
-        <div className="bl-text-left bl-text-red-500 bl-text-sm">{error}</div>
+        <div className="bl-text-left bl-text-red-500 bl-text-sm bl-font-light">
+          {error}
+        </div>
       )}
     </div>
   );
