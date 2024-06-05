@@ -1,4 +1,4 @@
-import { forwardRef, useState, useImperativeHandle, ReactNode } from "react";
+import { forwardRef, useState, useImperativeHandle } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "./Index";
 import { CSSTransition } from "react-transition-group";
@@ -11,23 +11,21 @@ type ModalProps = {
   classSection?: string | null;
   size?: "sm" | "md" | "lg";
   children?: any;
-  footer?: ReactNode | null;
+  footer?: JSX.Element | null;
   clickBack?: null | (() => void);
   onClose?: null | (() => void);
 };
-function Modal(
-  {
+function Modal(props: ModalProps, ref: any) {
+  const {
     title = "",
     position = "center",
     classSection = null,
     size = "sm",
     children,
-    footer = null,
+    footer,
     clickBack = null,
     onClose = null,
-  }: ModalProps,
-  ref: any
-) {
+  } = props;
   const [showing, setShowing] = useState(false);
   const [bgColor, setBackgroundColor] = useState("white");
   const [error, setError] = useState("");
