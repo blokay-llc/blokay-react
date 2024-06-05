@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { brainGet, brainExec } from "../../services/brain";
+import { useState, useEffect, useContext } from "react";
+import { Context } from "../BlokayProvider";
 import * as DS from "../DS/Index";
 import BlockResponse from "./BlockResponse";
 
@@ -126,6 +126,7 @@ const Block = ({
   onBack = null,
   editMode = "",
 }: BlockProps) => {
+  const { api } = useContext(Context);
   const [form, setForm] = useState({ ...defaultForm });
   const [neuron, setNeuron]: any = useState(null);
   const [response, setResponse] = useState(null);
@@ -141,7 +142,8 @@ const Block = ({
     if (!neuronId && !neuronKey) return;
     if (loading) return;
     setLoading(true);
-    brainGet({ neuronId, neuronKey }, jwtTokenComputed)
+    api
+      .brainGet({ neuronId, neuronKey }, jwtTokenComputed)
       .then((result: any) => {
         const n = result.Neuron;
         const autoExec =
@@ -183,13 +185,14 @@ const Block = ({
     setLoading(true);
     setErrors({});
 
-    brainExec(
-      {
-        neuronId: n.id,
-        form,
-      },
-      jwtTokenComputed
-    )
+    api
+      .brainExec(
+        {
+          neuronId: n.id,
+          form,
+        },
+        jwtTokenComputed
+      )
       .then((result: any) => {
         setResponse(result.response);
         onExec && onExec(result.response);

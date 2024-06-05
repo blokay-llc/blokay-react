@@ -1,49 +1,3 @@
-import { VERSION, ENV, API_PROD, API_SANDBOX, API_DEV } from "./config";
-
-let country = "";
-let city = "";
-let region = "";
-const getCountry = async () => {
-  const result = await fetch("https://freeipapi.com/api/json/", {
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    },
-  });
-  return await result.json();
-};
-
-getCountry().then((r) => {
-  country = r.countryCode;
-  city = r.cityName;
-  region = r.regionName;
-
-  if (typeof window != "undefined") {
-    window.localStorage.setItem("region", region || "");
-    window.localStorage.setItem("city", city || "");
-  }
-});
-
-const getServerUrl = function () {
-  if (ENV === "prod") {
-    return {
-      SERVER_URL: API_PROD,
-    };
-  } else if (ENV === "sandbox") {
-    return {
-      SERVER_URL: API_SANDBOX,
-    };
-  }
-
-  return {
-    SERVER_URL: API_DEV,
-  };
-};
-
-const dataURLS = getServerUrl();
-
-export const SERVER_URL = dataURLS.SERVER_URL;
-
 export const getOS = () => {
   let os = null;
 
@@ -80,18 +34,12 @@ export const postRequest = async function (
     },
     body: JSON.stringify({
       data,
-      country,
-      region,
-      city,
-      _version: VERSION,
       _channel: `${getOS()}`,
       _token: jwtToken,
     }),
   };
 
-  const baseUrl = SERVER_URL;
-
-  const rawResponse = await fetch(baseUrl + endpoint, opts);
+  const rawResponse = await fetch(endpoint, opts);
 
   let content = null;
   if (extraOpts.blob) {
@@ -124,7 +72,7 @@ export const postMultimedia = async function (
     opts.headers.Authorization = "Bearer " + user.token;
   }
 
-  const rawResponse = await fetch(SERVER_URL + endpoint, opts);
+  const rawResponse = await fetch(endpoint, opts);
 
   const content = await rawResponse.json();
 
@@ -141,11 +89,10 @@ export const postFile = async function (endpoint: string, data: any) {
     },
     body: JSON.stringify({
       data,
-      _version: VERSION,
     }),
   };
 
-  const rawResponse = await fetch(SERVER_URL + endpoint, opts);
+  const rawResponse = await fetch(endpoint, opts);
 
   const content = await rawResponse.blob();
 

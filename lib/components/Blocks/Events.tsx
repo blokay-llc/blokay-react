@@ -6,12 +6,12 @@ type EventsProps = {
   onExecuted?: null | (() => void);
 };
 function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
-  const subneuronDefault: any = {
+  const subBlockDefault: any = {
     neuronId: null,
     neuronKey: "",
     form: {},
   };
-  const [subneuron, setSubneuron] = useState(subneuronDefault);
+  const [subBlock, setSubBlock] = useState(subBlockDefault);
   const modalRef: any = useRef();
 
   const functions: any = {
@@ -24,7 +24,7 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
       neuronKey: string;
       form: any;
     }) => {
-      setSubneuron({ neuronId, neuronKey, form });
+      setSubBlock({ neuronId, neuronKey, form });
       modalRef.current.showModal();
     },
   };
@@ -36,11 +36,11 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
   return (
     <>
       <Modal size="lg" position="center" ref={modalRef}>
-        {(subneuron.neuronKey || subneuron.neuronId) && (
+        {(subBlock.neuronKey || subBlock.neuronId) && (
           <Block
-            neuronId={subneuron.neuronId}
-            neuronKey={subneuron.neuronKey}
-            defaultForm={subneuron.form}
+            neuronId={subBlock.neuronId}
+            neuronKey={subBlock.neuronKey}
+            defaultForm={subBlock.form}
             onExec={(result: any) => {
               if (
                 !result.type ||
