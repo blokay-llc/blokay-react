@@ -63,7 +63,7 @@ const Button = function (props: Props) {
       colorClass = `  bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-stone-200 hover:bl-bg-black bl-text-white   `;
     } else if (variant === "secondary") {
       colorClass =
-        " bl-text-stone-700 dark:bl-text-stone-300 bl-border-black/30 dark:bl-border-white/30 bl-border-2 ";
+        " bl-text-blue-500  bl-border-transparent bl-border-2 bl-bg-blue-950/70 dark:hover:bl-bg-blue-900 ";
     } else if (variant === "third") {
       colorClass =
         "bl-text-black bl-border-black bl-rounded-none bl-border-none hover:bl-bg-gray-100 bl-black-icon";
@@ -74,7 +74,7 @@ const Button = function (props: Props) {
     return colorClass;
   };
   const classBtn = () => {
-    return `bl-appearance-none bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover ${className}`;
+    return `bl-appearance-none  bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover ${className}`;
   };
 
   const propsComputed = () => {
@@ -89,7 +89,7 @@ const Button = function (props: Props) {
     if (variant === "primary") {
       color = ` bl-h-full bl-fill-white dark:bl-fill-black  `;
     } else if (variant === "secondary" || variant === "third") {
-      color = ` bl-h-full bl-fill-black dark:bl-fill-white  `;
+      color = ` bl-h-full bl-fill-blue-500 dark:bl-fill-blue-500  `;
     }
 
     return `bl-h-full bl-h-4 md:bl-h-4 w-4 ${color}`;

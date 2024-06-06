@@ -14,13 +14,16 @@
 }
 
 .bl-table {
-  @apply bl-bg-white dark:bl-bg-stone-800 bl-p-4 bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto bl-rounded-2xl bl-shadow bl-w-full;
+  @apply bl-bg-white dark:bl-bg-stone-950 bl-py-4 bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto bl-rounded-2xl bl-shadow bl-w-full;
 }
 .bl-table table {
-  @apply bl-w-full bl-text-stone-800 dark:bl-text-stone-300;
+  @apply bl-w-full bl-text-stone-800 dark:bl-text-stone-500;
 }
 .bl-table table thead tr th {
-  @apply bl-px-3 bl-text-xs bl-text-stone-500 bl-bg-stone-200 dark:bl-bg-stone-950 dark:bl-text-stone-300 bl-uppercase bl-h-10;
+  @apply bl-px-3 bl-text-xs bl-text-stone-500 bl-bg-stone-200 dark:bl-bg-stone-900 dark:bl-text-stone-300 bl-uppercase bl-h-10;
+}
+.bl-table table tr {
+  @apply dark:hover:bl-text-stone-300;
 }
 .bl-table table thead tr th:first-child {
   @apply bl-rounded-l-xl;
@@ -29,6 +32,9 @@
   @apply bl-rounded-r-xl;
 }
 
+.bl-table table tbody {
+  @apply bl-divide-y dark:bl-divide-stone-800;
+}
 .bl-table table tbody tr td {
   @apply bl-p-3;
 }

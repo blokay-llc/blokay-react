@@ -14,7 +14,6 @@ export default function useApi(props: useApiProps) {
     };
 
     const result = await postRequest(endpoint + "brain/get", data, jwtToken);
-
     return result.data;
   };
 
@@ -24,7 +23,6 @@ export default function useApi(props: useApiProps) {
     };
 
     const result = await postRequest(endpoint + "brain/exec", data, jwtToken);
-
     return result.data;
   };
 

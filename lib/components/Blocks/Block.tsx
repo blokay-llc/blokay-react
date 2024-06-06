@@ -55,7 +55,7 @@ function BlockField({ row, form, errors, setForm }: any) {
 function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
   return (
     <div className="bl-py-6 bl-h-full bl-flex bl-items-center bl-justify-center ">
-      <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-stone-800 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-10">
+      <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-stone-900 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-5">
         <div className="bl-flex bl-items-center bl-gap-3">
           {onBack && (
             <div
@@ -100,9 +100,9 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
           <DS.Button
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
-            variant="primary"
+            variant="secondary"
             className="bl-w-full"
-            size="lg"
+            size="md"
           />
         </div>
       </div>

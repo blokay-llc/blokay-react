@@ -55,5 +55,6 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/blokay-llc/blokay-react.git"
-  }
+  },
+  "license": "Apache-2.0"
 }
