@@ -100,10 +100,10 @@ export function TableFooter({
   pagesCount,
 }: TableFooterProps) {
   return (
-    <div className="bl-mt-5 bl-flex bl-justify-between bl-items-center">
+    <div className="bl-mt-5 bl-flex bl-justify-between bl-items-center bl-select-none">
       <div className="bl-flex bl-gap-3 bl-items-center">
         <Select
-          label="Por página"
+          label="Per page"
           value={perPage}
           onChange={(val: string) => {
             setPerPage(+val);
@@ -111,7 +111,7 @@ export function TableFooter({
           type="select"
           mb="0"
         >
-          <option value="">Selecciona una opción</option>
+          <option value="">Select an option</option>
           <option value={5}>5</option>
           <option value={10}>10</option>
           <option value={20}>20</option>
@@ -131,37 +131,29 @@ export function TableFooter({
       <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
         {page > 1 && (
           <div
-            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50"
-            onClick={() => {
-              setPage(page - 1);
-            }}
+            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50 dark:bl-bg-stone-800"
+            onClick={() => setPage(page - 1)}
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="bl-fill-stone-900 bl-w-full bl-h-full"
-            >
-              <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
-            </svg>
+            <Icon
+              icon="left"
+              className="bl-fill-stone-900 dark:bl-fill-stone-200 bl-w-full bl-h-full"
+            />
           </div>
         )}
 
         <span>
-          Page: {page} - {pagesCount}{" "}
+          Page: {page} - {pagesCount}
         </span>
 
         {page < pagesCount && (
           <div
-            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50"
-            onClick={() => {
-              setPage(page + 1);
-            }}
+            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50 dark:bl-bg-stone-800"
+            onClick={() => setPage(page + 1)}
           >
-            <svg
-              viewBox="0 0 24 24"
-              className="bl-fill-slate-900 bl-w-full bl-h-full"
-            >
-              <path d="m12 4-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
-            </svg>
+            <Icon
+              icon="right"
+              className="bl-fill-stone-900 dark:bl-fill-stone-200 bl-w-full bl-h-full"
+            />
           </div>
         )}
       </div>

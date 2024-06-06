@@ -96,12 +96,11 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
           </div>
         )}
 
-        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-5 bl-text-center bl-flex bl-gap-3 md:bl-gap-5">
+        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-5 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
           <DS.Button
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
             variant="secondary"
-            className="bl-w-full"
             size="md"
           />
         </div>

@@ -56,7 +56,7 @@
 }
 
 .bl-table table tbody button {
-  @apply bl-bg-stone-200 hover:bl-bg-stone-300 bl-text-stone-600 bl-py-1 bl-px-3 bl-text-sm bl-rounded-lg;
+  @apply bl-bg-stone-200 hover:bl-bg-stone-300 bl-text-stone-600 bl-py-1 bl-px-3 bl-text-sm bl-rounded-lg dark:bl-bg-stone-800 dark:hover:bl-bg-stone-700 dark:bl-text-stone-200;
 }
 
 .bl-modalx-enter {
