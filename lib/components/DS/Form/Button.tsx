@@ -41,13 +41,16 @@ const Button = function (props: Props) {
 
   const classNameSize = () => {
     let sizeClass = `bl-py-1 bl-px-2 bl-text-sm`;
-    if (size === "md") {
+    if (size === "lg") {
+      sizeClass = `bl-py-3 bl-px-5 bl-text-sm`;
+    } else if (size === "md") {
       sizeClass = `bl-py-2 bl-px-2 bl-text-sm`;
     } else if (size === "sm") {
       sizeClass = `bl-py-1.5 bl-px-2 bl-text-xs md:bl-text-sm`;
-    } else if (size === "lg") {
-      sizeClass = `bl-py-3 bl-px-5 bl-text-sm`;
+    } else if (size === "xs") {
+      sizeClass = `bl-py-1 bl-px-3 bl-text-xs`; // TODO
     }
+
     return sizeClass;
   };
 
