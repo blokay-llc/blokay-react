@@ -71,7 +71,7 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
               <div></div>
             </div>
           )}
-          <h2 className="bl-text-base md:bl-text-lg bl-font-medium bl-text-stone-600 dark:bl-text-stone-300">
+          <h2 className="bl-text-sm md:bl-text-base bl-font-medium bl-text-stone-600 dark:bl-text-stone-300">
             {neuron.description}
           </h2>
         </div>
@@ -96,7 +96,7 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
           </div>
         )}
 
-        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-5 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
+        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-3 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
           <DS.Button
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
@@ -209,7 +209,7 @@ const Block = ({
   }, []);
 
   return (
-    <div className="bl-h-full bl-group bl-relative bl-border-2 bl-border-stone-300 dark:bl-border-stone-800 bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
+    <div className="bl-h-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
       {exception && (
         <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
           <div className="bl-text-center bl-text-stone-600 bl-text-lg">

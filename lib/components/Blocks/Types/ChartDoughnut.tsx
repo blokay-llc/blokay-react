@@ -25,6 +25,7 @@ function ChartDoughnut({ data, title = "" }: Props) {
       label: row.label,
       data: row.vals,
       backgroundColor: colors,
+      borderColor: colors[index],
     })),
   };
 
