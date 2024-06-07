@@ -3,6 +3,7 @@ import Button from "./Form/Button";
 import Input from "./Form/Input";
 import File from "./Form/File";
 import Select from "./Form/Select";
+import Textarea from "./Form/Textarea";
 import Checkbox from "./Form/Checkbox";
 import Loader from "./Loader/Index";
 import Box from "./Box";
@@ -16,6 +17,7 @@ export {
   Input,
   File,
   Select,
+  Textarea,
   Loader,
   Box,
   Icon,

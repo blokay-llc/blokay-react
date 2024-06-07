@@ -40,6 +40,19 @@ function BlockField({ row, form, errors, setForm }: any) {
     );
   }
 
+  if (row.type == "textarea") {
+    return (
+      <DS.Textarea
+        value={form[row.name]}
+        error={errors[row.name]}
+        onChange={(val: string) => {
+          setForm({ ...form, [row.name]: val });
+        }}
+        label={row.label}
+      />
+    );
+  }
+
   return (
     <DS.Input
       type={row.type}

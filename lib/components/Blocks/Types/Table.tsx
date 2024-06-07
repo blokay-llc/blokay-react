@@ -411,7 +411,7 @@ export default function Table({
                       <table className="bl-w-full bl-mb-2">
                         {table.header && (
                           <thead>
-                            <tr>
+                            <tr className="bl-select-none">
                               {table.header.map((th: any, i: number) => (
                                 <TableHeaderCell
                                   key={"cell-" + i}
