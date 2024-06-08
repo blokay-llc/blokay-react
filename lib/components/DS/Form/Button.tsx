@@ -61,9 +61,9 @@ const Button = function (props: Props) {
       colorClass = classColor;
     } else if (disabled) {
       colorClass =
-        " bg-disabled bl-bg-stone-100 dark:bl-bg-stone-700 dark:bl-text-stone-400 bl-text-gray-500 bl-cursor-not-allowed	 ";
+        " bg-disabled bl-bg-neutral-100 dark:bl-bg-neutral-700 dark:bl-text-neutral-400 bl-text-gray-500 bl-cursor-not-allowed	 ";
     } else if (variant === "primary") {
-      colorClass = `  bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-stone-200 hover:bl-bg-black bl-text-white   `;
+      colorClass = `  bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-neutral-200 hover:bl-bg-black bl-text-white   `;
     } else if (variant === "secondary") {
       colorClass =
         " bl-text-blue-500  bl-border-transparent bl-border-2 bl-bg-blue-950/70 dark:hover:bl-bg-blue-900 ";

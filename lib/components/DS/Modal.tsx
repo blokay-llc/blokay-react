@@ -88,7 +88,7 @@ function Modal(props: ModalProps, ref: any) {
             timeout={{ enter: 300, exit: 300 }}
             classNames="bl-modal-back"
           >
-            <div className="bl-fixed bl-z-50 bl-backdrop-blur-sm bl-bg-stone-600/40  bl-top-0 bl-left-0 bl-w-full bl-h-screen"></div>
+            <div className="bl-fixed bl-z-50 bl-backdrop-blur-sm bl-bg-neutral-600/40  bl-top-0 bl-left-0 bl-w-full bl-h-screen"></div>
           </CSSTransition>
 
           <CSSTransition
@@ -108,13 +108,13 @@ function Modal(props: ModalProps, ref: any) {
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-                className={`bl-relative bl-z-50 bl-transition-all dark:bl-text-stone-200 bl-duration-100 bl-ease-in-out bl-text-black  bl-rounded-xl   ${sizeClass()} ${positionClass()} ${size} ${classSection} ${
-                  bgColor == "white" ? "bl-bg-white dark:bl-bg-stone-950" : ""
+                className={`bl-relative bl-z-50 bl-transition-all dark:bl-text-neutral-200 bl-duration-100 bl-ease-in-out bl-text-black  bl-rounded-xl   ${sizeClass()} ${positionClass()} ${size} ${classSection} ${
+                  bgColor == "white" ? "bl-bg-white dark:bl-bg-neutral-950" : ""
                 }`}
                 style={{ backgroundColor: bgColor != "white" ? bgColor : "" }}
               >
                 {title && (
-                  <div className="bl-flex bl-justify-between bl-items-center bl-border-b dark:bl-border-stone-800 bl-border-stone-200 bl-py-4 bl-px-4">
+                  <div className="bl-flex bl-justify-between bl-items-center bl-border-b dark:bl-border-neutral-800 bl-border-neutral-200 bl-py-4 bl-px-4">
                     <div className="bl-flex bl-items-center bl-justify-start bl-gap-3">
                       <div
                         className="bl-action-icon"
@@ -128,11 +128,11 @@ function Modal(props: ModalProps, ref: any) {
                       <h2 className="bl-text-base md:bl-text-base">{title}</h2>
                     </div>
                     <div
-                      className="hover:bl-bg-stone-200 dark:hover:bl-bg-stone-800 bl-p-1 bl-rounded-full bl-cursor-pointer"
+                      className="hover:bl-bg-neutral-200 dark:hover:bl-bg-neutral-800 bl-p-1 bl-rounded-full bl-cursor-pointer"
                       onClick={hideModal}
                     >
                       <Icon
-                        className="bl-w-6 bl-h-6 bl-fill-black dark:bl-fill-stone-200"
+                        className="bl-w-6 bl-h-6 bl-fill-black dark:bl-fill-neutral-200"
                         icon={position !== "bottom" ? "close" : "arrow_bottom"}
                       />
                     </div>
@@ -159,7 +159,7 @@ function Modal(props: ModalProps, ref: any) {
                 </div>
 
                 {footer && (
-                  <div className="bl-py-5 bl-px-4 bl-border-t dark:bl-border-stone-800 bl-border-stone-200">
+                  <div className="bl-py-5 bl-px-4 bl-border-t dark:bl-border-neutral-800 bl-border-neutral-200">
                     <div className="bl-footer">{footer}</div>
                   </div>
                 )}

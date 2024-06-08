@@ -13,7 +13,7 @@ export default function AppCheckbox({
 }: AppCheckboxProps) {
   return (
     <div>
-      <label className="bl-rounded-lg bl-bg-gray-50 bl-border-2 bl-border-gray-100 bl-px-2 bl-items-center bl-py-1 bl-flex bl-gap-2  bl-select-none dark:bl-bg-stone-900 dark:bl-border-stone-900">
+      <label className="bl-rounded-lg bl-bg-gray-50 bl-border-2 bl-border-gray-100 bl-px-2 bl-items-center bl-py-1 bl-flex bl-gap-2  bl-select-none dark:bl-bg-neutral-900 dark:bl-border-neutral-900">
         <input
           type="checkbox"
           onChange={() => {
@@ -23,17 +23,17 @@ export default function AppCheckbox({
           className="bl-hidden"
         />
         <div
-          className="bl-size-6 bl-rounded-lg bl-border-2 bl-border-gray-200 dark:bl-border-stone-600"
+          className="bl-size-6 bl-rounded-lg bl-border-2 bl-border-gray-200 dark:bl-border-neutral-600"
           style={{ flexShrink: 0 }}
         >
           {value && (
             <Icon
               icon="check"
-              className="bl-fill-stone-900 dark:bl-fill-stone-200"
+              className="bl-fill-neutral-900 dark:bl-fill-neutral-200"
             />
           )}
         </div>
-        <div className="bl-text-sm bl-font-light bl-text-stone-600 dark:bl-text-stone-300">
+        <div className="bl-text-sm bl-font-light bl-text-neutral-600 dark:bl-text-neutral-300">
           {label || extraProps.children}
         </div>
       </label>

@@ -68,7 +68,7 @@ function BlockField({ row, form, errors, setForm }: any) {
 function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
   return (
     <div className="bl-py-6 bl-h-full bl-flex bl-items-center bl-justify-center ">
-      <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-stone-900 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-5">
+      <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-neutral-900 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-5">
         <div className="bl-flex bl-items-center bl-gap-3">
           {onBack && (
             <div
@@ -84,7 +84,7 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
               <div></div>
             </div>
           )}
-          <h2 className="bl-text-sm md:bl-text-base bl-font-medium bl-text-stone-600 dark:bl-text-stone-300">
+          <h2 className="bl-text-sm md:bl-text-base bl-font-medium bl-text-neutral-600 dark:bl-text-neutral-300">
             {neuron.description}
           </h2>
         </div>
@@ -109,7 +109,7 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
           </div>
         )}
 
-        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-stone-800 bl-pt-3 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
+        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-neutral-800 bl-pt-3 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
           <DS.Button
             text={neuron?.filters?.button || "Generate"}
             onClick={() => execNeuron(neuron)}
@@ -225,7 +225,7 @@ const Block = ({
     <div className="bl-h-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
       {exception && (
         <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
-          <div className="bl-text-center bl-text-stone-600 bl-text-lg">
+          <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
             {JSON.stringify(exception)}
           </div>
         </div>
@@ -248,7 +248,7 @@ const Block = ({
             }`}
           >
             {!neuron?.id && (
-              <div className="bl-text-center bl-text-stone-600 bl-text-lg">
+              <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
                 This doesn't exists
               </div>
             )}

@@ -10,7 +10,7 @@ function ShowError({ type, message, fullDescription }: any) {
       </div>
       <div className="text-red-500">{message}</div>
       {fullDescription && (
-        <div className="bl-font-light bl-text-stone-800 bl-bg-stone-200 bl-p-5 bl-rounded-lg bl-mt-5">
+        <div className="bl-font-light bl-text-neutral-800 bl-bg-neutral-200 bl-p-5 bl-rounded-lg bl-mt-5">
           {fullDescription}
         </div>
       )}

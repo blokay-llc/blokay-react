@@ -8,7 +8,7 @@ function Values({ title, data }: Props) {
     return arr;
   };
   return (
-    <div className="bl-text-stone-800 dark:bl-text-stone-200">
+    <div className="bl-text-neutral-800 dark:bl-text-neutral-200">
       <h2 className="bl-text-lg font-bold mb-4">{title}</h2>
       <div className="bl-flex bl-flex-wrap bl-items-center bl-gap-3 lg:bl-gap-10 bl-justify-center">
         {getValues().map((val: any) => (

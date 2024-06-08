@@ -10,20 +10,20 @@
   @apply bl-fill-white dark:bl-fill-black;
 }
 .bl-icon-btn.secondary {
-  @apply bl-fill-stone-600;
+  @apply bl-fill-neutral-600;
 }
 
 .bl-table {
-  @apply bl-bg-white dark:bl-bg-stone-950 bl-py-4 bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto bl-rounded-2xl bl-shadow bl-w-full;
+  @apply bl-bg-white dark:bl-bg-neutral-950 bl-py-4 bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto bl-rounded-2xl bl-shadow bl-w-full;
 }
 .bl-table table {
-  @apply bl-w-full bl-text-stone-800 dark:bl-text-stone-500;
+  @apply bl-w-full bl-text-neutral-800 dark:bl-text-neutral-500;
 }
 .bl-table table thead tr th {
-  @apply bl-px-3 bl-text-xs bl-text-stone-500 bl-bg-stone-200 dark:bl-bg-stone-900 dark:bl-text-stone-300 bl-uppercase bl-h-10;
+  @apply bl-px-3 bl-text-xs bl-text-neutral-500 bl-bg-neutral-200 dark:bl-bg-neutral-900 dark:bl-text-neutral-300 bl-uppercase bl-h-10;
 }
 .bl-table table tr {
-  @apply dark:hover:bl-text-stone-300;
+  @apply dark:hover:bl-text-neutral-300;
 }
 .bl-table table thead tr th:first-child {
   @apply bl-rounded-l-xl;
@@ -33,7 +33,7 @@
 }
 
 .bl-table table tbody {
-  @apply bl-divide-y dark:bl-divide-stone-800;
+  @apply bl-divide-y dark:bl-divide-neutral-800;
 }
 .bl-table table tbody tr td {
   @apply bl-p-3;
@@ -56,7 +56,7 @@
 }
 
 .bl-table table tbody button {
-  @apply bl-bg-stone-200 hover:bl-bg-stone-300 bl-text-stone-600 bl-py-1 bl-px-3 bl-text-sm bl-rounded-lg dark:bl-bg-stone-800 dark:hover:bl-bg-stone-700 dark:bl-text-stone-200;
+  @apply bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-text-neutral-600 bl-py-1 bl-px-3 bl-text-sm bl-rounded-lg dark:bl-bg-neutral-800 dark:hover:bl-bg-neutral-700 dark:bl-text-neutral-200;
 }
 
 .bl-modalx-enter {
@@ -94,10 +94,10 @@
 }
 
 .bl-app-input {
-  @apply bl-pb-1 bl-pt-4 bl-px-5 bl-border-stone-200  bl-outline-none  bl-rounded-xl bl-border bl-w-full bl-text-gray-700 bl-font-medium bl-appearance-none	 focus:bl-bg-gray-100 dark:focus:bl-bg-black bl-bg-stone-200 hover:bl-bg-stone-300 hover:bl-border-stone-300 bl-transition bl-duration-100 dark:bl-border-stone-950 dark:bl-text-stone-200 dark:bl-bg-stone-900 dark:hover:bl-bg-black dark:hover:bl-border-black bl-placeholder-stone-200;
+  @apply bl-pb-1 bl-pt-4 bl-px-5 bl-border-neutral-200  bl-outline-none  bl-rounded-xl bl-border bl-w-full bl-text-gray-700 bl-font-medium bl-appearance-none	 focus:bl-bg-gray-100 dark:focus:bl-bg-black bl-bg-neutral-200 hover:bl-bg-neutral-300 hover:bl-border-neutral-300 bl-transition bl-duration-100 dark:bl-border-neutral-950 dark:bl-text-neutral-200 dark:bl-bg-white/5 dark:hover:bl-bg-black dark:hover:bl-border-black bl-placeholder-neutral-200;
 }
 .bl-app-input:disabled {
-  @apply bl-bg-stone-200 bl-text-stone-400 bl-border-stone-200 dark:bl-border-black dark:bl-bg-black dark:bl-text-stone-700;
+  @apply bl-bg-neutral-200 bl-text-neutral-400 bl-border-neutral-200 dark:bl-border-black dark:bl-bg-black dark:bl-text-neutral-700;
 }
 .bl-app-input::-webkit-input-placeholder,
 .bl-app-input::placeholder {

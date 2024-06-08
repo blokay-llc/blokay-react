@@ -41,10 +41,10 @@ export default function Input({
             if (el) el.focus();
           }}
           htmlFor={id}
-          className={` bl-select-none bl-absolute  bl-text-stone-500 dark:bl-text-stone-400 ${
+          className={` bl-select-none bl-absolute  bl-text-neutral-500 dark:bl-text-neutral-400 ${
             activeLabel || value || extraProps.type === "date"
               ? " bl-top-2 bl-text-xs bl-left-5 bl-font-medium"
-              : " bl-top-3 bl-pt-0.5 bl-left-5 bl-font-light bl-text-stone-600 dark:bl-text-stone-500 "
+              : " bl-top-3 bl-pt-0.5 bl-left-5 bl-font-light bl-text-neutral-600 dark:bl-text-neutral-500 "
           }`}
           style={{ transitionDuration: "0.3s" }}
         >

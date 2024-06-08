@@ -30,7 +30,7 @@ export function TableHeaderCell({
         {sort && sort[index] && (
           <Icon
             icon={sort?.[index] == "ASC" ? "arrow_top" : "arrow_bottom"}
-            className="bl-h-4 bl-w-4 dark:bl-fill-stone-200 bl-fill-stone-900"
+            className="bl-h-4 bl-w-4 dark:bl-fill-neutral-200 bl-fill-neutral-900"
           />
         )}
       </div>
@@ -68,7 +68,7 @@ function TableCell({ td, eventsRef, showAll }: any) {
             <div>
               <div>{("" + td).substring(0, 50)}...</div>
               <div
-                className="bl-underline bl-font-bold bl-text-stone-600 bl-text-xs bl-cursor-pointer"
+                className="bl-underline bl-font-bold bl-text-neutral-600 bl-text-xs bl-cursor-pointer"
                 onClick={() => showAll(td)}
               >
                 Show all
@@ -120,23 +120,23 @@ export function TableFooter({
         </Select>
 
         <div
-          className="bl-flex bl-items-center bl-bg-stone-200 dark:bl-bg-stone-800 dark:bl-hover:bg-stone-700 hover:bl-bg-stone-300 bl-rounded-xl bl-size-10 bl-justify-center bl-shrink-0 "
+          className="bl-flex bl-items-center bl-bg-neutral-200 dark:bl-bg-neutral-800 dark:bl-hover:bg-neutral-700 hover:bl-bg-neutral-300 bl-rounded-xl bl-size-10 bl-justify-center bl-shrink-0 "
           onClick={() => {
             onReload && onReload();
           }}
         >
-          <Icon icon="refresh" className="bl-size-6 bl-fill-stone-600" />
+          <Icon icon="refresh" className="bl-size-6 bl-fill-neutral-600" />
         </div>
       </div>
       <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
         {page > 1 && (
           <div
-            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50 dark:bl-bg-stone-800"
+            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-neutral-300 bl-rounded-full bl-bg-neutral-50 dark:bl-bg-neutral-800"
             onClick={() => setPage(page - 1)}
           >
             <Icon
               icon="left"
-              className="bl-fill-stone-900 dark:bl-fill-stone-200 bl-w-full bl-h-full"
+              className="bl-fill-neutral-900 dark:bl-fill-neutral-200 bl-w-full bl-h-full"
             />
           </div>
         )}
@@ -147,12 +147,12 @@ export function TableFooter({
 
         {page < pagesCount && (
           <div
-            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-stone-300 bl-rounded-full bl-bg-stone-50 dark:bl-bg-stone-800"
+            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-neutral-300 bl-rounded-full bl-bg-neutral-50 dark:bl-bg-neutral-800"
             onClick={() => setPage(page + 1)}
           >
             <Icon
               icon="right"
-              className="bl-fill-stone-900 dark:bl-fill-stone-200 bl-w-full bl-h-full"
+              className="bl-fill-neutral-900 dark:bl-fill-neutral-200 bl-w-full bl-h-full"
             />
           </div>
         )}
@@ -356,17 +356,17 @@ export default function Table({
               <div className="bl-flex bl-gap-3 bl-items-center bl-mr-auto">
                 {onBack && !autoExecuted && (
                   <div
-                    className="bl-size-8 bl-p-1 bl-cursor-pointer bl-border-2 bl-border-stone-100 hover:bl-border-stone-300 bl-rounded-full bl-bg-white bl-shrink-0 dark:bl-border-black dark:bl-bg-black"
+                    className="bl-size-8 bl-p-1 bl-cursor-pointer bl-border-2 bl-border-neutral-100 hover:bl-border-neutral-300 bl-rounded-full bl-bg-white bl-shrink-0 dark:bl-border-black dark:bl-bg-black"
                     onClick={onBack}
                   >
                     <Icon
                       icon="left"
-                      className="bl-fill-stone-800 dark:bl-fill-stone-100 bl-w-full bl-h-full"
+                      className="bl-fill-neutral-800 dark:bl-fill-neutral-100 bl-w-full bl-h-full"
                     />
                   </div>
                 )}
 
-                <div className="bl-text-stone-800 dark:bl-text-stone-200">
+                <div className="bl-text-neutral-800 dark:bl-text-neutral-200">
                   {blockName}
                 </div>
               </div>
@@ -462,7 +462,7 @@ export default function Table({
                     )}
 
                     {!table.header?.length && !table.data?.length && (
-                      <div className=" bl-text-center bl-py-10 bl-text-2xl bl-text-stone-700 ">
+                      <div className=" bl-text-center bl-py-10 bl-text-2xl bl-text-neutral-700 ">
                         No results to display.
                       </div>
                     )}

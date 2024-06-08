@@ -19,7 +19,7 @@ export default function Select({
     <div className="bl-relative ">
       <label
         htmlFor={id}
-        className={` bl-absolute bl-left-4 bl-appearance-none	 bl-text-stone-600 dark:bl-text-stone-500 
+        className={` bl-absolute bl-left-4 bl-appearance-none	 bl-text-neutral-600 dark:bl-text-neutral-500 
           bl-top-2 bl-text-xs bl-font-light`}
         style={{ transitionDuration: "0.3s" }}
       >

@@ -96,21 +96,21 @@ const File = ({
       return (
         <Icon
           icon="pdf"
-          className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
+          className="bl-h-10 bl-fill-neutral-800 dark:bl-fill-neutral-200"
         />
       );
     } else if (["csv", "xls", "xlsx"].includes(ext())) {
       return (
         <Icon
           icon="excel"
-          className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
+          className="bl-h-10 bl-fill-neutral-800 dark:bl-fill-neutral-200"
         />
       );
     } else {
       return (
         <Icon
           icon="upload"
-          className="bl-h-10 bl-fill-stone-800 dark:bl-fill-stone-200"
+          className="bl-h-10 bl-fill-neutral-800 dark:bl-fill-neutral-200"
         />
       );
     }
@@ -118,7 +118,7 @@ const File = ({
 
   return (
     <div
-      className={`bl-p-2 bl-rounded-lg bl-inline-block bl-bg-stone-100 dark:bl-bg-stone-900 dark:bl-border-stone-900 dark:hover:bl-bg-black bl-border-2 bl-border-stone-200 hover:bl-bg-stone-200 bl-w-full  ${classSelector} ${size}`}
+      className={`bl-p-2 bl-rounded-lg bl-inline-block bl-bg-neutral-100 dark:bl-bg-neutral-900 dark:bl-border-neutral-900 dark:hover:bl-bg-black bl-border-2 bl-border-neutral-200 hover:bl-bg-neutral-200 bl-w-full  ${classSelector} ${size}`}
     >
       <input type="file" className="bl-hidden" id={id} onChange={onChange} />
 
@@ -130,12 +130,12 @@ const File = ({
 
         <div>
           {label ? (
-            <div className="bl-text-sm bl-block bl-py-1 bl-text-stone-800 dark:bl-text-stone-100 bl-font-medium">
+            <div className="bl-text-sm bl-block bl-py-1 bl-text-neutral-800 dark:bl-text-neutral-100 bl-font-medium">
               {label}
             </div>
           ) : null}
 
-          <div className="bl-text-left bl-font-light bl-text-xs bl-text-stone-600 dark:bl-text-stone-300">
+          <div className="bl-text-left bl-font-light bl-text-xs bl-text-neutral-600 dark:bl-text-neutral-300">
             <p className="md:hidden bl-block">Click here to select a file</p>
             <p className="hidden md:bl-block">Touch here to select.</p>
           </div>
