@@ -129,6 +129,7 @@ type BlockProps = {
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
   editMode?: string;
+  onChangeForm?: null | (() => void);
 };
 const Block = ({
   neuronId = null,
@@ -137,6 +138,7 @@ const Block = ({
   onExec = null,
   onBack = null,
   editMode = "",
+  onChangeForm = null,
 }: BlockProps) => {
   const { api } = useContext(Context);
   const [form, setForm] = useState({ ...defaultForm });
@@ -146,6 +148,11 @@ const Block = ({
   const [errors, setErrors]: any = useState({});
   const [exception, setException]: any = useState(null);
   const [autoexecuted, setAutoxecuted]: any = useState(false);
+
+  const setFormInterceptor = (form: any) => {
+    setForm(form);
+    onChangeForm && onChangeForm();
+  };
 
   const getBlock = ({ neuronId, neuronKey }: any) => {
     if (!neuronId && !neuronKey) return;
@@ -254,7 +261,7 @@ const Block = ({
                   onBack={onBack}
                   block={block}
                   form={form}
-                  setForm={setForm}
+                  setForm={setFormInterceptor}
                   errors={errors}
                   execBlock={execBlock}
                 />

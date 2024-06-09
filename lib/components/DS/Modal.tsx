@@ -1,4 +1,4 @@
-import { forwardRef, useState, useImperativeHandle } from "react";
+import { forwardRef, useState, useImperativeHandle, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "./Index";
 import { CSSTransition } from "react-transition-group";
@@ -15,6 +15,7 @@ type ModalProps = {
   footer?: JSX.Element | null;
   clickBack?: null | (() => void);
   onClose?: null | (() => void);
+  onConfirmClose?: null | (() => void);
 };
 function Modal(props: ModalProps, ref: any) {
   const {
@@ -26,6 +27,7 @@ function Modal(props: ModalProps, ref: any) {
     footer,
     clickBack = null,
     onClose = null,
+    onConfirmClose = null,
   } = props;
   const [showing, setShowing] = useState(false);
   const [bgColor, setBackgroundColor] = useState(props.bgColor || "white");
@@ -33,6 +35,14 @@ function Modal(props: ModalProps, ref: any) {
 
   const showModal = () => {
     setShowing(true);
+  };
+
+  const tryClose = () => {
+    if (onConfirmClose) {
+      onConfirmClose && onConfirmClose();
+    } else {
+      hideModal();
+    }
   };
 
   const hideModal = () => {
@@ -54,6 +64,7 @@ function Modal(props: ModalProps, ref: any) {
   };
 
   useImperativeHandle(ref, () => ({
+    tryClose,
     showModal,
     hideModal,
     clear,
@@ -81,6 +92,18 @@ function Modal(props: ModalProps, ref: any) {
     return "";
   };
 
+  useEffect(() => {
+    function escFunction(event: any) {
+      if (event.key === "Escape") {
+        tryClose();
+      }
+    }
+    document.addEventListener("keydown", escFunction, false);
+    return () => {
+      document.removeEventListener("keydown", escFunction, false);
+    };
+  }, [tryClose]);
+
   return container
     ? createPortal(
         <>
@@ -103,7 +126,7 @@ function Modal(props: ModalProps, ref: any) {
           >
             <div
               onMouseDown={(e) => e.stopPropagation()}
-              onClick={hideModal}
+              onClick={tryClose}
               className="bl-fixed bl-z-50  bl-w-full bl-h-screen bl-py-5  bl-top-0 bl-left-0 bl-flex bl-items-center bl-justify-center"
             >
               <section
