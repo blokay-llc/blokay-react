@@ -65,7 +65,7 @@ function BlockField({ row, form, errors, setForm }: any) {
     />
   );
 }
-function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
+function BlockForm({ onBack, block, form, setForm, errors, execBlock }: any) {
   return (
     <div className="bl-py-6 bl-h-full bl-flex bl-items-center bl-justify-center ">
       <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-white/10 dark:bl-border dark:bl-bg-neutral-900 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-5">
@@ -85,13 +85,13 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
             </div>
           )}
           <h2 className="bl-text-sm md:bl-text-base bl-font-medium bl-text-neutral-600 dark:bl-text-neutral-300">
-            {neuron.description}
+            {block.description}
           </h2>
         </div>
 
-        {neuron.filters?.fields && (
+        {block.filters?.fields && (
           <div className="bl-grid bl-grid-cols-2 bl-w-full bl-gap-3 bl-mt-5">
-            {neuron.filters.fields.map((row: any, index: number) => (
+            {block.filters.fields.map((row: any, index: number) => (
               <div
                 key={index}
                 className={`${
@@ -111,8 +111,8 @@ function BlockForm({ onBack, neuron, form, setForm, errors, execNeuron }: any) {
 
         <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-neutral-800 bl-pt-3 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
           <DS.Button
-            text={neuron?.filters?.button || "Generate"}
-            onClick={() => execNeuron(neuron)}
+            text={block?.filters?.button || "Generate"}
+            onClick={() => execBlock(block)}
             variant="secondary"
             size="md"
           />
@@ -140,22 +140,19 @@ const Block = ({
 }: BlockProps) => {
   const { api } = useContext(Context);
   const [form, setForm] = useState({ ...defaultForm });
-  const [neuron, setNeuron]: any = useState(null);
+  const [block, setBlock]: any = useState(null);
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
   const [errors, setErrors]: any = useState({});
   const [exception, setException]: any = useState(null);
-
   const [autoexecuted, setAutoxecuted]: any = useState(false);
 
-  const jwtTokenComputed = localStorage.getItem("jwt_token_session") || "";
-
-  const getNeuron = ({ neuronId, neuronKey }: any) => {
+  const getBlock = ({ neuronId, neuronKey }: any) => {
     if (!neuronId && !neuronKey) return;
     if (loading) return;
     setLoading(true);
     api
-      .brainGet({ neuronId, neuronKey }, jwtTokenComputed)
+      .brainGet({ neuronId, neuronKey })
       .then((result: any) => {
         const n = result.Neuron;
         const autoExec =
@@ -164,10 +161,10 @@ const Block = ({
           !n.filters?.fields?.length;
 
         setAutoxecuted(autoExec);
-        setNeuron(n);
+        setBlock(n);
 
         if (autoExec) {
-          return execNeuron(n);
+          return execBlock(n);
         } else {
           setLoading(false);
         }
@@ -178,7 +175,7 @@ const Block = ({
       });
   };
 
-  const execNeuron = (n: any) => {
+  const execBlock = (n: any) => {
     const errorsTmp: any = {};
 
     if (n.filters?.fields) {
@@ -198,13 +195,10 @@ const Block = ({
     setErrors({});
 
     api
-      .brainExec(
-        {
-          neuronId: n.id,
-          form,
-        },
-        jwtTokenComputed
-      )
+      .brainExec({
+        neuronId: n.id,
+        form,
+      })
       .then((result: any) => {
         setResponse(result.response);
         onExec && onExec(result.response);
@@ -218,7 +212,7 @@ const Block = ({
   };
 
   useEffect(() => {
-    getNeuron({ neuronId, neuronKey });
+    getBlock({ neuronId, neuronKey });
   }, []);
 
   return (
@@ -241,39 +235,39 @@ const Block = ({
           </div>
         )}
 
-        {(!loading || neuron?.id) && (
+        {(!loading || block?.id) && (
           <div
             className={`bl-w-full  ${
               editMode === "edit" ? "bl-opacity-70 bl-grayscale" : ""
             }`}
           >
-            {!neuron?.id && (
+            {!block?.id && (
               <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
                 This doesn't exists
               </div>
             )}
-            {neuron &&
+            {block &&
               !response &&
-              (neuron.filters.autoExec == false ||
-                neuron.filters?.fields?.length > 0) && (
+              (block.filters.autoExec == false ||
+                block.filters?.fields?.length > 0) && (
                 <BlockForm
                   onBack={onBack}
-                  neuron={neuron}
+                  block={block}
                   form={form}
                   setForm={setForm}
                   errors={errors}
-                  execNeuron={execNeuron}
+                  execBlock={execBlock}
                 />
               )}
 
             {response && (
               <BlockResponse
                 response={response}
-                neuron={neuron}
+                block={block}
                 onReload={() => {
-                  execNeuron(neuron);
+                  execBlock(block);
                 }}
-                autoExecuted={neuron.filters.autoExec}
+                autoExecuted={block.filters.autoExec}
                 onBack={
                   !autoexecuted
                     ? () => {

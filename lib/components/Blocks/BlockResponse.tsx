@@ -5,14 +5,14 @@ import Exception from "./Types/Exception";
 import ChartDoughnut from "./Types/ChartDoughnut";
 
 type BlockResponseProps = {
-  neuron: any;
+  block: any;
   response: any;
   onReload: any;
   onBack: any;
   autoExecuted: boolean;
 };
 const BlockResponse = ({
-  neuron: block,
+  block: block,
   response,
   onReload,
   onBack,

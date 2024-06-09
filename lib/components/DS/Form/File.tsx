@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useId } from "react";
 import { Icon, Loader } from "../Index";
 import { Context } from "../../BlokayProvider";
 
@@ -22,10 +22,10 @@ const File = ({
   onDone,
   onChangeFiles,
 }: FileProps) => {
+  const { api } = useContext(Context);
   const [loading, setLoading] = useState(false);
   const [prev, setPrev] = useState("");
-  const [id] = useState((Math.random() + 1).toString(36).substring(7));
-  const { api } = useContext(Context);
+  const id = useId();
 
   const ext = (): string => {
     const file = prev || preview;
@@ -104,7 +104,7 @@ const File = ({
 
   return (
     <div
-      className={`bl-p-2 bl-rounded-lg bl-inline-block bl-bg-neutral-100 dark:bl-bg-neutral-900 dark:bl-border-neutral-900 dark:hover:bl-bg-black bl-border-2 bl-border-neutral-200 hover:bl-bg-neutral-200 bl-w-full  ${classSelector} ${size}`}
+      className={`bl-p-2 bl-rounded-lg bl-inline-block bl-bg-neutral-100 dark:bl-bg-white/5 dark:bl-border-neutral-900 dark:hover:bl-bg-black bl-border-2 bl-border-neutral-200 hover:bl-bg-neutral-200 bl-w-full  ${classSelector} ${size}`}
     >
       <input type="file" className="bl-hidden" id={id} onChange={onChange} />
 
