@@ -1,4 +1,4 @@
-import { postRequest } from "../services/_base";
+import { postRequest, postMultimedia } from "../services/_base";
 
 type useApiProps = {
   jwtToken?: string;
@@ -26,5 +26,11 @@ export default function useApi(props: useApiProps) {
     return result.data;
   };
 
-  return { brainGet, brainExec };
+  const sendFile = async function (path: string, formData: any) {
+    return await postMultimedia(endpoint + path, formData, {
+      // token: typeof window != "undefined" ? window.token_web : "",
+    });
+  };
+
+  return { brainGet, brainExec, sendFile };
 }

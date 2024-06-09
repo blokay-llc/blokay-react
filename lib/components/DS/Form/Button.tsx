@@ -110,17 +110,18 @@ const Button = function (props: Props) {
       {(text || icon) && (
         <span>
           <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
-            {icon && (
+            {loading && (
               <div style={{ flexShrink: 0 }} className="bl-icon-btn">
-                {loading ? (
-                  <div className="bl-mx-auto">
-                    <Loader size="sm" />
-                  </div>
-                ) : (
-                  <Icon icon={icon} className={classNameIcon()} />
-                )}
+                <Loader size="sm" />
               </div>
             )}
+
+            {icon && !loading && (
+              <div style={{ flexShrink: 0 }} className="bl-icon-btn">
+                <Icon icon={icon} className={classNameIcon()} />
+              </div>
+            )}
+
             {text && <span>{text}</span>}
           </div>
         </span>

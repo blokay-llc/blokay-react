@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Icon, Loader } from "../Index";
-import { postMultimedia } from "../../../services/_base";
+import { Context } from "../../BlokayProvider";
 
 type FileProps = {
   label?: string;
@@ -24,8 +24,8 @@ const File = ({
 }: FileProps) => {
   const [loading, setLoading] = useState(false);
   const [prev, setPrev] = useState("");
-  const [filelist, setFileList]: any = useState([]);
   const [id] = useState((Math.random() + 1).toString(36).substring(7));
+  const { api } = useContext(Context);
 
   const ext = (): string => {
     const file = prev || preview;
@@ -42,43 +42,29 @@ const File = ({
 
   const onChange = () => {
     const el: any = document.getElementById(id);
-    setFileList(el.files);
-  };
+    const list = el.files;
+    if (list.length > 0) {
+      setLoading(true);
+      const formData = new FormData();
+      formData.append("file", list[0]);
 
-  const sendFile = (pics: any[], endpoint: string) => {
-    const formData = new FormData();
-    formData.append("file", pics[0]);
-    return postMultimedia(endpoint, formData, {
-      // token: typeof window != "undefined" ? window.token_web : "",
-    });
-  };
-
-  const uploadPhoto = (pics: any) => {
-    setLoading(true);
-    const formData = new FormData();
-    formData.append("file", pics[0]);
-
-    return sendFile(pics, endpoint)
-      .then((result: any) => {
-        onDone && onDone(result);
-        if (result.data.Resource) {
-          setPrev(result.data.Resource.preview);
-          onChangeFiles && onChangeFiles(result.data.Resource);
-        }
-      })
-      .catch((err: any) => {
-        onError && onError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    if (filelist.length > 0) {
-      uploadPhoto(filelist);
+      return api
+        .sendFile(endpoint, formData)
+        .then((result: any) => {
+          onDone && onDone(result);
+          if (result.data.Resource) {
+            setPrev(result.data.Resource.preview);
+            onChangeFiles && onChangeFiles(result.data.Resource);
+          }
+        })
+        .catch((err: any) => {
+          onError && onError(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
     }
-  }, [uploadPhoto, filelist]);
+  };
 
   const renderImage = () => {
     if (loading) {

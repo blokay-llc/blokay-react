@@ -231,7 +231,7 @@ const Block = ({
         </div>
       )}
       <div
-        className={`bl-overflow-y-auto bl-max-h-full bl-h-full bl-flex bl-w-full ${
+        className={`bl-overflow-y-auto bl-max-h-full bl-h-full bl-flex bl-w-full dark:bl-bg-black/60 ${
           !response ? "bl-items-center" : ""
         } bl-justify-center `}
       >
@@ -243,8 +243,8 @@ const Block = ({
 
         {(!loading || neuron?.id) && (
           <div
-            className={`bl-w-full ${
-              editMode === "grid" ? "bl-opacity-70 bl-grayscale" : ""
+            className={`bl-w-full  ${
+              editMode === "edit" ? "bl-opacity-70 bl-grayscale" : ""
             }`}
           >
             {!neuron?.id && (
