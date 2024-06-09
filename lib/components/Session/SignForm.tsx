@@ -60,14 +60,12 @@ export default function SignForm({
             value={form.username}
             onChange={(val) => setForm({ ...form, username: val })}
             type="text"
-            name="name"
             label="Username"
           />
           <DS.Input
             value={form.password}
             onChange={(val) => setForm({ ...form, password: val })}
             type="password"
-            name="password"
             label="Password"
           />
 

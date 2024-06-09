@@ -22,8 +22,7 @@ export default function Select({
       <label
         htmlFor={id}
         className={` bl-absolute bl-left-4 bl-appearance-none	 bl-text-neutral-600 dark:bl-text-neutral-500 
-          bl-top-2 bl-text-xs bl-font-light`}
-        style={{ transitionDuration: "0.3s" }}
+          bl-top-2 bl-text-xs bl-font-light bl-duration-300`}
       >
         {label}
       </label>

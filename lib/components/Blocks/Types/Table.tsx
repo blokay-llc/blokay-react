@@ -178,30 +178,22 @@ export default function Table({
   const [textAll, setTextAll] = useState("");
 
   useEffect(() => {
-    init();
+    setTable();
   }, []);
 
   useEffect(() => {
-    init();
+    setTable(data);
   }, [data]);
 
-  const setTable = (data: any) => {
+  const setTable = (data: any = { data: [], header: [] }) => {
     setPage(1);
-    if (data) {
-      setVarTable(data);
-    } else {
-      setVarTable({ data: [], header: [] });
-    }
+    setVarTable(data);
   };
 
-  const init = () => {
-    setTable(data);
+  const generateExcel = () => {
+    // Lógica para generar un archivo Excel
+    // Implementa según sea necesario
   };
-
-  // const generateExcel = () => {
-  //   // Lógica para generar un archivo Excel
-  //   // Implementa según sea necesario
-  // };
 
   const download = (file: any, filename: string) => {
     const blob = new Blob([file], { type: "text/csv;charset=utf-8;" });
@@ -222,7 +214,7 @@ export default function Table({
     const data = table.data.map((row: any[]) => {
       return row.map((col) => {
         if (typeof col == "object") {
-          return col.text;
+          return col.text || "";
         }
         return col;
       });
@@ -233,7 +225,7 @@ export default function Table({
   const generateCSV = () => {
     const rows = FileExportContent();
     let csvContent = "";
-    rows.forEach(function (rowArray) {
+    rows.forEach((rowArray) => {
       const row = rowArray.join(",");
       csvContent += row + "\r\n";
     });
@@ -344,7 +336,7 @@ export default function Table({
     });
   };
 
-  const footerRowVals: any = footerRow();
+  const footerRowVals = footerRow();
   const tableContentVals = tableContent();
 
   return (
@@ -381,7 +373,6 @@ export default function Table({
                       setFilters({ ...filters, search: val });
                     }}
                     label="Search"
-                    mb="0"
                     icon="search"
                     className="bl-input-search-main "
                   />
@@ -395,6 +386,16 @@ export default function Table({
                   size="lg"
                   text="CSV"
                   onClick={() => generateCSV()}
+                />
+              )}
+
+              {table.data.length > 0 && (
+                <Button
+                  variant="secondary"
+                  type="button"
+                  size="lg"
+                  text="Excel"
+                  onClick={() => generateExcel()}
                 />
               )}
             </div>

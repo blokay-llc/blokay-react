@@ -2,36 +2,30 @@ import { useState, useId } from "react";
 import { Icon } from "../Index";
 
 type InputProps = {
-  [x: string]: any;
   label: string;
+  className?: string;
   value?: string;
   icon?: string;
   error?: string;
   onChange?: (value: string) => void;
   onBlur?: () => void;
   onFocus?: () => void;
-  type?: "text" | "password" | "number" | "date";
+  type?: "text" | "password" | "number" | "date" | "email" | "url" | "tel";
 };
 
-export default function Input({
-  label,
-  value,
-  icon = "",
-  error = "",
-  ...extraProps
-}: InputProps) {
+export default function Input(props: InputProps) {
   const [activeLabel, setActiveLabel] = useState(false);
   const id = useId();
 
   return (
     <div className="bl-w-full">
       <div className="bl-relative ">
-        {icon && (
+        {props.icon && (
           <Icon
             className={`bl-size-6 ${
-              error ? "bl-fill-red-400" : "bl-fill-gray-400"
+              props.error ? "bl-fill-red-400" : "bl-fill-gray-400"
             } bl-absolute bl-bottom-2.5 bl-right-4`}
-            icon={icon}
+            icon={props.icon}
           />
         )}
 
@@ -41,41 +35,40 @@ export default function Input({
             if (el) el.focus();
           }}
           htmlFor={id}
-          className={` bl-select-none bl-absolute  bl-text-neutral-500 dark:bl-text-neutral-400 ${
-            activeLabel || value || extraProps.type === "date"
+          className={` bl-select-none bl-absolute  bl-text-neutral-500 dark:bl-text-neutral-400 bl-duration-300 ${
+            activeLabel || props.value || props.type === "date"
               ? " bl-top-2 bl-text-xs bl-left-5 bl-font-medium"
               : " bl-top-3 bl-pt-0.5 bl-left-5 bl-font-light bl-text-neutral-600 dark:bl-text-neutral-500 "
           }`}
-          style={{ transitionDuration: "0.3s" }}
         >
-          {label}
+          {props.label}
         </label>
         <div>
           <input
-            {...extraProps}
+            {...props}
             id={id}
             onChange={(e) => {
-              extraProps.onChange && extraProps.onChange(e.target.value);
+              props.onChange && props.onChange(e.target.value);
             }}
             onBlur={() => {
               setActiveLabel(false);
-              extraProps.onBlur && extraProps.onBlur();
+              props.onBlur && props.onBlur();
             }}
             onFocus={() => {
               setActiveLabel(true);
-              extraProps.onFocus && extraProps.onFocus();
+              props.onFocus && props.onFocus();
             }}
-            value={value || ""}
+            value={props.value || ""}
             className={`bl-app-input bl-appearance-none ${
-              error ? "bl-error" : ""
-            } ${extraProps.className} `}
-            type={extraProps.type}
+              props.error ? "bl-error" : ""
+            } ${props.className} `}
+            type={props.type}
           />
         </div>
       </div>
-      {error && (
+      {props.error && (
         <div className="bl-text-left bl-text-red-500 bl-text-sm bl-font-light">
-          {error}
+          {props.error}
         </div>
       )}
     </div>

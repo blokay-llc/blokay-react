@@ -223,7 +223,7 @@ const Block = ({
   }, []);
 
   return (
-    <div className="bl-h-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
+    <div className="bl-h-full bl-w-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
       {exception && (
         <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
           <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
