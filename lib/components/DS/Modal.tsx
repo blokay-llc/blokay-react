@@ -8,8 +8,9 @@ const container = typeof document != "undefined" ? document.body : null;
 type ModalProps = {
   title?: string | null;
   position?: "top" | "center" | "bottom";
+  bgColor?: string;
   classSection?: string | null;
-  size?: "sm" | "md" | "lg";
+  size?: "sm" | "md" | "lg" | "auto";
   children?: any;
   footer?: JSX.Element | null;
   clickBack?: null | (() => void);
@@ -27,7 +28,7 @@ function Modal(props: ModalProps, ref: any) {
     onClose = null,
   } = props;
   const [showing, setShowing] = useState(false);
-  const [bgColor, setBackgroundColor] = useState("white");
+  const [bgColor, setBackgroundColor] = useState(props.bgColor || "white");
   const [error, setError] = useState("");
 
   const showModal = () => {
@@ -74,6 +75,8 @@ function Modal(props: ModalProps, ref: any) {
       return "lg:bl-w-1/2 bl-w-full bl-mx-3 ";
     } else if (size === "lg") {
       return "lg:bl-w-2/3 bl-w-full bl-mx-3 ";
+    } else if (size === "auto") {
+      return "lg:bl-w-max-2/3 bl-w-min-1/3 bl-overflow-x-auto  bl-mx-3 ";
     }
     return "";
   };

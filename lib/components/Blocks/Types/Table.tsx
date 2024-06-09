@@ -462,7 +462,7 @@ export default function Table({
                     )}
 
                     {!table.header?.length && !table.data?.length && (
-                      <div className=" bl-text-center bl-py-10 bl-text-2xl bl-text-neutral-700 ">
+                      <div className=" bl-text-center bl-py-10 bl-text-2xl bl-text-neutral-700 bl-px-10 ">
                         No results to display.
                       </div>
                     )}

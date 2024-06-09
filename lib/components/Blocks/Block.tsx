@@ -225,7 +225,7 @@ const Block = ({
         </div>
       )}
       <div
-        className={`bl-overflow-y-auto bl-max-h-full bl-h-full bl-flex bl-w-full dark:bl-bg-black/60 ${
+        className={`bl-h-full bl-flex bl-w-full  ${
           !response ? "bl-items-center" : ""
         } bl-justify-center `}
       >

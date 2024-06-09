@@ -35,7 +35,7 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
 
   return (
     <>
-      <Modal size="lg" position="center" ref={modalRef}>
+      <Modal size="auto" position="center" ref={modalRef} bgColor="transparent">
         {(subBlock.neuronKey || subBlock.neuronId) && (
           <Block
             neuronId={subBlock.neuronId}
