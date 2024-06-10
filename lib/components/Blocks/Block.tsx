@@ -128,7 +128,6 @@ type BlockProps = {
   defaultForm?: any;
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
-  editMode?: string;
   onChangeForm?: null | (() => void);
 };
 const Block = ({
@@ -137,7 +136,6 @@ const Block = ({
   defaultForm = {},
   onExec = null,
   onBack = null,
-  editMode = "",
   onChangeForm = null,
 }: BlockProps) => {
   const { api } = useContext(Context);
@@ -243,11 +241,7 @@ const Block = ({
         )}
 
         {(!loading || block?.id) && (
-          <div
-            className={`bl-w-full  ${
-              editMode === "edit" ? "bl-opacity-70 bl-grayscale" : ""
-            }`}
-          >
+          <div className={`bl-w-full  `}>
             {!block?.id && (
               <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
                 This doesn't exists
