@@ -44,7 +44,7 @@ const Button = function (props: Props) {
     if (size === "lg") {
       sizeClass = `bl-py-3 bl-px-5 bl-text-sm`;
     } else if (size === "md") {
-      sizeClass = `bl-py-2 bl-px-2 bl-text-sm`;
+      sizeClass = `bl-py-1.5 bl-px-2 bl-text-sm`;
     } else if (size === "sm") {
       sizeClass = `bl-py-1.5 bl-px-2 bl-text-xs md:bl-text-sm`;
     } else if (size === "xs") {
@@ -66,7 +66,7 @@ const Button = function (props: Props) {
       colorClass = `  bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-neutral-200 hover:bl-bg-black bl-text-white   `;
     } else if (variant === "secondary") {
       colorClass =
-        " bl-text-blue-500  bl-border-transparent bl-border-2 bl-bg-blue-950/70 dark:hover:bl-bg-blue-900 ";
+        " bl-text-blue-900  bl-border-transparent bl-border-2 bl-bg-blue-400 dark:bl-text-blue-300 dark:bl-bg-blue-950/70 dark:hover:bl-bg-blue-900 ";
     } else if (variant === "third") {
       colorClass =
         "bl-text-black bl-border-black bl-rounded-none bl-border-none hover:bl-bg-gray-100 bl-black-icon";
@@ -77,7 +77,7 @@ const Button = function (props: Props) {
     return colorClass;
   };
   const classBtn = () => {
-    return `bl-appearance-none  bl-rounded-lg md:bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover ${className}`;
+    return `bl-appearance-none bl-border-2 bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover bl-shadow-sm ${className}`;
   };
 
   const propsComputed = () => {
@@ -92,7 +92,7 @@ const Button = function (props: Props) {
     if (variant === "primary") {
       color = ` bl-h-full bl-fill-white dark:bl-fill-black  `;
     } else if (variant === "secondary" || variant === "third") {
-      color = ` bl-h-full bl-fill-blue-500 dark:bl-fill-blue-500  `;
+      color = ` bl-h-full bl-fill-blue-800 dark:bl-fill-blue-300  `;
     }
 
     return `bl-h-full bl-h-4 md:bl-h-4 w-4 ${color}`;

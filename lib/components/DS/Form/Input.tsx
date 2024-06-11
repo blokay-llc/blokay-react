@@ -2,6 +2,7 @@ import { useState, useId } from "react";
 import { Icon } from "../Index";
 
 type InputProps = {
+  disabled?: boolean;
   label: string;
   className?: string;
   value?: string;
@@ -58,6 +59,7 @@ export default function Input(props: InputProps) {
               setActiveLabel(true);
               props.onFocus && props.onFocus();
             }}
+            disabled={props.disabled || false}
             value={props.value || ""}
             className={`bl-app-input bl-appearance-none ${
               props.error ? "bl-error" : ""

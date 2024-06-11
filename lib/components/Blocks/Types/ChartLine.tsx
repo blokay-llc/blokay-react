@@ -23,6 +23,10 @@ ChartJS.register(
 );
 
 const colors = [
+  "#3b82f6",
+  "#22c55e",
+  "#a855f7",
+  "#78716c",
   "#ea5d0c",
   "#1e78d1",
   "#50c677",
