@@ -1,6 +1,6 @@
 import { useId } from "react";
 
-export type SelectProps = {
+export type TextareaProps = {
   [x: string]: any;
   label: string;
   value: string;
@@ -12,7 +12,7 @@ export default function Textarea({
   value,
   error = null,
   ...extraProps
-}: SelectProps) {
+}: TextareaProps) {
   const id = useId();
 
   return (
