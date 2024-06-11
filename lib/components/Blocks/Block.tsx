@@ -130,16 +130,9 @@ type BlockProps = {
   onBack?: null | (() => void);
   onChangeForm?: null | (() => void);
 };
-const Block = ({
-  neuronId = null,
-  neuronKey = null,
-  defaultForm = {},
-  onExec = null,
-  onBack = null,
-  onChangeForm = null,
-}: BlockProps) => {
+const Block = (props: BlockProps) => {
   const { api } = useContext(Context);
-  const [form, setForm] = useState({ ...defaultForm });
+  const [form, setForm] = useState({ ...props.defaultForm });
   const [block, setBlock]: any = useState(null);
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -149,7 +142,7 @@ const Block = ({
 
   const setFormInterceptor = (form: any) => {
     setForm(form);
-    onChangeForm && onChangeForm();
+    props.onChangeForm && props.onChangeForm();
   };
 
   const getBlock = ({ neuronId, neuronKey }: any) => {
@@ -206,7 +199,7 @@ const Block = ({
       })
       .then((result: any) => {
         setResponse(result.response);
-        onExec && onExec(result.response);
+        props.onExec && props.onExec(result.response);
       })
       .catch((error: any) => {
         setException(error);
@@ -217,7 +210,7 @@ const Block = ({
   };
 
   useEffect(() => {
-    getBlock({ neuronId, neuronKey });
+    getBlock({ neuronId: props.neuronId, neuronKey: props.neuronKey });
   }, []);
 
   return (
@@ -252,7 +245,7 @@ const Block = ({
               (block.filters.autoExec == false ||
                 block.filters?.fields?.length > 0) && (
                 <BlockForm
-                  onBack={onBack}
+                  onBack={props.onBack}
                   block={block}
                   form={form}
                   setForm={setFormInterceptor}
@@ -284,4 +277,22 @@ const Block = ({
     </div>
   );
 };
-export default Block;
+
+const BlockWrapper = (props: BlockProps) => {
+  const { session } = useContext(Context);
+
+  if (!session) {
+    return (
+      <div className="bl-h-full bl-w-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
+        <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
+          <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
+            NO JWT
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return <Block {...props} />;
+};
+export default BlockWrapper;
