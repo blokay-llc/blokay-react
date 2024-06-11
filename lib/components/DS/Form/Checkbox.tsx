@@ -1,16 +1,16 @@
 import { Icon } from "../Index";
 
-type AppCheckboxProps = {
+type CheckboxProps = {
   [x: string]: any;
   label?: string;
   value: boolean;
   onChange?: (value: boolean) => void;
 };
-export default function AppCheckbox({
+export default function Checkbox({
   label = "",
   value,
   ...extraProps
-}: AppCheckboxProps) {
+}: CheckboxProps) {
   return (
     <div>
       <label className="bl-rounded-lg bl-bg-gray-50 bl-border-2 bl-border-gray-100 bl-px-2 bl-items-center bl-py-1 bl-flex bl-gap-2  bl-select-none dark:bl-bg-neutral-900 dark:bl-border-neutral-900">

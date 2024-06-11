@@ -7,7 +7,7 @@ export type SelectProps = {
   placeholder?: string;
   error?: string | null;
 };
-export default function Select({
+export default function Textarea({
   label,
   value,
   error = null,

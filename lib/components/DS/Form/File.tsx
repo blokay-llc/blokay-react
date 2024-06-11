@@ -12,7 +12,7 @@ type FileProps = {
   onDone?: any;
   onChangeFiles?: any;
 };
-const File = ({
+export default function File({
   label,
   preview,
   classSelector,
@@ -21,7 +21,7 @@ const File = ({
   onError,
   onDone,
   onChangeFiles,
-}: FileProps) => {
+}: FileProps) {
   const { api } = useContext(Context);
   const [loading, setLoading] = useState(false);
   const [prev, setPrev] = useState("");
@@ -129,6 +129,4 @@ const File = ({
       </label>
     </div>
   );
-};
-
-export default File;
+}

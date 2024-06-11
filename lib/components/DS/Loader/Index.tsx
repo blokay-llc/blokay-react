@@ -1,6 +1,6 @@
 import "./Index.css";
 
-const AppLoader = ({ size, className = "" }: any) => {
+const Loader = ({ size, className = "" }: any) => {
   const loaderStyle = {
     width: size === "sm" ? "1rem" : "80px",
     height: size === "sm" ? "1rem" : "80px",
@@ -17,4 +17,4 @@ const AppLoader = ({ size, className = "" }: any) => {
   );
 };
 
-export default AppLoader;
+export default Loader;
