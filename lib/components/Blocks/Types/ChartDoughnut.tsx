@@ -7,6 +7,10 @@ import { Props } from "./props";
 ChartJS.register(Tooltip, Legend, ArcElement);
 
 const colors = [
+  "#3b82f6",
+  "#22c55e",
+  "#a855f7",
+  "#78716c",
   "#ea5d0c",
   "#1e78d1",
   "#50c677",
@@ -24,8 +28,8 @@ function ChartDoughnut({ data, title = "" }: Props) {
       pointBorderColor: colors[index],
       label: row.label,
       data: row.vals,
-      backgroundColor: colors[index],
-      borderColor: colors[index],
+      backgroundColor: colors,
+      borderColor: colors,
     })),
   };
 
