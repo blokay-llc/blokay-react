@@ -1,18 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../BlokayProvider";
-import { postRequest } from "../../services/_base";
 import * as DS from "../../components/DS/Index";
-async function createSession(businessId: any, data: any) {
-  const result = await postRequest("brain/createSession", {
-    ...data,
-    businessId,
-  });
-
-  const { jwtToken, content } = result.data;
-  localStorage.setItem("jwt_token_session", jwtToken);
-
-  return content;
-}
 
 type SignFormProps = {
   children?: any;
@@ -24,16 +12,19 @@ export default function SignForm({
   form: formProp,
   className,
 }: SignFormProps) {
+  const { api } = useContext(Context);
   const [form, setForm] = useState({ username: "", password: "" });
-  const { setSession, businessId } = useContext(Context);
+  const { setJWT, businessId } = useContext(Context);
+
   const submit = async (event: any) => {
     event.preventDefault();
-
-    const data = await createSession(businessId, {
+    const { jwtToken } = await api.createSession({
+      businessId,
       ...form,
       ...formProp,
     });
-    setSession(data);
+
+    setJWT(jwtToken);
   };
 
   return (

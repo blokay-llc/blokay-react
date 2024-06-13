@@ -49,8 +49,7 @@ export const postRequest = async function (
   }
 
   if (rawResponse.status === 401) {
-    window.localStorage.removeItem("auth_pwa_token");
-    throw content;
+    throw { error: "Unauthorized", content };
   }
   if (rawResponse.status !== 200) throw content;
 

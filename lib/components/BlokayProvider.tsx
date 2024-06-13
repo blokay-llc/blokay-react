@@ -4,7 +4,6 @@ import useApi from "../hooks/useApi";
 
 const contextDefaultValue: any = {
   session: null,
-  setSession: () => {},
 };
 const Context = createContext(contextDefaultValue);
 
@@ -20,17 +19,24 @@ const BlokayProvider = ({
   jwtToken = "",
   endpoint = "https://app.blokay.com/api/",
 }: BlokayProviderProps) => {
-  const { session, setSession, setJWT } = useSession();
-  const api = useApi({ jwtToken, endpoint });
+  const session = useSession();
+  const api = useApi(endpoint, session);
 
   useEffect(() => {
     if (jwtToken) {
-      setJWT(jwtToken);
+      session.setJWT(jwtToken);
     }
   }, [jwtToken]);
 
   return (
-    <Context.Provider value={{ businessId, session, setSession, api }}>
+    <Context.Provider
+      value={{
+        businessId,
+        session: session.session,
+        setJWT: session.setJWT,
+        api,
+      }}
+    >
       {children}
     </Context.Provider>
   );

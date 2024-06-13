@@ -13,6 +13,9 @@ export default function useSession() {
     }
   };
 
+  const getJwtToken = () => {
+    return localStorage.getItem(key) || null;
+  };
   const setJWT = (token: string) => {
     localStorage.setItem(key, token);
     const decoded = decodeJWT(token);
@@ -28,5 +31,5 @@ export default function useSession() {
     getSession();
   }, []);
 
-  return { session, setSession, setJWT, logout };
+  return { session, setSession, setJWT, logout, getJwtToken };
 }

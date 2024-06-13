@@ -150,7 +150,7 @@ const Block = (props: BlockProps) => {
     if (loading) return;
     setLoading(true);
     api
-      .brainGet({ neuronId, neuronKey })
+      .blockGet({ neuronId, neuronKey })
       .then((result: any) => {
         const n = result.Neuron;
         const autoExec =
@@ -193,7 +193,7 @@ const Block = (props: BlockProps) => {
     setErrors({});
 
     api
-      .brainExec({
+      .blockExec({
         neuronId: n.id,
         form,
       })

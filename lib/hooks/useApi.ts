@@ -1,40 +1,66 @@
 import { postRequest, postMultimedia } from "../services/_base";
 
-type useApiProps = {
-  jwtToken?: string;
-  endpoint?: string;
+type sessionProps = {
+  logout: () => void;
+  getJwtToken: () => string | null;
 };
-export default function useApi(props: useApiProps) {
-  const brainGet = async function ({ neuronId = null, neuronKey = null }) {
+
+export default function useApi(endpoint: string, session: sessionProps) {
+  const blockGet = async function ({ neuronId = null, neuronKey = null }) {
     const data = {
       neuronId,
       neuronKey,
     };
 
-    const result = await postRequest(
-      props.endpoint + "brain/get",
-      data,
-      props.jwtToken
-    );
-    return result.data;
+    try {
+      const result = await postRequest(
+        endpoint + "brain/get",
+        data,
+        session.getJwtToken()
+      );
+      return result.data;
+    } catch (error: any) {
+      if (error?.error == "Unauthorized") {
+        session.logout();
+      }
+    }
   };
 
-  const brainExec = async function (form: any) {
+  const blockExec = async function (form: any) {
+    const data = {
+      ...form,
+    };
+
+    try {
+      const result = await postRequest(
+        endpoint + "brain/exec",
+        data,
+        session.getJwtToken()
+      );
+      return result.data;
+    } catch (error: any) {
+      if (error?.error == "Unauthorized") {
+        session.logout();
+      }
+    }
+  };
+
+  const createSession = async function (form: any) {
     const data = {
       ...form,
     };
 
     const result = await postRequest(
-      props.endpoint + "brain/exec",
+      endpoint + "brain/createSession",
       data,
-      props.jwtToken
+      null
     );
     return result.data;
   };
 
   const sendFile = async function (path: string, formData: any) {
-    return await postMultimedia(props.endpoint + path, formData, {});
+    return await postMultimedia(endpoint + path, formData, {});
   };
 
-  return { brainGet, brainExec, sendFile };
+  return { blockGet, blockExec, sendFile, createSession };
 }
