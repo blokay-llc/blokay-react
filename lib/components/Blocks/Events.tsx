@@ -30,6 +30,18 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
       setSubBlock({ neuronId, neuronKey, form });
       modalRef.current.showModal();
     },
+    openBlock: ({
+      neuronId,
+      neuronKey,
+      form,
+    }: {
+      neuronId: number;
+      neuronKey: string;
+      form: any;
+    }) => {
+      setSubBlock({ neuronId, neuronKey, form });
+      modalRef.current.showModal();
+    },
   };
 
   const closeBlock = () => {

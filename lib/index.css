@@ -101,7 +101,10 @@
 }
 .bl-app-input::-webkit-input-placeholder,
 .bl-app-input::placeholder {
-  color: transparent;
+  @apply bl-text-transparent;
+}
+.bl-app-input::-webkit-calendar-picker-indicator {
+  @apply dark:bl-invert;
 }
 
 .bl-app-input.bl-error {
