@@ -14,13 +14,13 @@
 }
 
 .bl-table {
-  @apply bl-py-4 bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto   bl-w-full;
+  @apply bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto   bl-w-full;
 }
 .bl-table table {
   @apply bl-w-full bl-text-neutral-800 dark:bl-text-neutral-500;
 }
 .bl-table table thead tr th {
-  @apply bl-px-3 bl-text-xs bl-text-neutral-500 bl-bg-neutral-200 dark:bl-bg-neutral-900 dark:bl-text-neutral-300 bl-uppercase bl-h-10;
+  @apply bl-px-3 bl-text-xs bl-text-neutral-500 bl-bg-neutral-200 dark:bl-bg-neutral-900 dark:bl-text-neutral-300 bl-uppercase bl-h-8;
 }
 .bl-table table tr {
   @apply dark:hover:bl-text-neutral-300;

@@ -69,7 +69,7 @@ const Button = function (props: Props) {
         " bl-text-blue-900  bl-border-transparent bl-border-2 bl-bg-blue-400 dark:bl-text-blue-300 dark:bl-bg-blue-950/70 dark:hover:bl-bg-blue-900 ";
     } else if (variant === "third") {
       colorClass =
-        "bl-text-black bl-border-black bl-rounded-none bl-border-none hover:bl-bg-gray-100 bl-black-icon";
+        "bl-text-neutral-900  bl-border-transparent bl-border-2 bl-bg-neutral-400 dark:bl-text-neutral-300 dark:bl-bg-neutral-800 dark:hover:bl-bg-neutral-700 ";
     } else if (variant === "neutral") {
       colorClass =
         "bl-text-gray-500 bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-border-transparent";
@@ -91,8 +91,10 @@ const Button = function (props: Props) {
     let color = "";
     if (variant === "primary") {
       color = ` bl-h-full bl-fill-white dark:bl-fill-black  `;
-    } else if (variant === "secondary" || variant === "third") {
+    } else if (variant === "secondary") {
       color = ` bl-h-full bl-fill-blue-800 dark:bl-fill-blue-300  `;
+    } else if (variant === "third") {
+      color = ` bl-h-full bl-fill-neutral-800 dark:bl-fill-neutral-300  `;
     }
 
     return `bl-h-full bl-h-4 md:bl-h-4 w-4 ${color}`;

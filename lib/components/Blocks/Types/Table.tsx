@@ -26,7 +26,7 @@ export function TableHeaderCell({
       }
     >
       <div className="bl-flex bl-items-center bl-gap-2">
-        <span>{th}</span>
+        <span>{th.replaceAll("__", " ")}</span>
         {sort && sort[index] && (
           <Icon
             icon={sort?.[index] == "ASC" ? "arrow_top" : "arrow_bottom"}
@@ -86,7 +86,6 @@ function TableCell({ td, eventsRef, showAll }: any) {
 type TableFooterProps = {
   perPage: string;
   setPerPage: (val: number) => void;
-  onReload: () => void;
   setPage: (val: number) => void;
   page: number;
   pagesCount: number;
@@ -94,13 +93,12 @@ type TableFooterProps = {
 export function TableFooter({
   perPage,
   setPerPage,
-  onReload,
   setPage,
   page,
   pagesCount,
 }: TableFooterProps) {
   return (
-    <div className="bl-mt-5 bl-flex bl-justify-between bl-items-center bl-select-none">
+    <div className=" bl-flex bl-justify-between bl-items-center bl-select-none">
       <div className="bl-flex bl-gap-3 bl-items-center">
         <Select
           label="Per page"
@@ -118,15 +116,6 @@ export function TableFooter({
           <option value={50}>50</option>
           <option value={100}>100</option>
         </Select>
-
-        <div
-          className="bl-flex bl-items-center bl-bg-neutral-200 dark:bl-bg-neutral-800 dark:bl-hover:bg-neutral-700 hover:bl-bg-neutral-300 bl-rounded-xl bl-size-10 bl-justify-center bl-shrink-0 "
-          onClick={() => {
-            onReload && onReload();
-          }}
-        >
-          <Icon icon="refresh" className="bl-size-6 bl-fill-neutral-600" />
-        </div>
       </div>
       <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
         {page > 1 && (
@@ -379,11 +368,23 @@ export default function Table({
                 </div>
               )}
 
+              {/* <div
+                className="bl-flex bl-items-center bl-bg-neutral-200 dark:bl-bg-neutral-800 dark:bl-hover:bg-neutral-700 hover:bl-bg-neutral-300 bl-rounded-xl bl-size-10 bl-justify-center bl-shrink-0 "
+                onClick={() => {
+                  onReload && onReload();
+                }}
+              >
+                <Icon
+                  icon="refresh"
+                  className="bl-size-6 bl-fill-neutral-600"
+                />
+              </div> */}
+
               {table.data.length > 0 && (
                 <Button
                   variant="secondary"
                   type="button"
-                  size="lg"
+                  size="xs"
                   text="CSV"
                   onClick={() => generateCSV()}
                 />
@@ -393,11 +394,20 @@ export default function Table({
                 <Button
                   variant="secondary"
                   type="button"
-                  size="lg"
+                  size="xs"
                   text="Excel"
                   onClick={() => generateExcel()}
                 />
               )}
+
+              <Button
+                icon="refresh"
+                variant="third"
+                type="button"
+                size="xs"
+                text="Refresh"
+                onClick={() => onReload && onReload()}
+              />
             </div>
           </div>
         </div>
@@ -475,7 +485,6 @@ export default function Table({
                 <TableFooter
                   perPage={"" + PER_PAGE}
                   setPerPage={setPerPage}
-                  onReload={onReload}
                   setPage={setPage}
                   page={page}
                   pagesCount={pagesCount()}
