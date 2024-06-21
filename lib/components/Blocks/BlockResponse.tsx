@@ -1,4 +1,4 @@
-import Table from "./Types/Table";
+import { Table } from "./Types/Table/Index";
 import ChartLine from "./Types/ChartLine";
 import Values from "./Types/Values";
 import Exception from "./Types/Exception";

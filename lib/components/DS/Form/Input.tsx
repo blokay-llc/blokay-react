@@ -12,6 +12,7 @@ type InputProps = {
   onBlur?: () => void;
   onFocus?: () => void;
   type?: "text" | "password" | "number" | "date" | "email" | "url" | "tel";
+  autocomplete?: "on" | "off";
 };
 
 export default function Input(props: InputProps) {
@@ -47,6 +48,7 @@ export default function Input(props: InputProps) {
         <div>
           <input
             {...props}
+            autoComplete={props.autocomplete || "on"}
             id={id}
             onChange={(e) => {
               props.onChange && props.onChange(e.target.value);

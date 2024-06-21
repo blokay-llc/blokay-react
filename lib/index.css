@@ -115,3 +115,14 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
+.bl-back-button {
+  @apply bl-size-8 bl-p-1 bl-cursor-pointer bl-border-2 bl-border-neutral-100 hover:bl-border-neutral-300 bl-rounded-full bl-bg-white bl-shrink-0 dark:bl-border-black dark:bl-bg-black;
+}
+
+.bl-back-button .bl-icon {
+  @apply bl-fill-neutral-800 dark:bl-fill-neutral-100 bl-w-full bl-h-full;
+}
+.bl-table-no-results {
+  @apply bl-text-center bl-py-10 bl-text-2xl bl-text-neutral-700 bl-px-10;
+}
