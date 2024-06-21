@@ -37,14 +37,8 @@ export function TableFooter({
       </div>
       <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
         {page > 1 && (
-          <div
-            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-neutral-300 bl-rounded-full bl-bg-neutral-50 dark:bl-bg-neutral-800"
-            onClick={() => setPage(page - 1)}
-          >
-            <Icon
-              icon="left"
-              className="bl-fill-neutral-900 dark:bl-fill-neutral-200 bl-w-full bl-h-full"
-            />
+          <div className="bl-action-button" onClick={() => setPage(page - 1)}>
+            <Icon icon="left" className="bl-icon" />
           </div>
         )}
 
@@ -53,14 +47,8 @@ export function TableFooter({
         </span>
 
         {page < pagesCount && (
-          <div
-            className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-neutral-300 bl-rounded-full bl-bg-neutral-50 dark:bl-bg-neutral-800"
-            onClick={() => setPage(page + 1)}
-          >
-            <Icon
-              icon="right"
-              className="bl-fill-neutral-900 dark:bl-fill-neutral-200 bl-w-full bl-h-full"
-            />
+          <div className="bl-action-button" onClick={() => setPage(page + 1)}>
+            <Icon icon="right" className="bl-icon" />
           </div>
         )}
       </div>

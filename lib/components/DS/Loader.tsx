@@ -1,15 +1,15 @@
-import "./Index.css";
-
-const Loader = ({ size, className = "" }: any) => {
+type LoaderProps = {
+  size?: "sm" | "md";
+  className?: string;
+};
+const Loader = ({ size, className = "" }: LoaderProps) => {
   const loaderStyle = {
     width: size === "sm" ? "1rem" : "80px",
     height: size === "sm" ? "1rem" : "80px",
   };
 
-  const loaderClassName = `lds-ring ${size} ${className}`;
-
   return (
-    <div className={loaderClassName} style={loaderStyle}>
+    <div className={`bl-lds-ring ${size} ${className}`} style={loaderStyle}>
       {[1, 2, 3, 4].map((x) => (
         <div key={x} />
       ))}

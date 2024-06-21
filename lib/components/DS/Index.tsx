@@ -5,7 +5,7 @@ import File from "./Form/File";
 import Select from "./Form/Select";
 import Textarea from "./Form/Textarea";
 import Checkbox from "./Form/Checkbox";
-import Loader from "./Loader/Index";
+import Loader from "./Loader";
 import Box from "./Box";
 import Icon from "./Icon";
 import IconTools from "./IconTools";

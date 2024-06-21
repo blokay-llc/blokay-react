@@ -37,7 +37,6 @@ function ChartDoughnut({ data, title = "" }: Props) {
     hoverBorderWidth: "3",
     pointRadius: [0],
     pointHoverRadius: [5],
-    // pointRadius: pointRadius,
     elements: {
       line: {
         tension: 0.4,

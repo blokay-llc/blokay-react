@@ -11,6 +11,45 @@ import {
   TableFooterRow,
 } from "./Index";
 
+const sortTypes = (a: any, b: any) => {
+  if (typeof a == "string" && typeof b == "string") {
+    a = a.toLowerCase();
+    b = b.toLowerCase();
+    if (a > b) {
+      return -1;
+    } else if (b > a) {
+      return 1;
+    }
+    return 0;
+  }
+  return a - b;
+};
+
+const handleSearch = (toSearch: string) => {
+  return (item: any) => {
+    for (let j = 0; j < item.length; j++) {
+      const str = ("" + item[j]).toLowerCase();
+      if (str.includes(toSearch)) {
+        return true;
+      }
+    }
+    return false;
+  };
+};
+
+const handleSort = (criteria: string, valCriteria: string) => {
+  return (a: any, b: any) => {
+    const val1 =
+      typeof a[criteria] == "object" ? a[criteria]?.text : a[criteria];
+    const val2 =
+      typeof b[criteria] == "object" ? b[criteria]?.text : b[criteria];
+    if (valCriteria == "DESC") {
+      return sortTypes(val2, val1);
+    }
+    return sortTypes(val1, val2);
+  };
+};
+
 export default function Table({
   data,
   onReload,
@@ -28,10 +67,6 @@ export default function Table({
 
   useEffect(() => {
     setPage(1);
-  }, []);
-
-  useEffect(() => {
-    setPage(1);
   }, [data]);
 
   const getContent = () => {
@@ -39,43 +74,12 @@ export default function Table({
     if (!content?.length) return [];
     if (sort) {
       const criteria = Object.keys(sort)[0];
-      const valCriteria = sort[criteria];
-      const sortTypes = (a: any, b: any) => {
-        if (typeof a == "string" && typeof b == "string") {
-          a = a.toLowerCase();
-          b = b.toLowerCase();
-          if (a > b) {
-            return -1;
-          } else if (b > a) {
-            return 1;
-          }
-          return 0;
-        }
-        return a - b;
-      };
-      content = content.sort((a: any, b: any) => {
-        const val1 =
-          typeof a[criteria] == "object" ? a[criteria]?.text : a[criteria];
-        const val2 =
-          typeof b[criteria] == "object" ? b[criteria]?.text : b[criteria];
-        if (valCriteria == "DESC") {
-          return sortTypes(val2, val1);
-        }
-        return sortTypes(val1, val2);
-      });
+      content = content.sort(handleSort(criteria, sort[criteria]));
     }
 
     const toSearch = filters.search.toLowerCase();
     if (toSearch) {
-      content = content.filter((item: any) => {
-        for (let j = 0; j < item.length; j++) {
-          const str = ("" + item[j]).toLowerCase();
-          if (str.includes(toSearch)) {
-            return true;
-          }
-        }
-        return false;
-      });
+      content = content.filter(handleSearch(toSearch));
     }
     return content;
   };
@@ -124,11 +128,11 @@ export default function Table({
       />
 
       <div className="bl-box-table">
-        <div className="bl-table bl-overflow-x-scroll b-w-full">
-          <table className="bl-w-full bl-mb-2">
+        <div className="bl-table">
+          <table>
             {data.header && (
               <thead>
-                <tr className="bl-select-none">
+                <tr>
                   {data.header.map((th: any, i: number) => (
                     <TableHeaderCell
                       key={"cell-" + i}
@@ -145,7 +149,7 @@ export default function Table({
             {tableContentVals && (
               <tbody>
                 {tableContentVals.map((row: any, index: number) => (
-                  <tr key={index}>
+                  <tr key={"table-row-" + index}>
                     {row.map((td: any, k: number) => (
                       <TableCell
                         key={"cell-" + k}
@@ -177,16 +181,9 @@ export default function Table({
         )}
       </div>
 
-      <Events
-        ref={eventsRef}
-        onExecuted={() => {
-          onReload && onReload();
-        }}
-      />
+      <Events ref={eventsRef} onExecuted={() => onReload && onReload()} />
       <Modal size="lg" position="center" ref={modalShowTextRef}>
-        <div>
-          <pre>{textAll}</pre>
-        </div>
+        <pre>{textAll}</pre>
       </Modal>
     </>
   );

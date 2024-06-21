@@ -7,7 +7,7 @@ type TableCellProps = {
 };
 export function TableCell({ td, eventsRef, showAll }: TableCellProps) {
   return (
-    <td className="bl-text-sm">
+    <td>
       {typeof td == "object" && (
         <>
           {td == null && <strong>NULL</strong>}
@@ -34,10 +34,7 @@ export function TableCell({ td, eventsRef, showAll }: TableCellProps) {
           {td.length > 50 ? (
             <div>
               <div>{("" + td).substring(0, 50)}...</div>
-              <div
-                className="bl-underline bl-font-bold bl-text-neutral-600 bl-text-xs bl-cursor-pointer"
-                onClick={() => showAll(td)}
-              >
+              <div className="bl-table-show-all" onClick={() => showAll(td)}>
                 Show all
               </div>
             </div>
