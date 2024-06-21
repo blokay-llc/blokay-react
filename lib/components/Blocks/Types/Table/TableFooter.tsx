@@ -16,26 +16,24 @@ export function TableFooter({
   pagesCount,
 }: TableFooterProps) {
   return (
-    <div className=" bl-flex bl-justify-between bl-items-center bl-select-none">
-      <div className="bl-flex bl-gap-3 bl-items-center">
-        <Select
-          label="Per page"
-          value={perPage}
-          onChange={(val: string) => {
-            setPerPage(+val);
-          }}
-          type="select"
-          mb="0"
-        >
-          <option value="">Select an option</option>
-          <option value={5}>5</option>
-          <option value={10}>10</option>
-          <option value={20}>20</option>
-          <option value={50}>50</option>
-          <option value={100}>100</option>
-        </Select>
-      </div>
-      <div className="bl-flex bl-ml-auto bl-gap-2 bl-items-center">
+    <div className=" bl-table-footer">
+      <Select
+        label="Per page"
+        value={perPage}
+        onChange={(val: string) => {
+          setPerPage(+val);
+        }}
+        type="select"
+        mb="0"
+      >
+        <option value="">Select an option</option>
+        <option value={5}>5</option>
+        <option value={10}>10</option>
+        <option value={20}>20</option>
+        <option value={50}>50</option>
+        <option value={100}>100</option>
+      </Select>
+      <div className="bl-table-page">
         {page > 1 && (
           <div className="bl-action-button" onClick={() => setPage(page - 1)}>
             <Icon icon="left" className="bl-icon" />

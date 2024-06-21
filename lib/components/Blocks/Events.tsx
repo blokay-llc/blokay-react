@@ -116,6 +116,4 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
   );
 }
 
-const Events = forwardRef(EventsHandler);
-
-export default Events;
+export default forwardRef(EventsHandler);

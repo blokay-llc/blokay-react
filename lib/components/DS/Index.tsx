@@ -6,7 +6,6 @@ import Select from "./Form/Select";
 import Textarea from "./Form/Textarea";
 import Checkbox from "./Form/Checkbox";
 import Loader from "./Loader";
-import Box from "./Box";
 import Icon from "./Icon";
 import IconTools from "./IconTools";
 import NoItems from "./NoItems";
@@ -19,7 +18,6 @@ export {
   Select,
   Textarea,
   Loader,
-  Box,
   Icon,
   NoItems,
   Checkbox,

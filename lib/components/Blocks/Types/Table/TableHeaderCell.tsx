@@ -14,19 +14,18 @@ export function TableHeaderCell({
 }: TableHeaderCellProps) {
   return (
     <th
-      className="bl-th-sortable"
       onClick={() =>
         setSort({
           [index]: sort?.[index] == "DESC" ? "ASC" : "DESC",
         })
       }
     >
-      <div className="bl-flex bl-items-center bl-gap-2">
+      <div className="bl-table-th">
         <span>{th.replaceAll("__", " ")}</span>
         {sort && sort[index] && (
           <Icon
             icon={sort?.[index] == "ASC" ? "arrow_top" : "arrow_bottom"}
-            className="bl-h-4 bl-w-4 dark:bl-fill-neutral-200 bl-fill-neutral-900"
+            className="bl-table-th-icon"
           />
         )}
       </div>

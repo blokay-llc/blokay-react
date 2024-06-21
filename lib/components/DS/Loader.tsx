@@ -1,11 +1,11 @@
 type LoaderProps = {
-  size?: "sm" | "md";
+  size?: "sm" | "md" | "lg";
   className?: string;
 };
 const Loader = ({ size, className = "" }: LoaderProps) => {
   const loaderStyle = {
-    width: size === "sm" ? "1rem" : "80px",
-    height: size === "sm" ? "1rem" : "80px",
+    width: size === "lg" ? "80px" : "",
+    height: size === "sm" ? "1rem" : "",
   };
 
   return (

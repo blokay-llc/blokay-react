@@ -67,56 +67,43 @@ function BlockField({ row, form, errors, setForm }: any) {
 }
 function BlockForm({ onBack, block, form, setForm, errors, execBlock }: any) {
   return (
-    <div className="bl-py-6 bl-h-full bl-flex bl-items-center bl-justify-center ">
-      <div className=" lg:bl-max-w-96 lg:bl-min-w-96 bl-min-w-[90%] bl-bg-white bl-border-neutral-300 dark:bl-border-white/10 bl-border dark:bl-bg-neutral-900 bl-rounded-xl bl-px-5 bl-pb-5 bl-pt-5 ">
-        <div className="bl-flex bl-items-center bl-gap-3">
-          {onBack && (
-            <div
-              className="bl-flex bl-gap-3 bl-items-center"
-              onClick={() => onBack()}
-            >
-              <div className="bl-size-8 bl-p-1 bl-cursor-pointer hover:bl-bg-slate-300 bl-rounded-full bl-bg-slate-200">
-                <DS.Icon
-                  icon="left"
-                  className="bl-fill-slate-900 bl-w-full bl-h-full"
-                />
-              </div>
-              <div></div>
-            </div>
-          )}
-          <h2 className="bl-text-sm md:bl-text-base bl-font-medium bl-text-neutral-600 dark:bl-text-neutral-300">
-            {block.description}
-          </h2>
-        </div>
-
-        {block.filters?.fields && (
-          <div className="bl-grid bl-grid-cols-2 bl-w-full bl-gap-3 bl-mt-5">
-            {block.filters.fields.map((row: any, index: number) => (
-              <div
-                key={index}
-                className={`${
-                  row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
-                } `}
-              >
-                <BlockField
-                  row={row}
-                  form={form}
-                  errors={errors}
-                  setForm={setForm}
-                />
-              </div>
-            ))}
+    <div className="bl-block-form">
+      <div className="bl-block-form-header">
+        {onBack && (
+          <div className="bl-action-button" onClick={() => onBack()}>
+            <DS.Icon icon="left" className="bl-icon" />
           </div>
         )}
+        <h2 className="bl-block-form-title">{block.description}</h2>
+      </div>
 
-        <div className="bl-mt-5 md:bl-mt-5 bl-border-t-2  bl-border-gray-200 dark:bl-border-neutral-800 bl-pt-3 bl-text-center bl-flex bl-gap-3 md:bl-gap-5  bl-justify-end">
-          <DS.Button
-            text={block?.filters?.button || "Generate"}
-            onClick={() => execBlock(block)}
-            variant="secondary"
-            size="md"
-          />
+      {block.filters?.fields && (
+        <div className="bl-block-form-fields">
+          {block.filters.fields.map((row: any, index: number) => (
+            <div
+              key={index}
+              className={`${
+                row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
+              } `}
+            >
+              <BlockField
+                row={row}
+                form={form}
+                errors={errors}
+                setForm={setForm}
+              />
+            </div>
+          ))}
         </div>
+      )}
+
+      <div className="bl-block-form-footer">
+        <DS.Button
+          text={block?.filters?.button || "Generate"}
+          onClick={() => execBlock(block)}
+          variant="secondary"
+          size="md"
+        />
       </div>
     </div>
   );
@@ -213,33 +200,25 @@ const Block = (props: BlockProps) => {
     getBlock({ neuronId: props.neuronId, neuronKey: props.neuronKey });
   }, []);
 
+  if (exception) {
+    return <div className="bl-exception">{JSON.stringify(exception)}</div>;
+  }
+
   return (
-    <div className="bl-h-full bl-w-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
-      {exception && (
-        <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
-          <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
-            {JSON.stringify(exception)}
-          </div>
-        </div>
-      )}
+    <div className="bl-block bl-group">
       <div
         className={`bl-h-full bl-flex bl-w-full  ${
           !response ? "bl-items-center" : ""
         } bl-justify-center `}
       >
         {loading && (
-          <div className="bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm ">
+          <div className="bl-block-loader">
             <DS.Loader size="md" />
           </div>
         )}
 
         {(!loading || block?.id) && (
-          <div className={`bl-w-full  `}>
-            {!block?.id && (
-              <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
-                This doesn't exists
-              </div>
-            )}
+          <>
             {block &&
               !response &&
               (block.filters.autoExec == false ||
@@ -271,7 +250,7 @@ const Block = (props: BlockProps) => {
                 }
               />
             )}
-          </div>
+          </>
         )}
       </div>
     </div>
@@ -282,15 +261,7 @@ const BlockWrapper = (props: BlockProps) => {
   const { session } = useContext(Context);
 
   if (!session) {
-    return (
-      <div className="bl-h-full bl-w-full bl-group bl-relative  bl-overflow-y-hidden  bl-rounded-2xl bl-pt-0">
-        <div className=" bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm min-h-32 ">
-          <div className="bl-text-center bl-text-neutral-600 bl-text-lg">
-            NO JWT
-          </div>
-        </div>
-      </div>
-    );
+    return <div className="bl-exception"></div>;
   }
 
   return <Block {...props} />;

@@ -4,6 +4,14 @@ import Values from "./Types/Values";
 import Exception from "./Types/Exception";
 import ChartDoughnut from "./Types/ChartDoughnut";
 
+const components: any = {
+  table: Table,
+  line: ChartLine,
+  doughnut: ChartDoughnut,
+  value: Values,
+  exception: Exception,
+};
+
 type BlockResponseProps = {
   block: any;
   response: any;
@@ -18,18 +26,11 @@ const BlockResponse = ({
   onBack,
   autoExecuted,
 }: BlockResponseProps) => {
-  const components: any = {
-    table: Table,
-    line: ChartLine,
-    doughnut: ChartDoughnut,
-    value: Values,
-    exception: Exception,
-  };
   const Component = components[response?.type || "exception"] || Exception;
 
   return (
     <>
-      <div className="  bl-h-full bl-overflow-y-auto bl-p-5 ">
+      <div className="bl-block-response">
         <Component
           data={response.content}
           blockName={block?.description}

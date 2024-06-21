@@ -198,5 +198,4 @@ function Modal(props: ModalProps, ref: any) {
     : null;
 }
 
-const ModalRef = forwardRef(Modal);
-export default ModalRef;
+export default forwardRef(Modal);
