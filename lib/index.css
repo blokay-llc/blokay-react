@@ -129,7 +129,9 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+.bl-input-error {
+  @apply bl-text-left bl-text-red-500 bl-text-sm;
+}
 /* Icon Button */
 
 .bl-icon-btn {
@@ -235,4 +237,25 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .bl-block-form-fields {
   @apply bl-grid bl-grid-cols-2 bl-w-full bl-gap-3 bl-mt-5;
+}
+
+/* Design System */
+
+.bl-btn {
+  @apply bl-appearance-none bl-border-2 bl-rounded-lg bl-inline-block focus:bl-outline-none bl-shadow-sm;
+}
+.bl-btn-primary {
+  @apply bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-neutral-200 hover:bl-bg-black bl-text-white;
+}
+.bl-btn-secondary {
+  @apply bl-text-blue-900  bl-border-transparent bl-border-2 bl-bg-blue-400 dark:bl-text-blue-300 dark:bl-bg-blue-950/70 dark:hover:bl-bg-blue-900;
+}
+.bl-btn-third {
+  @apply bl-text-neutral-900  bl-border-transparent bl-border-2 bl-bg-neutral-400 dark:bl-text-neutral-300 dark:bl-bg-neutral-800 dark:hover:bl-bg-neutral-700;
+}
+.bl-btn-neutral {
+  @apply bl-text-gray-500 bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-border-transparent;
+}
+.bl-btn-disabled {
+  @apply bl-bg-neutral-100 bl-border-neutral-100 dark:bl-bg-neutral-700 dark:bl-border-neutral-700 dark:bl-text-neutral-400 bl-text-gray-500 bl-cursor-not-allowed;
 }

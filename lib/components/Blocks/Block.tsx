@@ -166,7 +166,7 @@ const Block = (props: BlockProps) => {
     if (n.filters?.fields) {
       for (const field of n.filters.fields) {
         if (!form[field.name] && field.isRequired) {
-          errorsTmp[field.name] = "El campo es requerido";
+          errorsTmp[field.name] = "The field is required";
         }
       }
       if (Object.values(errorsTmp).length > 0) {

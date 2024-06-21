@@ -31,7 +31,7 @@ const Button = function (props: Props) {
     text,
     classColor,
     onClick,
-    className,
+    className = "",
   } = props;
 
   const tag = () => {
@@ -55,29 +55,22 @@ const Button = function (props: Props) {
   };
 
   const classNameColor = () => {
-    let colorClass = "";
-
     if (classColor) {
-      colorClass = classColor;
+      return classColor;
     } else if (disabled) {
-      colorClass =
-        " bg-disabled bl-bg-neutral-100 bl-border-neutral-100 dark:bl-bg-neutral-700 dark:bl-border-neutral-700 dark:bl-text-neutral-400 bl-text-gray-500 bl-cursor-not-allowed	 ";
+      return "bl-btn-disabled";
     } else if (variant === "primary") {
-      colorClass = `  bl-border-black bl-bg-black dark:bl-text-black dark:bl-bg-white dark:hover:bl-bg-neutral-200 hover:bl-bg-black bl-text-white   `;
+      return `bl-btn-primary`;
     } else if (variant === "secondary") {
-      colorClass =
-        " bl-text-blue-900  bl-border-transparent bl-border-2 bl-bg-blue-400 dark:bl-text-blue-300 dark:bl-bg-blue-950/70 dark:hover:bl-bg-blue-900 ";
+      return "bl-btn-secondary";
     } else if (variant === "third") {
-      colorClass =
-        "bl-text-neutral-900  bl-border-transparent bl-border-2 bl-bg-neutral-400 dark:bl-text-neutral-300 dark:bl-bg-neutral-800 dark:hover:bl-bg-neutral-700 ";
+      return "bl-btn-third";
     } else if (variant === "neutral") {
-      colorClass =
-        "bl-text-gray-500 bl-bg-neutral-200 hover:bl-bg-neutral-300 bl-border-transparent";
+      return "bl-btn-neutral";
     }
-    return colorClass;
   };
   const classBtn = () => {
-    return `bl-appearance-none bl-border-2 bl-rounded-lg bl-inline-block focus:bl-outline-none  bl-font-base  bl-scale-hover bl-shadow-sm ${className}`;
+    return `bl-btn${className ? " " + className : ""}`;
   };
 
   const propsComputed = () => {

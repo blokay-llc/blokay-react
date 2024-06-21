@@ -47,9 +47,7 @@ export default function Select({
           {children}
         </select>
 
-        {error && (
-          <div className="bl-text-left bl-text-red-500 bl-text-sm">{error}</div>
-        )}
+        {error && <div className="bl-input-error">{error}</div>}
       </div>
     </div>
   );
