@@ -37,6 +37,29 @@ const handleSearch = (toSearch: string) => {
   };
 };
 
+const handleFilters = (filters: any) => {
+  return (item: any) => {
+    for (let j = 0; j < filters.length; j++) {
+      const filter = filters[j];
+      const val = item[filter.col];
+      if (filter.cond == "=" && item[filter.col] != filter.value) {
+        return false;
+      } else if (filter.cond == "!=" && val == filter.value) {
+        return false;
+      } else if (filter.cond == ">" && val < filter.value) {
+        return false;
+      } else if (filter.cond == "<" && val > filter.value) {
+        return false;
+      } else if (filter.cond == "contains" && !val.includes(filter.value)) {
+        return false;
+      } else if (filter.cond == "not_contains" && val.includes(filter.value)) {
+        return false;
+      }
+    }
+    return true;
+  };
+};
+
 const handleSort = (criteria: string, valCriteria: string) => {
   return (a: any, b: any) => {
     const val1 =
@@ -60,7 +83,7 @@ export default function Table({
   const modalShowTextRef: any = useRef();
   const eventsRef: any = useRef();
   const [sort, setSort]: any = useState(null);
-  const [filters, setFilters] = useState({ search: "" });
+  const [filters, setFilters] = useState({ search: "", fields: [] });
   const [page, setPage] = useState(1);
   const [PER_PAGE, setPerPage] = useState(10);
   const [textAll, setTextAll] = useState("");
@@ -80,6 +103,10 @@ export default function Table({
     const toSearch = filters.search.toLowerCase();
     if (toSearch) {
       content = content.filter(handleSearch(toSearch));
+    }
+
+    if (filters.fields.length > 0) {
+      content = content.filter(handleFilters(filters.fields));
     }
     return content;
   };
