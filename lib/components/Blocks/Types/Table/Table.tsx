@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 
 import { Modal } from "../../../DS/Index";
 import Events from "../../Events";
-import { Props } from "../props";
+import { PropsTable } from "../props";
 import {
   TableHeaderCell,
   TableHeader,
@@ -73,19 +73,31 @@ const handleSort = (criteria: string, valCriteria: string) => {
   };
 };
 
-export default function Table({
-  data,
-  onReload,
-  onBack,
-  blockName = "",
-  autoExecuted,
-}: Props) {
+export default function Table(props: PropsTable) {
+  const {
+    data,
+    onReload,
+    onBack,
+    blockName = "",
+    autoExecuted,
+    options: {
+      showHeader = true,
+      showPagination = true,
+      showTitle = true,
+      showSearchBar = true,
+      canExport = true,
+      canFilter = true,
+    },
+  } = props;
+
   const modalShowTextRef: any = useRef();
   const eventsRef: any = useRef();
   const [sort, setSort]: any = useState(null);
   const [filters, setFilters] = useState({ search: "", fields: [] });
   const [page, setPage] = useState(1);
-  const [PER_PAGE, setPerPage] = useState(10);
+  const [PER_PAGE, setPerPage] = useState(
+    showPagination ? 10 : Number.MAX_SAFE_INTEGER
+  );
   const [textAll, setTextAll] = useState("");
 
   useEffect(() => {
@@ -113,6 +125,7 @@ export default function Table({
 
   const tableContent = () => {
     const content = getContent();
+    if (PER_PAGE == Number.MAX_SAFE_INTEGER) return content;
 
     const arr: any = [];
     const from = (page - 1) * PER_PAGE;
@@ -126,7 +139,9 @@ export default function Table({
   };
 
   const pagesCount = () => {
+    if (PER_PAGE == Number.MAX_SAFE_INTEGER) return 1;
     let pages = 0;
+
     const rows = getContent();
     if (rows.length > PER_PAGE) {
       pages = rows.length / PER_PAGE;
@@ -143,16 +158,22 @@ export default function Table({
 
   return (
     <>
-      <TableHeader
-        onBack={onBack}
-        autoExecuted={autoExecuted}
-        blockName={blockName}
-        filters={filters}
-        data={data}
-        setPage={setPage}
-        setFilters={setFilters}
-        onReload={onReload}
-      />
+      {showHeader && (
+        <TableHeader
+          onBack={onBack}
+          autoExecuted={autoExecuted}
+          blockName={blockName}
+          filters={filters}
+          data={data}
+          setPage={setPage}
+          setFilters={setFilters}
+          onReload={onReload}
+          showTitle={showTitle}
+          canExport={canExport}
+          showSearchBar={showSearchBar}
+          canFilter={canFilter}
+        />
+      )}
 
       <div className="bl-box-table">
         <div className="bl-table">
@@ -197,7 +218,7 @@ export default function Table({
           </table>
         </div>
 
-        {data?.data?.length > 10 && (
+        {data?.data?.length > 10 && showPagination && (
           <TableFooter
             perPage={"" + PER_PAGE}
             setPerPage={setPerPage}

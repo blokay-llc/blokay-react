@@ -18,6 +18,7 @@ type BlockResponseProps = {
   onReload: any;
   onBack: any;
   autoExecuted: boolean;
+  defaultOptions?: any;
 };
 const BlockResponse = ({
   block: block,
@@ -25,9 +26,14 @@ const BlockResponse = ({
   onReload,
   onBack,
   autoExecuted,
+  defaultOptions = {},
 }: BlockResponseProps) => {
   const Component = components[response?.type || "exception"] || Exception;
 
+  const options = {
+    ...defaultOptions,
+    ...(block?.options || {}),
+  };
   return (
     <>
       <div className={`bl-block-response bl-response-${response?.type}`}>
@@ -38,6 +44,7 @@ const BlockResponse = ({
           onBack={onBack}
           title={block.description}
           autoExecuted={autoExecuted}
+          options={options}
         />
       </div>
     </>

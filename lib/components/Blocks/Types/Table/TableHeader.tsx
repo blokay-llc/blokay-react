@@ -10,6 +10,10 @@ type TableHeaderProps = {
   setPage: (val: number) => void;
   setFilters: (val: any) => void;
   onReload: () => void;
+  showTitle: boolean;
+  canExport: boolean;
+  showSearchBar: boolean;
+  canFilter: boolean;
 };
 export function TableHeader({
   onBack,
@@ -20,6 +24,10 @@ export function TableHeader({
   setPage,
   setFilters,
   onReload,
+  showTitle,
+  canExport,
+  showSearchBar,
+  canFilter,
 }: TableHeaderProps) {
   const modalFilter: any = useRef();
 
@@ -78,13 +86,14 @@ export function TableHeader({
               <Icon icon="left" className="bl-icon" />
             </div>
           )}
-
-          <div className="bl-text-neutral-800 dark:bl-text-neutral-200">
-            {blockName}
-          </div>
+          {showTitle && (
+            <div className="bl-text-neutral-800 dark:bl-text-neutral-200">
+              {blockName}
+            </div>
+          )}
         </div>
 
-        {data?.data?.length > 10 && (
+        {showSearchBar && data?.data?.length > 10 && (
           <div className="bl-ml-auto lg:bl-w-1/3">
             <Input
               type="text"
@@ -101,7 +110,7 @@ export function TableHeader({
           </div>
         )}
 
-        {data.data.length > 0 && (
+        {canExport && data.data.length > 0 && (
           <Button
             variant="secondary"
             type="button"
@@ -112,7 +121,7 @@ export function TableHeader({
           />
         )}
 
-        {data.data.length > 0 && (
+        {canFilter && data.data.length > 0 && (
           <Button
             variant="secondary"
             type="button"

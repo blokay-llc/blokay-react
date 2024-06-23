@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Props } from "./props";
+import { PropsChart } from "./props";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,20 +22,21 @@ ChartJS.register(
   Legend
 );
 
-const colors = [
-  "#3b82f6",
-  "#22c55e",
-  "#a855f7",
-  "#78716c",
-  "#ea5d0c",
-  "#1e78d1",
-  "#50c677",
-  "#c92b94",
-  "#4f46e5",
-  "#c026d3",
-];
-function ChartLine({ data, title = "" }: Props) {
+function ChartLine({ data, title = "", options }: PropsChart) {
   const [hover, setHover] = useState(false);
+
+  const colors = options?.colors || [
+    "#3b82f6",
+    "#22c55e",
+    "#a855f7",
+    "#78716c",
+    "#ea5d0c",
+    "#1e78d1",
+    "#50c677",
+    "#c92b94",
+    "#4f46e5",
+    "#c026d3",
+  ];
 
   const dataLine = {
     labels: data.labels,
@@ -48,7 +49,7 @@ function ChartLine({ data, title = "" }: Props) {
     })),
   };
 
-  const options: any = {
+  const optionsChart: any = {
     hoverBorderWidth: "3",
     pointRadius: [0],
     pointHoverRadius: [5],
@@ -70,7 +71,7 @@ function ChartLine({ data, title = "" }: Props) {
   };
 
   const optionsHover: any = {
-    ...options,
+    ...optionsChart,
     pointRadius: [3],
   };
 
@@ -79,7 +80,7 @@ function ChartLine({ data, title = "" }: Props) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <Line options={hover ? optionsHover : options} data={dataLine} />
+      <Line options={hover ? optionsHover : optionsChart} data={dataLine} />
     </div>
   );
 }

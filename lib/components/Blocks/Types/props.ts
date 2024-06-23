@@ -1,3 +1,5 @@
+export type ColorValueHex = `#${string}`;
+
 export type Props = {
   title?: string;
   data: any;
@@ -6,3 +8,20 @@ export type Props = {
   blockName?: string;
   autoExecuted?: boolean;
 };
+
+export interface PropsChart extends Props {
+  options: {
+    colors?: ColorValueHex[] | string[];
+  };
+}
+
+export interface PropsTable extends Props {
+  options: {
+    showHeader?: boolean;
+    showPagination?: boolean;
+    canExport?: boolean;
+    showTitle?: boolean;
+    showSearchBar?: boolean;
+    canFilter?: boolean;
+  };
+}

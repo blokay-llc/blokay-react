@@ -2,25 +2,25 @@ import { useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 
 import { Doughnut } from "react-chartjs-2";
-import { Props } from "./props";
+import { PropsChart } from "./props";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
 
-const colors = [
-  "#3b82f6",
-  "#22c55e",
-  "#a855f7",
-  "#78716c",
-  "#ea5d0c",
-  "#1e78d1",
-  "#50c677",
-  "#c92b94",
-  "#4f46e5",
-  "#c026d3",
-];
-
-function ChartDoughnut({ data, title = "" }: Props) {
+function ChartDoughnut({ data, title = "", options }: PropsChart) {
   const [hover, setHover] = useState(false);
+
+  const colors = options?.colors || [
+    "#3b82f6",
+    "#22c55e",
+    "#a855f7",
+    "#78716c",
+    "#ea5d0c",
+    "#1e78d1",
+    "#50c677",
+    "#c92b94",
+    "#4f46e5",
+    "#c026d3",
+  ];
 
   const dataLine = {
     labels: data.labels,
@@ -33,8 +33,8 @@ function ChartDoughnut({ data, title = "" }: Props) {
     })),
   };
 
-  const options: any = {
-    hoverBorderWidth: "3",
+  const optionsChart: any = {
+    hoverBorderWidth: "10",
     pointRadius: [0],
     pointHoverRadius: [5],
     elements: {
@@ -55,7 +55,7 @@ function ChartDoughnut({ data, title = "" }: Props) {
   };
 
   const optionsHover: any = {
-    ...options,
+    ...optionsChart,
     pointRadius: [3],
   };
 
@@ -64,7 +64,7 @@ function ChartDoughnut({ data, title = "" }: Props) {
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
     >
-      <Doughnut options={hover ? optionsHover : options} data={dataLine} />
+      <Doughnut options={hover ? optionsHover : optionsChart} data={dataLine} />
     </div>
   );
 }
