@@ -205,7 +205,7 @@ const Block = (props: BlockProps) => {
   }
 
   return (
-    <div className="bl-block bl-group">
+    <div className="bl-block-box bl-group">
       <div
         className={`bl-h-full bl-flex bl-w-full  ${
           !response ? "bl-items-center" : ""

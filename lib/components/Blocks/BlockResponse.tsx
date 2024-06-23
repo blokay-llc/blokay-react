@@ -30,7 +30,7 @@ const BlockResponse = ({
 
   return (
     <>
-      <div className="bl-block-response">
+      <div className={`bl-block-response bl-response-${response?.type}`}>
         <Component
           data={response.content}
           blockName={block?.description}
