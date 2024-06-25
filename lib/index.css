@@ -9,13 +9,14 @@
 /* Table  */
 
 .bl-table {
-  @apply bl-z-0 bl-flex bl-flex-col bl-relative bl-justify-between bl-gap-4 bl-overflow-auto   bl-w-full bl-overflow-x-scroll  bl-mb-2;
+  @apply bl-z-0 bl-relative bl-justify-between bl-overflow-auto bl-w-full bl-overflow-x-scroll  bl-mb-2;
 }
 .bl-table table {
   @apply bl-w-full bl-text-neutral-800 dark:bl-text-neutral-500;
 }
+
 .bl-table table thead tr th {
-  @apply bl-px-3 bl-text-xs bl-text-neutral-500 dark:bl-text-neutral-300 bl-uppercase bl-h-8 bl-select-none;
+  @apply bl-sticky bl-top-2 dark:bl-bg-neutral-950  bl-px-3 bl-text-xs bl-text-neutral-500 dark:bl-text-neutral-300 bl-uppercase bl-h-8 bl-select-none;
 }
 .bl-table table tr {
   @apply dark:hover:bl-text-neutral-300;
@@ -209,17 +210,19 @@ input[type="number"]::-webkit-outer-spin-button {
 /* Blocks */
 
 .bl-block-box {
-  @apply bl-h-full bl-w-full  bl-relative  bl-overflow-y-hidden bl-min-h-20 bl-rounded-2xl bl-pt-0;
+  @apply bl-h-full bl-w-full  bl-relative bl-min-h-20 bl-rounded-2xl bl-pt-0;
 }
 
 .bl-exception {
   @apply bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm bl-min-h-32 bl-text-center bl-text-neutral-600 bl-text-lg;
 }
+
 .bl-block-loader {
   @apply bl-absolute bl-top-0 bl-left-0 bl-w-full bl-h-full bl-flex bl-justify-center bl-items-center bl-z-10 bl-bg-white/50 dark:bl-bg-black/50 bl-backdrop-blur-sm;
 }
+
 .bl-block-response {
-  @apply bl-h-full bl-overflow-y-auto bl-p-5 bl-w-full;
+  @apply bl-h-full bl-p-5 bl-w-full;
 }
 .bl-block-response.bl-response-table {
   @apply dark:bl-bg-neutral-950;

@@ -175,59 +175,57 @@ export default function Table(props: PropsTable) {
         />
       )}
 
-      <div className="bl-box-table">
-        <div className="bl-table">
-          <table>
-            {data.header && (
-              <thead>
-                <tr>
-                  {data.header.map((th: any, i: number) => (
-                    <TableHeaderCell
-                      key={"cell-" + i}
-                      setSort={setSort}
-                      index={i}
-                      sort={sort}
-                      th={th}
+      <div className="bl-table">
+        <table>
+          {data.header && (
+            <thead>
+              <tr>
+                {data.header.map((th: any, i: number) => (
+                  <TableHeaderCell
+                    key={"cell-" + i}
+                    setSort={setSort}
+                    index={i}
+                    sort={sort}
+                    th={th}
+                  />
+                ))}
+              </tr>
+            </thead>
+          )}
+
+          {tableContentVals && (
+            <tbody>
+              {tableContentVals.map((row: any, index: number) => (
+                <tr key={"table-row-" + index}>
+                  {row.map((td: any, k: number) => (
+                    <TableCell
+                      key={"cell-" + k}
+                      td={td}
+                      eventsRef={eventsRef}
+                      showAll={() => {
+                        setTextAll(td);
+                        modalShowTextRef.current.showModal();
+                      }}
                     />
                   ))}
                 </tr>
-              </thead>
-            )}
+              ))}
 
-            {tableContentVals && (
-              <tbody>
-                {tableContentVals.map((row: any, index: number) => (
-                  <tr key={"table-row-" + index}>
-                    {row.map((td: any, k: number) => (
-                      <TableCell
-                        key={"cell-" + k}
-                        td={td}
-                        eventsRef={eventsRef}
-                        showAll={() => {
-                          setTextAll(td);
-                          modalShowTextRef.current.showModal();
-                        }}
-                      />
-                    ))}
-                  </tr>
-                ))}
-
-                <TableFooterRow data={data} />
-              </tbody>
-            )}
-          </table>
-        </div>
-
-        {data?.data?.length > 10 && showPagination && (
-          <TableFooter
-            perPage={"" + PER_PAGE}
-            setPerPage={setPerPage}
-            setPage={setPage}
-            page={page}
-            pagesCount={pagesCount()}
-          />
-        )}
+              <TableFooterRow data={data} />
+            </tbody>
+          )}
+        </table>
       </div>
+
+      {data?.data?.length > 10 && showPagination && (
+        <TableFooter
+          perPage={"" + PER_PAGE}
+          setPerPage={setPerPage}
+          setPage={setPage}
+          page={page}
+          pagesCount={pagesCount()}
+        />
+      )}
 
       <Events ref={eventsRef} onExecuted={() => onReload && onReload()} />
       <Modal size="lg" position="center" ref={modalShowTextRef}>
