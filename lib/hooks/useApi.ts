@@ -26,7 +26,7 @@ export default function useApi(endpoint: string, session: sessionProps) {
     }
   };
 
-  const blockExec = async function (form: any) {
+  const blockExec = async function (form: any, jwtToken: string | undefined) {
     const data = {
       ...form,
     };
@@ -35,7 +35,7 @@ export default function useApi(endpoint: string, session: sessionProps) {
       const result = await postRequest(
         endpoint + "brain/exec",
         data,
-        session.getJwtToken()
+        jwtToken || session.getJwtToken()
       );
       return result.data;
     } catch (error: any) {

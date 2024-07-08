@@ -40,10 +40,10 @@ export default function SignForm({
       {!children && (
         <>
           <div>
-            <div className="bl-text-stone-600 bl-text-2xl bl-font-medium">
+            <div className="bl-text-neutral-600 bl-text-2xl bl-font-medium">
               Sign in
             </div>
-            <div className="bl-text-stone-600 bl-font-light">
+            <div className="bl-text-neutral-600 bl-font-light">
               Hello again!, login to access
             </div>
           </div>

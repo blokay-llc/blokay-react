@@ -14,6 +14,7 @@ type BlockProps = {
   onChangeForm?: null | (() => void);
   defaultOptions?: any;
   autoExecute?: boolean;
+  jwt?: string | undefined;
 };
 const Block = (props: BlockProps) => {
   const { api } = useContext(Context);
@@ -81,13 +82,16 @@ const Block = (props: BlockProps) => {
     setErrors({});
 
     api
-      .blockExec({
-        blockId: n.id,
-        form: {
-          ...form,
-          ...extraForm,
+      .blockExec(
+        {
+          blockId: n.id,
+          form: {
+            ...form,
+            ...extraForm,
+          },
         },
-      })
+        props.jwt
+      )
       .then((result: any) => {
         setResponse(result.response);
         props.onExec && props.onExec(result.response);
