@@ -3,6 +3,7 @@ import ChartLine from "./Types/ChartLine";
 import Values from "./Types/Values";
 import Exception from "./Types/Exception";
 import ChartDoughnut from "./Types/ChartDoughnut";
+import Message from "./Types/Message";
 
 const components: any = {
   table: Table,
@@ -10,6 +11,7 @@ const components: any = {
   doughnut: ChartDoughnut,
   value: Values,
   exception: Exception,
+  message: Message,
 };
 
 type BlockResponseProps = {
