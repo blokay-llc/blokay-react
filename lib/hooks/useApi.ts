@@ -6,10 +6,10 @@ type sessionProps = {
 };
 
 export default function useApi(endpoint: string, session: sessionProps) {
-  const blockGet = async function ({ neuronId = null, neuronKey = null }) {
+  const blockGet = async function ({ blockId = null, blockKey = null }) {
     const data = {
-      neuronId,
-      neuronKey,
+      blockId,
+      blockKey,
     };
 
     try {

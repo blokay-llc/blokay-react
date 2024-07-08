@@ -7,8 +7,8 @@ type EventsProps = {
 };
 function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
   const subBlockDefault: any = {
-    neuronId: null,
-    neuronKey: "",
+    blockId: null,
+    blockKey: "",
     form: {},
   };
   const [subBlock, setSubBlock] = useState(subBlockDefault);
@@ -18,28 +18,16 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
   const modalConfirmRef: any = useRef();
 
   const functions: any = {
-    openNeuron: ({
-      neuronId,
-      neuronKey,
-      form,
-    }: {
-      neuronId: number;
-      neuronKey: string;
-      form: any;
-    }) => {
-      setSubBlock({ neuronId, neuronKey, form });
-      modalRef.current.showModal();
-    },
     openBlock: ({
-      neuronId,
-      neuronKey,
+      blockId,
+      blockKey,
       form,
     }: {
-      neuronId: number;
-      neuronKey: string;
+      blockId: number;
+      blockKey: string;
       form: any;
     }) => {
-      setSubBlock({ neuronId, neuronKey, form });
+      setSubBlock({ blockId, blockKey, form });
       modalRef.current.showModal();
     },
   };
@@ -65,13 +53,13 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
           hasChanges ? () => modalConfirmRef.current.showModal() : null
         }
       >
-        {(subBlock.neuronKey || subBlock.neuronId) && (
+        {(subBlock.blockKey || subBlock.blockId) && (
           <Block
             onChangeForm={() => {
               setHasChanges(true);
             }}
-            neuronId={subBlock.neuronId}
-            neuronKey={subBlock.neuronKey}
+            blockId={subBlock.blockId}
+            blockKey={subBlock.blockKey}
             defaultForm={subBlock.form}
             onExec={(result: any) => {
               if (

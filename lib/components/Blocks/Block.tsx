@@ -5,8 +5,8 @@ import BlockResponse from "./BlockResponse";
 import { BlockForm } from "./BlockForm";
 
 type BlockProps = {
-  neuronId?: string | null;
-  neuronKey?: string | null;
+  blockId?: string | null;
+  blockKey?: string | null;
   defaultForm?: any;
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
@@ -28,17 +28,17 @@ const Block = (props: BlockProps) => {
     props.onChangeForm && props.onChangeForm();
   };
 
-  const getBlock = ({ neuronId, neuronKey }: any) => {
-    if (!neuronId && !neuronKey) return;
+  const getBlock = ({ blockId, blockKey }: any) => {
+    if (!blockId && !blockKey) return;
     if (loading) return;
     setLoading(true);
     api
-      .blockGet({ neuronId, neuronKey })
+      .blockGet({ blockId, blockKey })
       .then((result: any) => {
-        const n = result.Neuron;
+        const n = result.Block;
         const autoExec =
-          (result.Neuron.filters.autoExec == undefined ||
-            result.Neuron.filters.autoExec) &&
+          (result.Block.filters.autoExec == undefined ||
+            result.Block.filters.autoExec) &&
           !n.filters?.fields?.length;
 
         setAutoxecuted(autoExec);
@@ -77,7 +77,7 @@ const Block = (props: BlockProps) => {
 
     api
       .blockExec({
-        neuronId: n.id,
+        blockId: n.id,
         form,
       })
       .then((result: any) => {
@@ -93,7 +93,7 @@ const Block = (props: BlockProps) => {
   };
 
   useEffect(() => {
-    getBlock({ neuronId: props.neuronId, neuronKey: props.neuronKey });
+    getBlock({ blockId: props.blockId, blockKey: props.blockKey });
   }, []);
 
   if (exception) {

@@ -67,8 +67,8 @@ export default function Input(props: InputProps) {
           } ${props.className} `}
           type={props.type}
         />
+        {props.error && <div className="bl-input-error">{props.error}</div>}
       </div>
-      {props.error && <div className="bl-input-error">{props.error}</div>}
     </>
   );
 }

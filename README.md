@@ -29,7 +29,7 @@ function View() {
   return (
     <div>
       <SignIn>
-        <Block neuronKey="test" />
+        <Block blockKey="test" />
       </SignIn>
       <SignOut>
         <SignForm />
@@ -43,7 +43,7 @@ function View() {
 ### Get Raw JSON
 
 ```ts
-const callRaw = (neuronKey: string, data?: any) => {};
+const callRaw = (blockKey: string, data?: any) => {};
 ```
 
 ```tsx
