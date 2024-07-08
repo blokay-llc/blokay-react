@@ -7,11 +7,13 @@ import { BlockForm } from "./BlockForm";
 type BlockProps = {
   blockId?: string | null;
   blockKey?: string | null;
+  block?: string | null;
   defaultForm?: any;
   onExec?: null | ((response: any) => void);
   onBack?: null | (() => void);
   onChangeForm?: null | (() => void);
   defaultOptions?: any;
+  autoExecute?: boolean;
 };
 const Block = (props: BlockProps) => {
   const { api } = useContext(Context);
@@ -28,18 +30,21 @@ const Block = (props: BlockProps) => {
     props.onChangeForm && props.onChangeForm();
   };
 
-  const getBlock = ({ blockId, blockKey }: any) => {
-    if (!blockId && !blockKey) return;
+  const getBlock = () => {
     if (loading) return;
     setLoading(true);
     api
-      .blockGet({ blockId, blockKey })
+      .blockGet({
+        blockId: props.blockId,
+        blockKey: props.blockKey || props.block,
+      })
       .then((result: any) => {
         const n = result.Block;
         const autoExec =
-          (result.Block.filters.autoExec == undefined ||
+          props.autoExecute ||
+          ((result.Block.filters.autoExec == undefined ||
             result.Block.filters.autoExec) &&
-          !n.filters?.fields?.length;
+            !n.filters?.fields?.length);
 
         setAutoxecuted(autoExec);
         setBlock(n);
@@ -56,7 +61,7 @@ const Block = (props: BlockProps) => {
       });
   };
 
-  const execBlock = (n: any) => {
+  const execBlock = (n: any, extraForm = {}) => {
     const errorsTmp: any = {};
 
     if (n.filters?.fields) {
@@ -78,7 +83,10 @@ const Block = (props: BlockProps) => {
     api
       .blockExec({
         blockId: n.id,
-        form,
+        form: {
+          ...form,
+          ...extraForm,
+        },
       })
       .then((result: any) => {
         setResponse(result.response);
@@ -93,8 +101,15 @@ const Block = (props: BlockProps) => {
   };
 
   useEffect(() => {
-    getBlock({ blockId: props.blockId, blockKey: props.blockKey });
+    getBlock();
   }, []);
+
+  useEffect(() => {
+    if (!props.autoExecute || !block) {
+      return;
+    }
+    execBlock(block, props.defaultForm);
+  }, [props.defaultForm, props.autoExecute]);
 
   if (exception) {
     return <div className="bl-exception">{JSON.stringify(exception)}</div>;
@@ -115,19 +130,16 @@ const Block = (props: BlockProps) => {
 
         {(!loading || block?.id) && (
           <>
-            {block &&
-              !response &&
-              (block.filters.autoExec == false ||
-                block.filters?.fields?.length > 0) && (
-                <BlockForm
-                  onBack={props.onBack}
-                  block={block}
-                  form={form}
-                  setForm={setFormInterceptor}
-                  errors={errors}
-                  execBlock={execBlock}
-                />
-              )}
+            {block && !response && !autoexecuted && (
+              <BlockForm
+                onBack={props.onBack}
+                block={block}
+                form={form}
+                setForm={setFormInterceptor}
+                errors={errors}
+                execBlock={execBlock}
+              />
+            )}
 
             {response && (
               <BlockResponse
