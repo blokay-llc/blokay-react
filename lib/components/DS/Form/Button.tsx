@@ -85,7 +85,7 @@ const Button = function (props: Props) {
     if (variant === "primary") {
       color = ` bl-h-full bl-fill-white dark:bl-fill-black  `;
     } else if (variant === "secondary") {
-      color = ` bl-h-full bl-fill-blue-800 dark:bl-fill-blue-300  `;
+      color = ` bl-h-full bl-fill-neutral-800 dark:bl-fill-neutral-300  `;
     } else if (variant === "third") {
       color = ` bl-h-full bl-fill-neutral-800 dark:bl-fill-neutral-300  `;
     }

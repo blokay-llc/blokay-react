@@ -16,7 +16,7 @@ export function TableFooter({
   pagesCount,
 }: TableFooterProps) {
   return (
-    <div className=" bl-table-footer">
+    <div className="bl-table-footer">
       <Select
         label="Per page"
         value={perPage}

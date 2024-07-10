@@ -53,6 +53,18 @@ function ChartLine({ data, title = "", options }: PropsChart) {
     hoverBorderWidth: "3",
     pointRadius: [0],
     pointHoverRadius: [5],
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
     elements: {
       line: {
         tension: 0.4,
@@ -79,6 +91,7 @@ function ChartLine({ data, title = "", options }: PropsChart) {
     <div
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
+      className="bl-w-full"
     >
       <Line options={hover ? optionsHover : optionsChart} data={dataLine} />
     </div>

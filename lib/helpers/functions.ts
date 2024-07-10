@@ -18,8 +18,8 @@ export const money = (n: string) => {
   j = j > 3 ? j % 3 : 0;
   const formattedVal =
     s +
-    (j ? i.substr(0, j) + t : "") +
-    i.substr(j).replace(/(\d{3})(?=\d)/g, `$1${t}`) +
+    (j ? i.substring(0, j) + t : "") +
+    i.substring(j).replace(/(\d{3})(?=\d)/g, `$1${t}`) +
     (c
       ? d +
         Math.abs(+n - parseInt(i))

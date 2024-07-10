@@ -138,7 +138,7 @@ export function TableHeader({
 
         <Button
           icon="refresh"
-          variant="third"
+          variant="secondary"
           type="button"
           size="xs"
           text="Refresh"
