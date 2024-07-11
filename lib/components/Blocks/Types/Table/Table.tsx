@@ -123,8 +123,10 @@ export default function Table(props: PropsTable) {
     return content;
   };
 
+  const contentComputed = getContent();
+
   const tableContent = () => {
-    const content = getContent();
+    const content = contentComputed;
     if (PER_PAGE == Number.MAX_SAFE_INTEGER) return content;
 
     const arr: any = [];
@@ -141,8 +143,7 @@ export default function Table(props: PropsTable) {
   const pagesCount = () => {
     if (PER_PAGE == Number.MAX_SAFE_INTEGER) return 1;
     let pages = 0;
-
-    const rows = getContent();
+    const rows = contentComputed;
     if (rows.length > PER_PAGE) {
       pages = rows.length / PER_PAGE;
     }
@@ -211,7 +212,7 @@ export default function Table(props: PropsTable) {
                 </tr>
               ))}
 
-              <TableFooterRow data={data} />
+              <TableFooterRow data={contentComputed} />
             </tbody>
           )}
         </table>

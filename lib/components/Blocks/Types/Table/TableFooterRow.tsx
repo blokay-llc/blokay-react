@@ -5,10 +5,10 @@ type TableFooterRowProps = {
 };
 export function TableFooterRow({ data }: TableFooterRowProps) {
   const footerRow = () => {
-    if (!data?.data?.length) return { sum: [] };
+    if (!data?.length) return { sum: [] };
     let actived = false;
-    const sumArray: any = Array(data.header.length).fill(null);
-    for (const row of data.data) {
+    const sumArray: any = Array(data[0].length).fill(null);
+    for (const row of data) {
       for (const index in row) {
         const val: any = row[index];
         if (typeof val != "object") {
