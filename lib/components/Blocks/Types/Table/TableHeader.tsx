@@ -102,7 +102,7 @@ export function TableHeader({
                 setPage(1);
                 setFilters({ ...filters, search: val });
               }}
-              autocomplete="off"
+              autoComplete="off"
               label="Search"
               icon="search"
               className="bl-input-search-main "

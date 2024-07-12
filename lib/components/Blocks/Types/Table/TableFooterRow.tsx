@@ -6,22 +6,23 @@ type TableFooterRowProps = {
 export function TableFooterRow({ data }: TableFooterRowProps) {
   const footerRow = () => {
     if (!data?.length) return { sum: [] };
+
     let actived = false;
     const sumArray: any = Array(data[0].length).fill(null);
     for (const row of data) {
       for (const index in row) {
         const val: any = row[index];
-        if (typeof val != "object") {
+        if (!val?.fn) {
           continue;
         }
         actived = true;
         if (val.fn == "SUM") {
           if (!sumArray[index])
-            sumArray[index] = { val: 0, fn: val.fn, type: val.type };
+            sumArray[index] = { val: 0, fn: val?.fn, type: val.type };
           sumArray[index].val += +val.text;
         } else if (val.fn === "COUNT") {
           if (!sumArray[index])
-            sumArray[index] = { val: 0, fn: val.fn, type: val.type };
+            sumArray[index] = { val: 0, fn: val?.fn, type: val.type };
           sumArray[index].val += 1;
         }
       }
