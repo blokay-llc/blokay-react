@@ -297,7 +297,7 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* BL Values  */
 .bl-values {
-  @apply bl-text-neutral-400 dark:bl-text-neutral-400 bl-bg-white dark:bl-bg-neutral-950;
+  @apply bl-text-neutral-400 dark:bl-text-neutral-400;
 }
 .bl-values-title {
   @apply bl-text-sm bl-font-light bl-pb-3 bl-mb-3 bl-border-b bl-border-neutral-200;
