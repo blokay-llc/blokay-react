@@ -47,10 +47,9 @@ const Block = (props: BlockProps) => {
             result.Block.filters.autoExec) &&
             !n.filters?.fields?.length);
 
-        setAutoxecuted(autoExec);
         setBlock(n);
-
         if (autoExec) {
+          setAutoxecuted(autoExec);
           return execBlock(n);
         } else {
           setLoading(false);
@@ -65,6 +64,7 @@ const Block = (props: BlockProps) => {
   const execBlock = (n: any, extraForm = {}) => {
     const errorsTmp: any = {};
 
+    console.log(extraForm, form);
     if (n.filters?.fields) {
       for (const field of n.filters.fields) {
         if (!form[field.name] && field.isRequired) {
@@ -76,11 +76,8 @@ const Block = (props: BlockProps) => {
         return;
       }
     }
-
-    if (loading) return;
     setLoading(true);
     setErrors({});
-
     api
       .blockExec(
         {
