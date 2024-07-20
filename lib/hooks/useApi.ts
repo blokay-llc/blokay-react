@@ -59,6 +59,7 @@ export default function useApi(endpoint: string, session: sessionProps) {
   };
 
   const sendFile = async function (path: string, formData: any) {
+    formData.append("_token", session.getJwtToken());
     return await postMultimedia(endpoint + path, formData, {});
   };
 
