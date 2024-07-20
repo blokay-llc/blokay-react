@@ -1,6 +1,6 @@
 import "./index.css";
 
-import * as DS from "./components/DS/Index.ts";
+import * as DS from "./components/DS/Index";
 import { BlokayProvider, Context } from "./components/BlokayProvider";
 import SignIn from "./components/Session/SignIn";
 import SignOut from "./components/Session/SignOut";
