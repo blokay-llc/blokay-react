@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Context } from "../BlokayProvider";
-import * as DS from "../../components/DS/Index";
+import * as DS from "../../components/DS/Index.ts";
 
 type SignFormProps = {
   children?: any;

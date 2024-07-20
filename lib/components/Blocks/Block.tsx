@@ -63,8 +63,6 @@ const Block = (props: BlockProps) => {
 
   const execBlock = (n: any, extraForm = {}) => {
     const errorsTmp: any = {};
-
-    console.log(extraForm, form);
     if (n.filters?.fields) {
       for (const field of n.filters.fields) {
         if (!form[field.name] && field.isRequired) {
