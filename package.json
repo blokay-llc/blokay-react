@@ -1,7 +1,7 @@
 {
   "name": "@blokay/react",
   "private": false,
-  "version": "0.1.25",
+  "version": "0.1.26",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -26,7 +26,8 @@
   "exports": {
     ".": {
       "import": "./dist/index.es.js",
-      "require": "./dist/index.umd.js"
+      "require": "./dist/index.umd.js",
+      "types": "./dist/index.d.ts"
     },
     "./dist/style.css": "./dist/style.css"
   },
