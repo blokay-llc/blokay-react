@@ -79,8 +79,12 @@ export const postMultimedia = async function (
   return content;
 };
 
-export const postFile = async function (endpoint: string, data: any) {
-  const opts: any = {
+export const postFile = async function (
+  endpoint: string,
+  data: any,
+  jwtToken: string | null = null
+) {
+  const opts = {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -88,6 +92,9 @@ export const postFile = async function (endpoint: string, data: any) {
     },
     body: JSON.stringify({
       data,
+      _channel: `${getOS()}`,
+      _token: jwtToken,
+      format: "excel",
     }),
   };
 

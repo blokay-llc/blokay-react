@@ -16,6 +16,7 @@ export interface PropsChart extends Props {
 }
 
 export interface PropsTable extends Props {
+  onExport?: any;
   options: {
     showHeader?: boolean;
     showPagination?: boolean;

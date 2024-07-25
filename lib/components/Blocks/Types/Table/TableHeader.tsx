@@ -14,6 +14,7 @@ type TableHeaderProps = {
   canExport: boolean;
   showSearchBar: boolean;
   canFilter: boolean;
+  onExport?: () => void;
 };
 export function TableHeader({
   onBack,
@@ -28,50 +29,9 @@ export function TableHeader({
   canExport,
   showSearchBar,
   canFilter,
+  onExport,
 }: TableHeaderProps) {
   const modalFilter: any = useRef();
-
-  // const generateExcel = () => {
-  //   // Lógica para generar un archivo Excel
-  //   // Implementa según sea necesario
-  // };
-
-  const download = (file: any, filename: string) => {
-    const blob = new Blob([file], { type: "text/csv;charset=utf-8;" });
-
-    const link = document.createElement("a");
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob);
-      link.setAttribute("href", url);
-      link.setAttribute("download", filename);
-      link.style.visibility = "hidden";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    }
-  };
-
-  const FileExportContent = () => {
-    const dataTable = data.data.map((row: any[]) => {
-      return row.map((col) => {
-        if (typeof col == "object") {
-          return col.text || "";
-        }
-        return col;
-      });
-    });
-    return [data.header, ...dataTable];
-  };
-
-  const generateCSV = () => {
-    const rows = FileExportContent();
-    let csvContent = "";
-    rows.forEach((rowArray) => {
-      const row = rowArray.join(",");
-      csvContent += row + "\r\n";
-    });
-    download(csvContent, `${encodeURIComponent(blockName)}.csv`);
-  };
 
   const clickFilter = () => {
     modalFilter.current.showModal();
@@ -117,7 +77,7 @@ export function TableHeader({
             size="xs"
             icon="download"
             text="Export"
-            onClick={() => generateCSV()}
+            onClick={() => onExport && onExport()}
           />
         )}
 

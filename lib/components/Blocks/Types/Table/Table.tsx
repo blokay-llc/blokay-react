@@ -85,6 +85,7 @@ const handleSort = (criteria: string, valCriteria: string) => {
 
 export default function Table(props: PropsTable) {
   const {
+    onExport,
     data,
     onReload,
     onBack,
@@ -183,6 +184,7 @@ export default function Table(props: PropsTable) {
           canExport={canExport}
           showSearchBar={showSearchBar}
           canFilter={canFilter}
+          onExport={onExport}
         />
       )}
 

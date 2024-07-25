@@ -99,6 +99,39 @@ const Block = (props: BlockProps) => {
       });
   };
 
+  const saveData = (data: any, fileName: string) => {
+    let a: any = document.createElement("a");
+    document.body.appendChild(a);
+    a.style = "display: none";
+
+    let url = window.URL.createObjectURL(data);
+
+    a.href = url;
+    a.download = fileName;
+    a.target = "_blank";
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
+
+  const onExport = () => {
+    setLoading(true);
+    let data = {
+      blockId: block.id,
+      form: form,
+    };
+    api
+      .blockExecExcel(data, props.jwt)
+      .then((result: any) => {
+        saveData(result, `${block.description}.xlsx`);
+      })
+      .catch((error: any) => {
+        setException(error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  };
+
   useEffect(() => {
     getBlock();
   }, []);
@@ -142,6 +175,7 @@ const Block = (props: BlockProps) => {
 
             {response && (
               <BlockResponse
+                onExport={onExport}
                 response={response}
                 block={block}
                 onReload={() => {

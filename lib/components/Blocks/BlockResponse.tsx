@@ -21,6 +21,7 @@ type BlockResponseProps = {
   onBack: any;
   autoExecuted: boolean;
   defaultOptions?: any;
+  onExport: (data: any) => void;
 };
 const BlockResponse = ({
   block: block,
@@ -29,6 +30,7 @@ const BlockResponse = ({
   onBack,
   autoExecuted,
   defaultOptions = {},
+  onExport,
 }: BlockResponseProps) => {
   const Component = components[response?.type || "exception"] || Exception;
 
@@ -47,6 +49,7 @@ const BlockResponse = ({
           title={block.description}
           autoExecuted={autoExecuted}
           options={options}
+          onExport={onExport}
         />
       </div>
     </>

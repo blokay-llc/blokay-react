@@ -1,4 +1,4 @@
-import { postRequest, postMultimedia } from "../services/_base";
+import { postRequest, postMultimedia, postFile } from "../services/_base";
 
 type sessionProps = {
   logout: () => void;
@@ -63,5 +63,25 @@ export default function useApi(endpoint: string, session: sessionProps) {
     return await postMultimedia(endpoint + path, formData, {});
   };
 
-  return { blockGet, blockExec, sendFile, createSession };
+  const blockExecExcel = async function (form: any, jwtToken: string) {
+    const data = {
+      ...form,
+    };
+
+    try {
+      const result = await postFile(
+        endpoint + "brain/exec",
+        data,
+        jwtToken || session.getJwtToken()
+      );
+      return result;
+    } catch (error: any) {
+      console.log(error);
+      if (error?.error == "Unauthorized") {
+        session.logout();
+      }
+    }
+  };
+
+  return { blockGet, blockExec, sendFile, createSession, blockExecExcel };
 }
