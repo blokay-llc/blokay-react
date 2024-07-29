@@ -22,7 +22,7 @@ const RenderTd = ({ td, eventsRef, showAll }: TableCellProps) => {
         }}
       />
     );
-  } else if (td?.type == "text") {
+  } else if (td?.text) {
     return <span>{td.text}</span>;
   }
 
