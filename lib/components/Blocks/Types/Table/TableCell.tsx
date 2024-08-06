@@ -11,6 +11,8 @@ const RenderTd = ({ td, eventsRef, showAll }: TableCellProps) => {
     return <strong>NULL</strong>;
   } else if (td?.type == "money") {
     return <span>{money(td.text)}</span>;
+  } else if (td?.type == "number") {
+    return <span>{td.text}</span>;
   } else if (td?.html) {
     return (
       <div
