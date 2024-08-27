@@ -28,7 +28,7 @@ const sortTypes = (a: any, b: any) => {
 const handleSearch = (toSearch: string) => {
   return (item: any) => {
     for (let j = 0; j < item.length; j++) {
-      let val = item[j]?.text || item[j];
+      const val = item[j]?.text || item[j];
       const str = ("" + val).toLowerCase();
       if (str.includes(toSearch)) {
         return true;

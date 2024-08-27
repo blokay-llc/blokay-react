@@ -179,7 +179,7 @@ export function TableHeader({
                     size="lg"
                     onClick={() =>
                       setFilters((prev: any) => {
-                        let newFilters = {
+                        const newFilters = {
                           ...prev,
                           fields: [...prev.fields],
                         };
