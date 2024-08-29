@@ -35,10 +35,13 @@ const Block = (props: BlockProps) => {
     if (loading) return;
     setLoading(true);
     api
-      .blockGet({
-        blockId: props.blockId,
-        blockKey: props.blockKey || props.block,
-      })
+      .blockGet(
+        {
+          blockId: props.blockId,
+          blockKey: props.blockKey || props.block,
+        },
+        props.jwt
+      )
       .then((result: any) => {
         const n = result.Block;
         const autoExec =
@@ -100,11 +103,11 @@ const Block = (props: BlockProps) => {
   };
 
   const saveData = (data: any, fileName: string) => {
-    let a: any = document.createElement("a");
+    const a: any = document.createElement("a");
     document.body.appendChild(a);
     a.style = "display: none";
 
-    let url = window.URL.createObjectURL(data);
+    const url = window.URL.createObjectURL(data);
 
     a.href = url;
     a.download = fileName;
@@ -115,7 +118,7 @@ const Block = (props: BlockProps) => {
 
   const onExport = () => {
     setLoading(true);
-    let data = {
+    const data = {
       blockId: block.id,
       form: form,
     };

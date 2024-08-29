@@ -6,7 +6,10 @@ type sessionProps = {
 };
 
 export default function useApi(endpoint: string, session: sessionProps) {
-  const blockGet = async function ({ blockId = null, blockKey = null }) {
+  const blockGet = async function (
+    { blockId = null, blockKey = null },
+    jwtToken: string | undefined
+  ) {
     const data = {
       blockId,
       blockKey,
@@ -16,7 +19,7 @@ export default function useApi(endpoint: string, session: sessionProps) {
       const result = await postRequest(
         endpoint + "brain/get",
         data,
-        session.getJwtToken()
+        jwtToken || session.getJwtToken()
       );
       return result.data;
     } catch (error: any) {
