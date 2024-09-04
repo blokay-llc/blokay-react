@@ -11,7 +11,6 @@ type TableHeaderProps = {
   setFilters: (val: any) => void;
   onReload: () => void;
   showTitle: boolean;
-  canExport: boolean;
   showSearchBar: boolean;
   canFilter: boolean;
   onExport?: () => void;
@@ -26,7 +25,6 @@ export function TableHeader({
   setFilters,
   onReload,
   showTitle,
-  canExport,
   showSearchBar,
   canFilter,
   onExport,
@@ -70,14 +68,14 @@ export function TableHeader({
           </div>
         )}
 
-        {canExport && data.data.length > 0 && (
+        {onExport && data.data.length > 0 && (
           <Button
             variant="secondary"
             type="button"
             size="xs"
             icon="download"
             text="Export"
-            onClick={() => onExport && onExport()}
+            onClick={() => onExport()}
           />
         )}
 
@@ -96,14 +94,16 @@ export function TableHeader({
           />
         )}
 
-        <Button
-          icon="refresh"
-          variant="secondary"
-          type="button"
-          size="xs"
-          text="Refresh"
-          onClick={() => onReload && onReload()}
-        />
+        {onReload && (
+          <Button
+            icon="refresh"
+            variant="secondary"
+            type="button"
+            size="xs"
+            text="Refresh"
+            onClick={() => onReload()}
+          />
+        )}
       </div>
 
       <Modal size="md" position="center" ref={modalFilter}>

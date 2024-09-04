@@ -1,12 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import { useEffect, useContext } from "react";
 import { Context } from "../BlokayProvider";
 import * as DS from "../DS/Index";
 import BlockResponse from "./BlockResponse";
-import { BlockForm } from "./BlockForm";
+import { Filters } from "./Filters";
+import useResource from "../../hooks/useResource";
 
 type BlockProps = {
-  blockId?: string | null;
-  blockKey?: string | null;
   block?: string | null;
   defaultForm?: any;
   onExec?: null | ((response: any) => void);
@@ -17,134 +16,22 @@ type BlockProps = {
   jwt?: string | undefined;
 };
 const Block = (props: BlockProps) => {
-  const { api } = useContext(Context);
-  const [form, setForm] = useState({ ...props.defaultForm });
-  const [block, setBlock]: any = useState(null);
-  const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [errors, setErrors]: any = useState({});
-  const [exception, setException]: any = useState(null);
-  const [autoexecuted, setAutoxecuted]: any = useState(false);
-
-  const setFormInterceptor = (form: any) => {
-    setForm(form);
-    props.onChangeForm && props.onChangeForm();
-  };
-
-  const getBlock = () => {
-    if (loading) return;
-    setLoading(true);
-    api
-      .blockGet(
-        {
-          blockId: props.blockId,
-          blockKey: props.blockKey || props.block,
-        },
-        props.jwt
-      )
-      .then((result: any) => {
-        const n = result.Block;
-        const autoExec =
-          props.autoExecute ||
-          ((result.Block.filters.autoExec == undefined ||
-            result.Block.filters.autoExec) &&
-            !n.filters?.fields?.length);
-
-        setBlock(n);
-        if (autoExec) {
-          setAutoxecuted(autoExec);
-          return execBlock(n);
-        } else {
-          setLoading(false);
-        }
-      })
-      .catch((error: any) => {
-        setException(error);
-        setLoading(false);
-      });
-  };
-
-  const execBlock = (n: any, extraForm = {}) => {
-    const errorsTmp: any = {};
-    if (n.filters?.fields) {
-      for (const field of n.filters.fields) {
-        if (!form[field.name] && field.isRequired) {
-          errorsTmp[field.name] = "The field is required";
-        }
-      }
-      if (Object.values(errorsTmp).length > 0) {
-        setErrors(errorsTmp);
-        return;
-      }
-    }
-    setLoading(true);
-    setErrors({});
-    api
-      .blockExec(
-        {
-          blockId: n.id,
-          form: {
-            ...form,
-            ...extraForm,
-          },
-        },
-        props.jwt
-      )
-      .then((result: any) => {
-        setResponse(result.response);
-        props.onExec && props.onExec(result.response);
-      })
-      .catch((error: any) => {
-        setException(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  const saveData = (data: any, fileName: string) => {
-    const a: any = document.createElement("a");
-    document.body.appendChild(a);
-    a.style = "display: none";
-
-    const url = window.URL.createObjectURL(data);
-
-    a.href = url;
-    a.download = fileName;
-    a.target = "_blank";
-    a.click();
-    window.URL.revokeObjectURL(url);
-  };
-
-  const onExport = () => {
-    setLoading(true);
-    const data = {
-      blockId: block.id,
-      form: form,
-    };
-    api
-      .blockExecExcel(data, props.jwt)
-      .then((result: any) => {
-        saveData(result, `${block.description}.xlsx`);
-      })
-      .catch((error: any) => {
-        setException(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    getBlock();
-  }, []);
+  const {
+    loading,
+    exception,
+    execute,
+    response,
+    block,
+    clearResponse,
+    onExport,
+  } = useResource(props.block || "", props.jwt);
 
   useEffect(() => {
     if (!props.autoExecute || !block) {
       return;
     }
-    execBlock(block, props.defaultForm);
-  }, [props.defaultForm, props.autoExecute]);
+    execute(props.defaultForm);
+  }, [block, props.defaultForm, props.autoExecute]);
 
   if (exception) {
     return <div className="bl-exception">{JSON.stringify(exception)}</div>;
@@ -165,14 +52,12 @@ const Block = (props: BlockProps) => {
 
         {(!loading || block?.id) && (
           <>
-            {block && !response && !autoexecuted && (
-              <BlockForm
-                onBack={props.onBack}
+            {block && !response && (
+              <Filters
+                title={block?.description}
                 block={block}
-                form={form}
-                setForm={setFormInterceptor}
-                errors={errors}
-                execBlock={execBlock}
+                onBack={props.onBack}
+                execute={execute}
               />
             )}
 
@@ -181,18 +66,12 @@ const Block = (props: BlockProps) => {
                 onExport={onExport}
                 response={response}
                 block={block}
-                onReload={() => {
-                  execBlock(block);
-                }}
-                autoExecuted={block.filters.autoExec}
+                onReload={execute}
+                autoExecuted={false}
                 defaultOptions={props.defaultOptions || {}}
-                onBack={
-                  !autoexecuted
-                    ? () => {
-                        setResponse(null);
-                      }
-                    : null
-                }
+                onBack={() => {
+                  clearResponse();
+                }}
               />
             )}
           </>

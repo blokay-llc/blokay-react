@@ -1,4 +1,6 @@
 import * as DS from "../DS/Index";
+import { useState } from "react";
+import { BlockType } from "../../types/Block";
 
 type BlockFieldProps = {
   row: any;
@@ -69,22 +71,40 @@ export function BlockField({ row, form, errors, setForm }: BlockFieldProps) {
   );
 }
 
-type BlockFormProps = {
-  onBack: any;
-  block: any;
-  form: any;
-  setForm: any;
-  errors: any;
-  execBlock: any;
+type FiltersProps = {
+  block: BlockType;
+  onBack?: any;
+  execute: (form: any) => Promise<any>;
+  title: string;
 };
-export function BlockForm({
-  onBack,
-  block,
-  form,
-  setForm,
-  errors,
-  execBlock,
-}: BlockFormProps) {
+export function Filters(props: FiltersProps) {
+  const [form, setForm] = useState<any>({});
+  const [errors, setErrors]: any = useState({});
+  const [loading, setLoading]: any = useState(false);
+  const { onBack, title, execute, block } = props;
+
+  const handleSubmit = () => {
+    const errorsTmp: any = {};
+    if (block?.filters?.fields) {
+      for (const field of block.filters.fields) {
+        if (!form[field.name] && field.isRequired) {
+          errorsTmp[field.name] = "The field is required";
+        }
+      }
+      if (Object.values(errorsTmp).length > 0) {
+        return setErrors(errorsTmp);
+      }
+    }
+    setLoading(true);
+    setErrors({});
+
+    execute(form)
+      .then(() => {})
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="bl-block-form">
       <div className="bl-block-form-header">
@@ -93,7 +113,7 @@ export function BlockForm({
             <DS.Icon icon="left" className="bl-icon" />
           </div>
         )}
-        <h2 className="bl-block-form-title">{block.description}</h2>
+        <h2 className="bl-block-form-title">{title}</h2>
       </div>
 
       {block.filters?.fields && (
@@ -118,10 +138,11 @@ export function BlockForm({
 
       <div className="bl-block-form-footer">
         <DS.Button
-          text={block?.filters?.button || "Generate"}
-          onClick={() => execBlock(block)}
+          text={block.filters?.button || "Generate"}
+          onClick={handleSubmit}
           variant="secondary"
           size="md"
+          loading={loading}
         />
       </div>
     </div>

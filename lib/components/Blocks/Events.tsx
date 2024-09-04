@@ -58,8 +58,7 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
             onChangeForm={() => {
               setHasChanges(true);
             }}
-            blockId={subBlock.blockId}
-            blockKey={subBlock.blockKey}
+            block={subBlock.blockKey}
             defaultForm={subBlock.form}
             onExec={(result: any) => {
               if (

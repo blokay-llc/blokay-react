@@ -6,7 +6,7 @@ import { PropsChart } from "./props";
 
 ChartJS.register(Tooltip, Legend, ArcElement);
 
-function ChartDoughnut({ data, title = "", options }: PropsChart) {
+function ChartDoughnut({ data, title = "", options = null }: PropsChart) {
   const [hover, setHover] = useState(false);
 
   const colors = options?.colors || [

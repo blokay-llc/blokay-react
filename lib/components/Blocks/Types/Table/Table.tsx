@@ -91,15 +91,15 @@ export default function Table(props: PropsTable) {
     onBack,
     blockName = "",
     autoExecuted,
-    options: {
-      showHeader = true,
-      showPagination = true,
-      showTitle = true,
-      showSearchBar = true,
-      canExport = true,
-      canFilter = true,
-    },
   } = props;
+
+  const {
+    showHeader = true,
+    showPagination = true,
+    showTitle = true,
+    showSearchBar = true,
+    canFilter = true,
+  } = props?.options || {};
 
   const modalShowTextRef: any = useRef();
   const eventsRef: any = useRef();
@@ -181,7 +181,6 @@ export default function Table(props: PropsTable) {
           setFilters={setFilters}
           onReload={onReload}
           showTitle={showTitle}
-          canExport={canExport}
           showSearchBar={showSearchBar}
           canFilter={canFilter}
           onExport={onExport}

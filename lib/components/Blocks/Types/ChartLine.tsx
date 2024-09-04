@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-function ChartLine({ data, title = "", options }: PropsChart) {
+function ChartLine({ data, title = "", options = null }: PropsChart) {
   const [hover, setHover] = useState(false);
 
   const colors = options?.colors || [
