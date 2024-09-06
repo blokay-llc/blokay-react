@@ -220,6 +220,9 @@ export default function Icon({ icon = "", className = "", style = {} }: Props) {
     google: (
       <path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z"></path>
     ),
+    stories: (
+      <path d="M17 4v16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2m-4-2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h9c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2m0 18H4V4h9zm8-14v12c.83 0 1.5-.67 1.5-1.5v-9c0-.83-.67-1.5-1.5-1.5"></path>
+    ),
     database: (
       <>
         <g fill="none">
@@ -229,29 +232,29 @@ export default function Icon({ icon = "", className = "", style = {} }: Props) {
             rx="8"
             ry="3"
             stroke="currentColor"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
           <path
             d="M7 10.842C7.60158 11.0229 8.27434 11.1718 9 11.282"
             stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           />
           <path
             d="M20 12C20 13.6569 16.4183 15 12 15C7.58172 15 4 13.6569 4 12"
             stroke="currentColor"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
           <path
             d="M7 17.842C7.60158 18.0229 8.27434 18.1718 9 18.282"
             stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
+            strokeWidth="1.5"
+            strokeLinecap="round"
           />
           <path
             d="M20 5V19C20 20.6569 16.4183 22 12 22C7.58172 22 4 20.6569 4 19V5"
             stroke="currentColor"
-            stroke-width="1.5"
+            strokeWidth="1.5"
           />
         </g>
       </>

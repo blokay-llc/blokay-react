@@ -19,7 +19,7 @@ const saveData = (data: any, fileName: string) => {
 
 const useResource = (resource: string, jwt?: string | undefined) => {
   const endpoint = "https://app.blokay.com/api/";
-  const session = useSession();
+  const session = useSession(jwt);
   const api = useApi(endpoint, session);
 
   const [block, setBlock] = useState<BlockType | null>(null);
@@ -43,7 +43,7 @@ const useResource = (resource: string, jwt?: string | undefined) => {
       const autoExec = !bl.filters?.fields?.length;
 
       if (autoExec) {
-        return await execute({}, bl.id);
+        return await execute({});
       }
     } catch (error) {
       console.log(error);
@@ -54,11 +54,11 @@ const useResource = (resource: string, jwt?: string | undefined) => {
     }
   };
 
-  const execute = async (form: any = {}, blockId: number | null = null) => {
+  const execute = async (form: any = {}) => {
     try {
       setLoading(true);
       const req = {
-        blockId: block?.id || blockId,
+        blockKey: resource,
         form,
       };
       setForm(form);
