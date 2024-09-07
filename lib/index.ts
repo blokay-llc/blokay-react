@@ -5,8 +5,6 @@ import { BlokayProvider, Context } from "./components/BlokayProvider";
 import SignIn from "./components/Session/SignIn";
 import SignOut from "./components/Session/SignOut";
 import SignForm from "./components/Session/SignForm";
-import Block from "./components/Blocks/Block";
-import BlockResponse from "./components/Blocks/BlockResponse";
 import Events from "./components/Blocks/Events";
 import useResource from "./hooks/useResource";
 import { Filters } from "./components/Blocks/Filters";
@@ -23,8 +21,6 @@ export {
   BlokayProvider,
   Context,
   Events,
-  Block,
-  BlockResponse,
   // components
   Filters,
   useResource,

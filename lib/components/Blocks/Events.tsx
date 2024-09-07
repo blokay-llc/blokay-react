@@ -1,15 +1,15 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Modal, Button } from "../DS/Index";
-import Block from "./Block";
+// import Block from "./Block";
 
 type EventsProps = {
-  onExecuted?: null | (() => void);
+  defaultform?: any;
 };
-function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
+function EventsHandler({ defaultform = {} }: EventsProps, ref: any) {
   const subBlockDefault: any = {
     blockId: null,
     blockKey: "",
-    form: {},
+    form: defaultform,
   };
   const [subBlock, setSubBlock] = useState(subBlockDefault);
   const [hasChanges, setHasChanges] = useState(false);
@@ -54,23 +54,26 @@ function EventsHandler({ onExecuted = null }: EventsProps, ref: any) {
         }
       >
         {(subBlock.blockKey || subBlock.blockId) && (
-          <Block
-            onChangeForm={() => {
-              setHasChanges(true);
-            }}
-            block={subBlock.blockKey}
-            defaultForm={subBlock.form}
-            onExec={(result: any) => {
-              if (
-                !result.type ||
-                result.type == "error" ||
-                result.type == "message"
-              ) {
-                modalRef.current.hideModal();
-                onExecuted && onExecuted();
-              }
-            }}
-          />
+          <div>
+            {JSON.stringify(subBlock)}
+            {/* <Block
+              onChangeForm={() => {
+                setHasChanges(true);
+              }}
+              block={subBlock.blockKey}
+              defaultForm={subBlock.form}
+              onExec={(result: any) => {
+                if (
+                  !result.type ||
+                  result.type == "error" ||
+                  result.type == "message"
+                ) {
+                  modalRef.current.hideModal();
+                  onExecuted && onExecuted();
+                }
+              }}
+            /> */}
+          </div>
         )}
       </Modal>
 

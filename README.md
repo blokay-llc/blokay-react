@@ -29,7 +29,7 @@ function View() {
   return (
     <div>
       <SignIn>
-        <Block blockKey="test" />
+        <web-component blockKey="test" />
       </SignIn>
       <SignOut>
         <SignForm />

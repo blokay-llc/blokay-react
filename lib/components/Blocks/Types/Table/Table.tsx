@@ -239,7 +239,7 @@ export default function Table(props: PropsTable) {
         />
       )}
 
-      <Events ref={eventsRef} onExecuted={() => onReload && onReload()} />
+      <Events ref={eventsRef} />
       <Modal size="lg" position="center" ref={modalShowTextRef}>
         <pre>{textAll}</pre>
       </Modal>

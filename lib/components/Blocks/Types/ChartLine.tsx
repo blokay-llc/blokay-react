@@ -89,13 +89,12 @@ function ChartLine({ data, title = "", options = null }: PropsChart) {
   };
 
   return (
-    <div
+    <Line
+      options={hover ? optionsHover : optionsChart}
+      data={dataLine}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
-      className="bl-w-full"
-    >
-      <Line options={hover ? optionsHover : optionsChart} data={dataLine} />
-    </div>
+    />
   );
 }
 

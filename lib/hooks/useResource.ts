@@ -17,8 +17,9 @@ const saveData = (data: any, fileName: string) => {
   window.URL.revokeObjectURL(url);
 };
 
-const useResource = (resource: string, jwt?: string | undefined) => {
+const useResource = (resource: string) => {
   const endpoint = "https://app.blokay.com/api/";
+  const jwt = (window as any).BLOKAY_JWT;
   const session = useSession(jwt);
   const api = useApi(endpoint, session);
 
