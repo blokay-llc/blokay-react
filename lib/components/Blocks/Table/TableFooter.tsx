@@ -1,4 +1,4 @@
-import { Icon, Select } from "../../../DS/Index";
+import { Icon, Select } from "../../DS/Index";
 
 type TableFooterProps = {
   perPage: string;

@@ -1,4 +1,4 @@
-import { Icon } from "../../../DS/Index";
+import { Icon } from "../../DS/Index";
 
 type TableHeaderCellProps = {
   setSort: (val: any) => void;

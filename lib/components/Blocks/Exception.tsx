@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Icon, Modal } from "../../DS/Index";
+import { Icon, Modal } from "../DS/Index";
 import { Props } from "./props";
 
 function ShowError({ type, message, fullDescription }: any) {

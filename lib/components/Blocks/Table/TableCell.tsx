@@ -1,4 +1,4 @@
-import { money } from "../../../../helpers/functions";
+import { money } from "../../../helpers/functions";
 
 type TableCellProps = {
   td: any;

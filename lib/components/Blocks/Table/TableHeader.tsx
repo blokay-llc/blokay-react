@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Icon, Input, Button, Modal, Select } from "../../../DS/Index";
+import { Icon, Input, Button, Modal, Select } from "../../DS/Index";
 
 type TableHeaderProps = {
   onBack: () => void;
