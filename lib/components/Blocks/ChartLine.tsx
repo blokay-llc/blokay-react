@@ -39,6 +39,19 @@ function ChartLine({ data, title = "", options = null }: PropsChart) {
     "#c026d3",
   ];
 
+  const backgroundColors = options?.backgroundColors || [
+    "#3b82f6",
+    "#22c55e",
+    "#a855f7",
+    "#78716c",
+    "#ea5d0c",
+    "#1e78d1",
+    "#50c677",
+    "#c92b94",
+    "#4f46e5",
+    "#c026d3",
+  ];
+
   const dataLine = {
     labels: data.labels,
     datasets: data.datasets.map((row: any, index: number) => ({
@@ -46,7 +59,8 @@ function ChartLine({ data, title = "", options = null }: PropsChart) {
       label: row.label,
       data: row.vals,
       borderColor: colors[index],
-      backgroundColor: colors[index],
+      fill: "start",
+      backgroundColor: backgroundColors[index],
     })),
   };
 

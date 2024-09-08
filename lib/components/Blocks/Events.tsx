@@ -1,6 +1,6 @@
 import { useState, useRef, forwardRef, useImperativeHandle } from "react";
 import { Modal, Button } from "../DS/Index";
-// import Block from "./Block";
+import Poly from "./Poly";
 
 type EventsProps = {
   defaultform?: any;
@@ -54,26 +54,23 @@ function EventsHandler({ defaultform = {} }: EventsProps, ref: any) {
         }
       >
         {(subBlock.blockKey || subBlock.blockId) && (
-          <div>
-            {JSON.stringify(subBlock)}
-            {/* <Block
-              onChangeForm={() => {
-                setHasChanges(true);
-              }}
-              block={subBlock.blockKey}
-              defaultForm={subBlock.form}
-              onExec={(result: any) => {
-                if (
-                  !result.type ||
-                  result.type == "error" ||
-                  result.type == "message"
-                ) {
-                  modalRef.current.hideModal();
-                  onExecuted && onExecuted();
-                }
-              }}
-            /> */}
-          </div>
+          <Poly
+            // onChangeForm={() => {
+            //   setHasChanges(true);
+            // }}
+            resource={subBlock.blockKey}
+            // defaultForm={subBlock.form}
+            // onExec={(result: any) => {
+            //   if (
+            //     !result.type ||
+            //     result.type == "error" ||
+            //     result.type == "message"
+            //   ) {
+            //     modalRef.current.hideModal();
+            //     onExecuted && onExecuted();
+            //   }
+            // }}
+          />
         )}
       </Modal>
 

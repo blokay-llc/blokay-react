@@ -106,44 +106,46 @@ export function Filters(props: FiltersProps) {
   };
 
   return (
-    <div className="bl-block-form">
-      <div className="bl-block-form-header">
-        {onBack && (
-          <div className="bl-action-button" onClick={() => onBack()}>
-            <DS.Icon icon="left" className="bl-icon" />
+    <div className="bl-justify-center bl-flex bl-items-center bl-h-full bl-w-full">
+      <div className="bl-block-form">
+        <div className="bl-block-form-header">
+          {onBack && (
+            <div className="bl-action-button" onClick={() => onBack()}>
+              <DS.Icon icon="left" className="bl-icon" />
+            </div>
+          )}
+          <h2 className="bl-block-form-title">{title}</h2>
+        </div>
+
+        {block.filters?.fields && (
+          <div className="bl-block-form-fields">
+            {block.filters.fields.map((row: any, index: number) => (
+              <div
+                key={index}
+                className={`${
+                  row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
+                } `}
+              >
+                <BlockField
+                  row={row}
+                  form={form}
+                  errors={errors}
+                  setForm={setForm}
+                />
+              </div>
+            ))}
           </div>
         )}
-        <h2 className="bl-block-form-title">{title}</h2>
-      </div>
 
-      {block.filters?.fields && (
-        <div className="bl-block-form-fields">
-          {block.filters.fields.map((row: any, index: number) => (
-            <div
-              key={index}
-              className={`${
-                row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
-              } `}
-            >
-              <BlockField
-                row={row}
-                form={form}
-                errors={errors}
-                setForm={setForm}
-              />
-            </div>
-          ))}
+        <div className="bl-block-form-footer">
+          <DS.Button
+            text={block.filters?.button || "Generate"}
+            onClick={handleSubmit}
+            variant="secondary"
+            size="md"
+            loading={loading}
+          />
         </div>
-      )}
-
-      <div className="bl-block-form-footer">
-        <DS.Button
-          text={block.filters?.button || "Generate"}
-          onClick={handleSubmit}
-          variant="secondary"
-          size="md"
-          loading={loading}
-        />
       </div>
     </div>
   );
