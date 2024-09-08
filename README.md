@@ -8,18 +8,6 @@ npm install @blokay/react
 
 ## Usage
 
-### Configure Blokay Provider
-
-```tsx
-import { BlokayProvider } from "@blokay/react";
-const businessId = process.env.VITE_BLOKAY_BUSINESS_ID;
-render(
-  <BlokayProvider businessId={businessId}>
-    <App />
-  </BlokayProvider>
-);
-```
-
 ### SignIn SignOut, Call Block
 
 ```tsx

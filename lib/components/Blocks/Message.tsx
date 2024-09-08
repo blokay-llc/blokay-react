@@ -1,4 +1,4 @@
-import { Icon } from "../../DS/Index";
+import { Icon } from "../DS/Index";
 import { Props } from "./props";
 
 export default function Exception({ data }: Props) {

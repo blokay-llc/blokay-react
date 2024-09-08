@@ -1,6 +1,8 @@
-import { useState, useContext, useId } from "react";
+import { useState, useId } from "react";
 import { Icon, Loader } from "../Index";
-import { Context } from "../../BlokayProvider";
+
+import useSession from "../../../hooks/useSession";
+import useApi from "../../../hooks/useApi";
 
 type FileProps = {
   label?: string;
@@ -22,7 +24,10 @@ export default function File({
   onDone,
   onChangeFiles,
 }: FileProps) {
-  const { api } = useContext(Context);
+  const jwt = (window as any).BLOKAY_JWT;
+  const session = useSession(jwt);
+  const api = useApi("https://app.blokay.com/api/", session);
+
   const [loading, setLoading] = useState(false);
   const [prev, setPrev] = useState("");
   const id = useId();

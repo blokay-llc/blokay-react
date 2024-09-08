@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 
-import { Modal } from "../../../DS/Index";
-import Events from "../../Events";
+import { Modal } from "../../DS/Index";
+import Events from "../Events";
 import { PropsTable } from "../props";
 import {
   TableHeaderCell,

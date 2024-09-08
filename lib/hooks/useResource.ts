@@ -18,10 +18,9 @@ const saveData = (data: any, fileName: string) => {
 };
 
 const useResource = (resource: string) => {
-  const endpoint = "https://app.blokay.com/api/";
   const jwt = (window as any).BLOKAY_JWT;
   const session = useSession(jwt);
-  const api = useApi(endpoint, session);
+  const api = useApi("https://app.blokay.com/api/", session);
 
   const [block, setBlock] = useState<BlockType | null>(null);
   const [response, setResponse] = useState<any>(null);

@@ -10,9 +10,7 @@ export type Props = {
 };
 
 export interface PropsChart extends Props {
-  options?: {
-    colors?: ColorValueHex[] | string[];
-  } | null;
+  options?: any;
 }
 
 export interface PropsTable extends Props {

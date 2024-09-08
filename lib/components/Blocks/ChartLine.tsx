@@ -65,22 +65,38 @@ function ChartLine({ data, title = "", options = null }: PropsChart) {
           display: false,
         },
       },
+      ...(options?.scales || {}),
     },
     elements: {
       line: {
         tension: 0.4,
       },
+      ...(options?.elements || {}),
     },
     responsive: true,
     plugins: {
+      tooltip: {
+        backgroundColor: "rgb(255,255,255)",
+        titleColor: "#000",
+        bodyColor: "#000",
+        titleFont: {
+          weight: "bold",
+          // family: 'commic-sans-ms'
+        },
+        ...(options?.plugins?.tooltip || {}),
+      },
       legend: {
         position: "top",
+        ...(options?.plugins?.legend || {}),
       },
       title: {
         display: true,
         text: title,
+        ...(options?.plugins?.title || {}),
       },
+      ...(options?.plugins || {}),
     },
+    ...(options || {}),
   };
 
   const optionsHover: any = {
