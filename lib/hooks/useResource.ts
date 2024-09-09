@@ -63,6 +63,7 @@ const useResource = (resource: string) => {
         blockKey: resource,
         form: {
           ...(defaultForm || {}),
+          ...form,
         },
       };
       setForm(form);
@@ -98,7 +99,10 @@ const useResource = (resource: string) => {
     try {
       const data = {
         blockId: block.id,
-        form,
+        form: {
+          ...(defaultForm || {}),
+          ...form,
+        },
       };
       const result = await api.blockExecExcel(data, jwt || "");
       saveData(result, `${block.description}.xlsx`);

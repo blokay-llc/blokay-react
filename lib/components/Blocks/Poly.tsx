@@ -5,7 +5,10 @@ export default function Poly({
   defaultForm = {},
   onExecuted = null,
 }: any) {
-  const [webComponent, setWebComponent] = useState("");
+  const [webComponent, setWebComponent] = useState({
+    key: "",
+    urlStyles: "",
+  });
 
   const ref = useRef<any>(null);
 
@@ -38,7 +41,10 @@ export default function Poly({
   useEffect(() => {
     (async () => {
       if (!resource) return;
-      setWebComponent("table-component");
+      setWebComponent({
+        key: "table-component",
+        urlStyles: "https://static.blokay.com/bl/5439d989ab4b.css",
+      });
       await waitLoadComponent();
       loaded();
     })();
@@ -47,16 +53,17 @@ export default function Poly({
   const getComponentName = () => {
     const suffix = (window as any)._blokayInstance.getSuffix();
     const prefix = (window as any)._blokayInstance.getSuffix();
+    const component = webComponent.key;
     if (suffix) {
-      return `${webComponent}-${suffix}`;
+      return `${component}-${suffix}`;
     }
     if (prefix) {
-      return `${prefix}-${webComponent}`;
+      return `${prefix}-${component}`;
     }
-    return webComponent;
+    return component;
   };
 
-  if (!webComponent) {
+  if (!webComponent?.key) {
     return null;
   }
 
@@ -68,6 +75,7 @@ export default function Poly({
       prevent-auto-render={true}
       resource={resource}
       defaultform={defaultForm}
+      linkstyles={webComponent.urlStyles}
     />
   );
 }

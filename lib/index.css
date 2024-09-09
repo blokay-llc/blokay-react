@@ -5,7 +5,7 @@
 /* Table  */
 
 .bl-table {
-  @apply bl-z-0 bl-relative bl-justify-between bl-overflow-auto bl-w-full bl-overflow-x-scroll  bl-mb-2;
+  @apply bl-z-0 bl-relative bl-justify-between bl-overflow-auto bl-w-full bl-overflow-x-scroll  bl-mb-2 bl-bg-neutral-50;
 }
 .bl-table table {
   @apply bl-w-full bl-text-neutral-800 dark:bl-text-neutral-500;
