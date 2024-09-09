@@ -35,7 +35,10 @@ export function TableFooter({
       </Select>
       <div className="table-page">
         {page > 1 && (
-          <div className="action-button" onClick={() => setPage(page - 1)}>
+          <div
+            className="block-action-button"
+            onClick={() => setPage(page - 1)}
+          >
             <Icon icon="left" className="icon" />
           </div>
         )}
@@ -45,7 +48,10 @@ export function TableFooter({
         </span>
 
         {page < pagesCount && (
-          <div className="action-button" onClick={() => setPage(page + 1)}>
+          <div
+            className="block-action-button"
+            onClick={() => setPage(page + 1)}
+          >
             <Icon icon="right" className="icon" />
           </div>
         )}

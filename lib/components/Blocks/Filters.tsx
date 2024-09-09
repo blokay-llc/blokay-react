@@ -110,7 +110,7 @@ export function Filters(props: FiltersProps) {
       <div className="block-form">
         <div className="block-form-header">
           {onBack && (
-            <div className="action-button" onClick={() => onBack()}>
+            <div className="block-action-button" onClick={() => onBack()}>
               <DS.Icon icon="left" className="icon" />
             </div>
           )}

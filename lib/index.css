@@ -142,12 +142,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .back-button,
-.action-button {
+.block-action-button {
   @apply size-8 p-1 cursor-pointer border-2 border-neutral-100 hover:border-neutral-300 rounded-full bg-white shrink-0 dark:border-black dark:bg-black;
 }
 
 .back-button .icon,
-.action-button .icon {
+.block-action-button .icon {
   @apply fill-neutral-800 dark:fill-neutral-100 w-full h-full;
 }
 .table-no-results {
