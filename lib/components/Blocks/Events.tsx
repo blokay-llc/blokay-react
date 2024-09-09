@@ -46,15 +46,13 @@ function EventsHandler(
     functions,
   }));
 
-  const handleBlockExecuted = ({ event }: any) => {
-    console.log(event);
+  const handleBlockExecuted = ({ detail }: any) => {
+    const type = detail?.response?.type;
 
-    // if (
-    //         !result.type || result.type == "error" || result.type == "message"
-    //       ) {
-    modalRef.current.hideModal();
-    onExecuted && onExecuted();
-    // }
+    if (!type || type == "error" || type == "message") {
+      modalRef.current.hideModal();
+      onExecuted && onExecuted();
+    }
   };
 
   return (

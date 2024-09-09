@@ -30,13 +30,14 @@ export default function Poly({
 
   const loaded = () => {
     ref.current.setDefaultForm(defaultForm);
-    ref.current.addEventListener("blokay:executed", () => {
-      onExecuted && onExecuted();
+    ref.current.addEventListener("blokay:executed", (event: any) => {
+      onExecuted && onExecuted(event);
     });
   };
 
   useEffect(() => {
     (async () => {
+      if (!resource) return;
       setWebComponent("table-component");
       await waitLoadComponent();
       loaded();
@@ -61,5 +62,12 @@ export default function Poly({
 
   const Component: any = getComponentName();
 
-  return <Component ref={ref} resource={resource} defaultform={defaultForm} />;
+  return (
+    <Component
+      ref={ref}
+      prevent-auto-render={true}
+      resource={resource}
+      defaultform={defaultForm}
+    />
+  );
 }
