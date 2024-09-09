@@ -40,15 +40,15 @@ const Button = function (props: Props) {
   };
 
   const classNameSize = () => {
-    let sizeClass = `bl-py-1 bl-px-2 bl-text-sm`;
+    let sizeClass = `py-1 px-2 text-sm`;
     if (size === "lg") {
-      sizeClass = `bl-py-3 bl-px-5 bl-text-sm`;
+      sizeClass = `py-3 px-5 text-sm`;
     } else if (size === "md") {
-      sizeClass = `bl-py-1.5 bl-px-2 bl-text-sm`;
+      sizeClass = `py-1.5 px-2 text-sm`;
     } else if (size === "sm") {
-      sizeClass = `bl-py-1.5 bl-px-2 bl-text-xs md:bl-text-sm`;
+      sizeClass = `py-1.5 px-2 text-xs md:text-sm`;
     } else if (size === "xs") {
-      sizeClass = `bl-py-1 bl-px-3 bl-text-xs`; // TODO
+      sizeClass = `py-1 px-3 text-xs`; // TODO
     }
 
     return sizeClass;
@@ -58,19 +58,19 @@ const Button = function (props: Props) {
     if (classColor) {
       return classColor;
     } else if (disabled) {
-      return "bl-btn-disabled";
+      return "btn-disabled";
     } else if (variant === "primary") {
-      return `bl-btn-primary`;
+      return `btn-primary`;
     } else if (variant === "secondary") {
-      return "bl-btn-secondary";
+      return "btn-secondary";
     } else if (variant === "third") {
-      return "bl-btn-third";
+      return "btn-third";
     } else if (variant === "neutral") {
-      return "bl-btn-neutral";
+      return "btn-neutral";
     }
   };
   const classBtn = () => {
-    return `bl-btn${className ? " " + className : ""}`;
+    return `btn${className ? " " + className : ""}`;
   };
 
   const propsComputed = () => {
@@ -83,14 +83,14 @@ const Button = function (props: Props) {
   const classNameIcon = () => {
     let color = "";
     if (variant === "primary") {
-      color = ` bl-h-full bl-fill-white dark:bl-fill-black  `;
+      color = ` h-full fill-white dark:fill-black  `;
     } else if (variant === "secondary") {
-      color = ` bl-h-full bl-fill-neutral-800 dark:bl-fill-neutral-300  `;
+      color = ` h-full fill-neutral-800 dark:fill-neutral-300  `;
     } else if (variant === "third") {
-      color = ` bl-h-full bl-fill-neutral-800 dark:bl-fill-neutral-300  `;
+      color = ` h-full fill-neutral-800 dark:fill-neutral-300  `;
     }
 
-    return `bl-h-full bl-h-4 md:bl-h-4 w-4 ${color}`;
+    return `h-full h-4 md:h-4 w-4 ${color}`;
   };
   const ComponentName = tag();
 
@@ -104,15 +104,15 @@ const Button = function (props: Props) {
     >
       {(text || icon) && (
         <span>
-          <div className="bl-flex bl-justify-center bl-items-center bl-gap-2">
+          <div className="flex justify-center items-center gap-2">
             {loading && (
-              <div style={{ flexShrink: 0 }} className="bl-icon-btn">
+              <div style={{ flexShrink: 0 }} className="icon-btn">
                 <Loader size="sm" />
               </div>
             )}
 
             {icon && !loading && (
-              <div style={{ flexShrink: 0 }} className="bl-icon-btn">
+              <div style={{ flexShrink: 0 }} className="icon-btn">
                 <Icon icon={icon} className={classNameIcon()} />
               </div>
             )}

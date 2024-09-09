@@ -21,12 +21,12 @@ export default function Input(props: InputProps) {
 
   return (
     <>
-      <div className="bl-relative bl-w-full">
+      <div className="relative w-full">
         {props.icon && (
           <Icon
-            className={`bl-size-6 ${
-              props.error ? "bl-fill-red-400" : "bl-fill-gray-400"
-            } bl-absolute bl-bottom-2.5 bl-right-4`}
+            className={`size-6 ${
+              props.error ? "fill-red-400" : "fill-gray-400"
+            } absolute bottom-2.5 right-4`}
             icon={props.icon}
           />
         )}
@@ -37,10 +37,10 @@ export default function Input(props: InputProps) {
             if (el) el.focus();
           }}
           htmlFor={id}
-          className={` bl-select-none bl-absolute  bl-duration-300 ${
+          className={` select-none absolute  duration-300 ${
             activeLabel || props.value || props.type === "date"
-              ? " bl-top-2 bl-text-xs bl-left-5 bl-font-medium bl-text-neutral-500 dark:bl-text-neutral-400 "
-              : " bl-top-3 bl-pt-0.5 bl-left-5 bl-font-light bl-text-neutral-600 dark:bl-text-neutral-500 "
+              ? " top-2 text-xs left-5 font-medium text-neutral-500 dark:text-neutral-400 "
+              : " top-3 pt-0.5 left-5 font-light text-neutral-600 dark:text-neutral-500 "
           }`}
         >
           {props.label}
@@ -62,12 +62,12 @@ export default function Input(props: InputProps) {
           }}
           disabled={props.disabled || false}
           value={props.value || ""}
-          className={`bl-app-input bl-appearance-none ${
-            props.error ? "bl-error" : ""
-          } ${props.className} `}
+          className={`app-input appearance-none ${props.error ? "error" : ""} ${
+            props.className
+          } `}
           type={props.type}
         />
-        {props.error && <div className="bl-input-error">{props.error}</div>}
+        {props.error && <div className="input-error">{props.error}</div>}
       </div>
     </>
   );

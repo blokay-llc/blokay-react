@@ -20,12 +20,12 @@ export function TableHeaderCell({
         })
       }
     >
-      <div className="bl-table-th">
+      <div className="table-th">
         <span>{th.replaceAll("__", " ")}</span>
         {sort && sort[index] && (
           <Icon
             icon={sort?.[index] == "ASC" ? "arrow_top" : "arrow_bottom"}
-            className="bl-table-th-icon"
+            className="table-th-icon"
           />
         )}
       </div>

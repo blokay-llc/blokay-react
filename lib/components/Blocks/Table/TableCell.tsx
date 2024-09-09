@@ -30,9 +30,9 @@ const RenderTd = ({ td, eventsRef, showAll }: TableCellProps) => {
 
   if (td?.length > 50) {
     return (
-      <div className="bl-min-w-48">
+      <div className="min-w-48">
         <div>{("" + td).substring(0, 50)}...</div>
-        <div className="bl-table-show-all" onClick={() => showAll(td)}>
+        <div className="table-show-all" onClick={() => showAll(td)}>
           Show all
         </div>
       </div>

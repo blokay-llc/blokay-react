@@ -165,7 +165,7 @@ export default function Table(props: PropsTable) {
   const tableContentVals = tableContent();
 
   if (!data.header?.length && !data.data?.length) {
-    return <div className="bl-table-no-results">No results to display.</div>;
+    return <div className="table-no-results">No results to display.</div>;
   }
 
   return (
@@ -187,7 +187,7 @@ export default function Table(props: PropsTable) {
         />
       )}
 
-      <div className="bl-table">
+      <div className="table">
         <table>
           {data.header && (
             <thead>

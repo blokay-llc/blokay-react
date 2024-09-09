@@ -5,12 +5,10 @@ import { Props } from "./props";
 function ShowError({ type, message, fullDescription }: any) {
   return (
     <div>
-      <div className="bl-text-2xl bl-font-bold bl-uppercase bl-mb-3">
-        {type}
-      </div>
+      <div className="text-2xl font-bold uppercase mb-3">{type}</div>
       <div className="text-red-500">{message}</div>
       {fullDescription && (
-        <div className="bl-font-light bl-text-neutral-800 bl-bg-neutral-200 bl-p-5 bl-rounded-lg bl-mt-5">
+        <div className="font-light text-neutral-800 bg-neutral-200 p-5 rounded-lg mt-5">
           {fullDescription}
         </div>
       )}
@@ -40,13 +38,13 @@ export default function Exception({ data }: Props) {
   return (
     <>
       <div
-        className="bl-absolute bl-top-3 bl-left-3 bl-bg-red-600 hover:bl-bg-red-700 bl-cursor-pointer  bl-text-white bl-px-3 bl-py-1 bl-text-sm bl-rounded-lg bl-z-30 bl-flex bl-items-center bl-gap-1 bl-select-none"
+        className="absolute top-3 left-3 bg-red-600 hover:bg-red-700 cursor-pointer  text-white px-3 py-1 text-sm rounded-lg z-30 flex items-center gap-1 select-none"
         onMouseDown={(e) => {
           e.stopPropagation();
           modalRef.current.showModal();
         }}
       >
-        <Icon icon="error" className="bl-size-4 bl-fill-white" />
+        <Icon icon="error" className="size-4 fill-white" />
         <div> Error</div>
       </div>
 

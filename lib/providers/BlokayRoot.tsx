@@ -26,7 +26,7 @@ const BlokayRoot = ({
       }}
     >
       {exception && (
-        <div className="bl-bg-red-100 dark:bl-bg-red-900 bl-text-red-800 dark:bl-text-red-200 bl-p-3 bl-rounded-lg bl-mb-3">
+        <div className="bg-red-100 dark:bg-red-900 text-red-800 dark:text-red-200 p-3 rounded-lg mb-3">
           {exception.message}
         </div>
       )}

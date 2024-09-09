@@ -74,20 +74,20 @@ function Modal(props: ModalProps, ref: any) {
 
   const positionClass = () => {
     if (position === "center") {
-      return "bl-justify-center bl-items-center bl-rounded-3xl";
+      return "justify-center items-center rounded-3xl";
     }
     return "";
   };
 
   const sizeClass = () => {
     if (size === "sm") {
-      return "lg:bl-w-96 bl-w-full bl-mx-3 ";
+      return "lg:w-96 w-full mx-3 ";
     } else if (size === "md") {
-      return "lg:bl-w-1/2 bl-w-full bl-mx-3 ";
+      return "lg:w-1/2 w-full mx-3 ";
     } else if (size === "lg") {
-      return "lg:bl-w-2/3 bl-w-full bl-mx-3 ";
+      return "lg:w-2/3 w-full mx-3 ";
     } else if (size === "auto") {
-      return "lg:bl-w-max-2/3 bl-w-min-1/3 bl-overflow-x-auto  bl-mx-3 ";
+      return "lg:w-max-2/3 w-min-1/3 overflow-x-auto  mx-3 ";
     }
     return "";
   };
@@ -112,9 +112,9 @@ function Modal(props: ModalProps, ref: any) {
             unmountOnExit
             in={showing}
             timeout={{ enter: 300, exit: 300 }}
-            classNames="bl-modal-back"
+            classNames="modal-back"
           >
-            <div className="bl-fixed bl-z-50 bl-backdrop-blur-sm bl-bg-neutral-600/40  bl-top-0 bl-left-0 bl-w-full bl-h-screen"></div>
+            <div className="fixed z-50 backdrop-blur-sm bg-neutral-600/40  top-0 left-0 w-full h-screen"></div>
           </CSSTransition>
 
           <CSSTransition
@@ -122,58 +122,58 @@ function Modal(props: ModalProps, ref: any) {
             unmountOnExit
             in={showing}
             timeout={{ enter: 500, exit: 500 }}
-            classNames="bl-modalx"
+            classNames="modalx"
           >
             <div
               onMouseDown={(e) => e.stopPropagation()}
               onClick={tryClose}
-              className="bl-fixed bl-z-50  bl-w-full bl-h-screen bl-py-5  bl-top-0 bl-left-0 bl-flex bl-items-center bl-justify-center"
+              className="fixed z-50  w-full h-screen py-5  top-0 left-0 flex items-center justify-center"
             >
               <section
                 onMouseDown={(e) => e.stopPropagation()}
                 onClick={(e) => {
                   e.stopPropagation();
                 }}
-                className={`bl-relative bl-z-50 bl-transition-all dark:bl-text-neutral-200 bl-duration-100 bl-ease-in-out bl-text-black  bl-rounded-xl   ${sizeClass()} ${positionClass()} ${size} ${classSection} ${
-                  bgColor == "white" ? "bl-bg-white dark:bl-bg-neutral-950" : ""
+                className={`relative z-50 transition-all dark:text-neutral-200 duration-100 ease-in-out text-black  rounded-xl   ${sizeClass()} ${positionClass()} ${size} ${classSection} ${
+                  bgColor == "white" ? "bg-white dark:bg-neutral-950" : ""
                 }`}
                 style={{ backgroundColor: bgColor != "white" ? bgColor : "" }}
               >
                 {title && (
-                  <div className="bl-flex bl-justify-between bl-items-center bl-border-b dark:bl-border-neutral-800 bl-border-neutral-200 bl-py-4 bl-px-4">
-                    <div className="bl-flex bl-items-center bl-justify-start bl-gap-3">
+                  <div className="flex justify-between items-center border-b dark:border-neutral-800 border-neutral-200 py-4 px-4">
+                    <div className="flex items-center justify-start gap-3">
                       <div
-                        className="bl-action-icon"
+                        className="action-icon"
                         onClick={() => clickBack && clickBack()}
-                        style={{ display: clickBack ? "bl-block" : "bl-none" }}
+                        style={{ display: clickBack ? "block" : "none" }}
                       >
                         <svg viewBox="0 0 24 24">
                           <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"></path>
                         </svg>
                       </div>
-                      <h2 className="bl-text-base md:bl-text-base">{title}</h2>
+                      <h2 className="text-base md:text-base">{title}</h2>
                     </div>
                     <div
-                      className="hover:bl-bg-neutral-200 dark:hover:bl-bg-neutral-800 bl-p-1 bl-rounded-full bl-cursor-pointer"
+                      className="hover:bg-neutral-200 dark:hover:bg-neutral-800 p-1 rounded-full cursor-pointer"
                       onClick={hideModal}
                     >
                       <Icon
-                        className="bl-w-6 bl-h-6 bl-fill-black dark:bl-fill-neutral-200"
+                        className="w-6 h-6 fill-black dark:fill-neutral-200"
                         icon={position !== "bottom" ? "close" : "arrow_bottom"}
                       />
                     </div>
                   </div>
                 )}
                 {error && (
-                  <div className=" bl-w-full  bl-p-3 bl-bg-red-600 bl-items-center bl-text-indigo-100 bl-leading-none bl-flex lg:bl-inline-flex bl-font-light">
-                    <span className="bl-mr-2 bl-text-left bl-flex-auto bl-text-white">
+                  <div className=" w-full  p-3 bg-red-600 items-center text-indigo-100 leading-none flex lg:inline-flex font-light">
+                    <span className="mr-2 text-left flex-auto text-white">
                       {error}
                     </span>
                   </div>
                 )}
                 <div
-                  className={`bl-py-5 bl-px-4 bl-overflow-y-auto  ${
-                    error ? "bl-with-error" : ""
+                  className={`py-5 px-4 overflow-y-auto  ${
+                    error ? "with-error" : ""
                   }`}
                   style={{
                     maxHeight: `calc(100vh - ${
@@ -185,8 +185,8 @@ function Modal(props: ModalProps, ref: any) {
                 </div>
 
                 {footer && (
-                  <div className="bl-py-5 bl-px-4 bl-border-t dark:bl-border-neutral-800 bl-border-neutral-200">
-                    <div className="bl-footer">{footer}</div>
+                  <div className="py-5 px-4 border-t dark:border-neutral-800 border-neutral-200">
+                    <div className="footer">{footer}</div>
                   </div>
                 )}
               </section>

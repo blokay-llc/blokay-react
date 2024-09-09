@@ -9,7 +9,7 @@ const Loader = ({ size, className = "" }: LoaderProps) => {
   };
 
   return (
-    <div className={`bl-lds-ring ${size} ${className}`} style={loaderStyle}>
+    <div className={`lds-ring ${size} ${className}`} style={loaderStyle}>
       {[1, 2, 3, 4].map((x) => (
         <div key={x} />
       ))}

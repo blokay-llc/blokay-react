@@ -46,7 +46,7 @@ export function TableFooterRow({ data }: TableFooterRowProps) {
       <tr>
         {footerRowVals.map((item: any, index: number) => (
           <td key={"footer-row-" + index}>
-            <span className="bl-text-sm bl-font-bold">
+            <span className="text-sm font-bold">
               <span>{item?.val}</span>
             </span>
           </td>

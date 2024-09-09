@@ -16,7 +16,7 @@ export function TableFooter({
   pagesCount,
 }: TableFooterProps) {
   return (
-    <div className="bl-table-footer">
+    <div className="table-footer">
       <Select
         label="Per page"
         value={perPage}
@@ -33,10 +33,10 @@ export function TableFooter({
         <option value={50}>50</option>
         <option value={100}>100</option>
       </Select>
-      <div className="bl-table-page">
+      <div className="table-page">
         {page > 1 && (
-          <div className="bl-action-button" onClick={() => setPage(page - 1)}>
-            <Icon icon="left" className="bl-icon" />
+          <div className="action-button" onClick={() => setPage(page - 1)}>
+            <Icon icon="left" className="icon" />
           </div>
         )}
 
@@ -45,8 +45,8 @@ export function TableFooter({
         </span>
 
         {page < pagesCount && (
-          <div className="bl-action-button" onClick={() => setPage(page + 1)}>
-            <Icon icon="right" className="bl-icon" />
+          <div className="action-button" onClick={() => setPage(page + 1)}>
+            <Icon icon="right" className="icon" />
           </div>
         )}
       </div>

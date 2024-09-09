@@ -8,15 +8,15 @@ function Values({ title, data }: Props) {
     return arr;
   };
   return (
-    <div className="bl-values">
-      <h2 className="bl-values-title">{title}</h2>
-      <div className="bl-values-container">
+    <div className="values">
+      <h2 className="values-title">{title}</h2>
+      <div className="values-container">
         {getValues().map((val: any) => (
-          <div key={val.label} className="bl-text-center">
-            <div className="bl-values-label ">
+          <div key={val.label} className="text-center">
+            <div className="values-label ">
               {val.label.replaceAll("__", " ")}
             </div>
-            <div className="bl-values-value">{val.value}</div>
+            <div className="values-value">{val.value}</div>
           </div>
         ))}
       </div>

@@ -18,11 +18,11 @@ export default function Select({
   const id = useId();
 
   return (
-    <div className="bl-relative ">
+    <div className="relative ">
       <label
         htmlFor={id}
-        className={` bl-absolute bl-left-4 bl-appearance-none	 bl-text-neutral-600 dark:bl-text-neutral-500 
-          bl-top-2 bl-text-xs bl-font-light bl-duration-300`}
+        className={` absolute left-4 appearance-none	 text-neutral-600 dark:text-neutral-500 
+          top-2 text-xs font-light duration-300`}
       >
         {label}
       </label>
@@ -40,14 +40,14 @@ export default function Select({
             extraProps.onFocus && extraProps.onFocus();
           }}
           value={value}
-          className={`bl-app-input ${error ? "bl-error" : ""}  ${
+          className={`app-input ${error ? "error" : ""}  ${
             extraProps.className
           }`}
         >
           {children}
         </select>
 
-        {error && <div className="bl-input-error">{error}</div>}
+        {error && <div className="input-error">{error}</div>}
       </div>
     </div>
   );

@@ -263,7 +263,7 @@ export default function Icon({ icon = "", className = "", style = {} }: Props) {
 
   if (icons[icon]) {
     return (
-      <svg viewBox="0 0 24 24" className={`bl-icon ${className}`} style={style}>
+      <svg viewBox="0 0 24 24" className={`icon ${className}`} style={style}>
         {icons[icon]}
       </svg>
     );

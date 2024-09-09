@@ -37,22 +37,22 @@ export function TableHeader({
 
   return (
     <>
-      <div className="bl-mb-5 bl-justify-end bl-flex bl-items-center bl-gap-3">
-        <div className="bl-flex bl-gap-3 bl-items-center bl-mr-auto">
+      <div className="mb-5 justify-end flex items-center gap-3">
+        <div className="flex gap-3 items-center mr-auto">
           {onBack && !autoExecuted && (
-            <div className="bl-back-button" onClick={onBack}>
-              <Icon icon="left" className="bl-icon" />
+            <div className="back-button" onClick={onBack}>
+              <Icon icon="left" className="icon" />
             </div>
           )}
           {showTitle && (
-            <div className="bl-text-neutral-800 dark:bl-text-neutral-200">
+            <div className="text-neutral-800 dark:text-neutral-200">
               {blockName}
             </div>
           )}
         </div>
 
         {showSearchBar && data?.data?.length > 10 && (
-          <div className="bl-ml-auto lg:bl-w-1/3">
+          <div className="ml-auto lg:w-1/3">
             <Input
               type="text"
               value={filters.search}
@@ -63,7 +63,7 @@ export function TableHeader({
               autoComplete="off"
               label="Search"
               icon="search"
-              className="bl-input-search-main "
+              className="input-search-main "
             />
           </div>
         )}
@@ -108,13 +108,10 @@ export function TableHeader({
 
       <Modal size="md" position="center" ref={modalFilter}>
         {filters.fields.length > 0 && (
-          <div className="bl-flex bl-flex-col bl-gap-3 bl-mb-5">
+          <div className="flex flex-col gap-3 mb-5">
             {filters.fields.map((item: any, index: any) => (
-              <div
-                className="bl-grid bl-grid-cols-12 bl-items-center bl-gap-2"
-                key={index}
-              >
-                <div className="bl-col-span-4">
+              <div className="grid grid-cols-12 items-center gap-2" key={index}>
+                <div className="col-span-4">
                   <Select
                     label="Column"
                     value={item.col}
@@ -135,7 +132,7 @@ export function TableHeader({
                     ))}
                   </Select>
                 </div>
-                <div className="bl-col-span-3">
+                <div className="col-span-3">
                   <Select
                     label="Condition"
                     value={item.cond}
@@ -157,7 +154,7 @@ export function TableHeader({
                     <option value="not_contains">Not contains</option>
                   </Select>
                 </div>
-                <div className="bl-col-span-4">
+                <div className="col-span-4">
                   <Input
                     label="Value"
                     value={item.value}
@@ -171,7 +168,7 @@ export function TableHeader({
                     type="text"
                   />
                 </div>
-                <div className="bl-col-span-1">
+                <div className="col-span-1">
                   <Button
                     icon="delete"
                     variant="third"

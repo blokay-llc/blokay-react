@@ -106,25 +106,23 @@ export function Filters(props: FiltersProps) {
   };
 
   return (
-    <div className="bl-justify-center bl-flex bl-items-center bl-h-full bl-w-full">
-      <div className="bl-block-form">
-        <div className="bl-block-form-header">
+    <div className="justify-center flex items-center h-full w-full">
+      <div className="block-form">
+        <div className="block-form-header">
           {onBack && (
-            <div className="bl-action-button" onClick={() => onBack()}>
-              <DS.Icon icon="left" className="bl-icon" />
+            <div className="action-button" onClick={() => onBack()}>
+              <DS.Icon icon="left" className="icon" />
             </div>
           )}
-          <h2 className="bl-block-form-title">{title}</h2>
+          <h2 className="block-form-title">{title}</h2>
         </div>
 
         {filters.fields && (
-          <div className="bl-block-form-fields">
+          <div className="block-form-fields">
             {filters.fields.map((row: any, index: number) => (
               <div
                 key={index}
-                className={`${
-                  row.grid == 6 ? "bl-col-span-1" : "bl-col-span-2"
-                } `}
+                className={`${row.grid == 6 ? "col-span-1" : "col-span-2"} `}
               >
                 <BlockField
                   row={row}
@@ -137,7 +135,7 @@ export function Filters(props: FiltersProps) {
           </div>
         )}
 
-        <div className="bl-block-form-footer">
+        <div className="block-form-footer">
           <DS.Button
             text={filters?.button || "Generate"}
             onClick={handleSubmit}

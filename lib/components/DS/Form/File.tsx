@@ -73,13 +73,13 @@ export default function File({
 
   const renderImage = () => {
     if (loading) {
-      return <Loader className="bl-mx-auto bl-px-3" size="sm" />;
+      return <Loader className="mx-auto px-3" size="sm" />;
     } else if (previewImage()) {
       return (
         <img
           src={previewImage()}
           alt="preview"
-          className="bl-rounded-lg bl-mx-auto"
+          className="rounded-lg mx-auto"
           style={{ width: "50px", height: "50px" }}
         />
       );
@@ -87,21 +87,21 @@ export default function File({
       return (
         <Icon
           icon="pdf"
-          className="bl-h-10 bl-fill-neutral-800 dark:bl-fill-neutral-200"
+          className="h-10 fill-neutral-800 dark:fill-neutral-200"
         />
       );
     } else if (["csv", "xls", "xlsx"].includes(ext())) {
       return (
         <Icon
           icon="excel"
-          className="bl-h-10 bl-fill-neutral-800 dark:bl-fill-neutral-200"
+          className="h-10 fill-neutral-800 dark:fill-neutral-200"
         />
       );
     } else {
       return (
         <Icon
           icon="upload"
-          className="bl-h-10 bl-fill-neutral-800 dark:bl-fill-neutral-200"
+          className="h-10 fill-neutral-800 dark:fill-neutral-200"
         />
       );
     }
@@ -109,26 +109,23 @@ export default function File({
 
   return (
     <div
-      className={`bl-p-2 bl-rounded-lg bl-inline-block bl-bg-neutral-100 dark:bl-bg-white/5 dark:bl-border-neutral-900 dark:hover:bl-bg-black bl-border-2 bl-border-neutral-200 hover:bl-bg-neutral-200 bl-w-full  ${classSelector} ${size}`}
+      className={`p-2 rounded-lg inline-block bg-neutral-100 dark:bg-white/5 dark:border-neutral-900 dark:hover:bg-black border-2 border-neutral-200 hover:bg-neutral-200 w-full  ${classSelector} ${size}`}
     >
-      <input type="file" className="bl-hidden" id={id} onChange={onChange} />
+      <input type="file" className="hidden" id={id} onChange={onChange} />
 
-      <label
-        htmlFor={id}
-        className=" bl-items-center bl-gap-3 bl-cursor-pointer bl-flex"
-      >
-        <div className="bl-prev">{renderImage()}</div>
+      <label htmlFor={id} className=" items-center gap-3 cursor-pointer flex">
+        <div className="prev">{renderImage()}</div>
 
         <div>
           {label ? (
-            <div className="bl-text-sm bl-block bl-py-1 bl-text-neutral-800 dark:bl-text-neutral-100 bl-font-medium">
+            <div className="text-sm block py-1 text-neutral-800 dark:text-neutral-100 font-medium">
               {label}
             </div>
           ) : null}
 
-          <div className="bl-text-left bl-font-light bl-text-xs bl-text-neutral-600 dark:bl-text-neutral-300">
-            <p className="md:hidden bl-block">Click here to select a file</p>
-            <p className="hidden md:bl-block">Touch here to select.</p>
+          <div className="text-left font-light text-xs text-neutral-600 dark:text-neutral-300">
+            <p className="md:hidden block">Click here to select a file</p>
+            <p className="hidden md:block">Touch here to select.</p>
           </div>
         </div>
       </label>
