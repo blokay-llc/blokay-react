@@ -1,10 +1,46 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
-export default function Poly({ resource = "" }) {
+export default function Poly({
+  resource = "",
+  defaultForm = {},
+  onExecuted = null,
+}: any) {
   const [webComponent, setWebComponent] = useState("");
 
+  const ref = useRef<any>(null);
+
+  const waitLoadComponent = async () => {
+    const sleep = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
+    let retries = 100;
+    let canSet: any = null;
+
+    while (retries > 0) {
+      canSet = ref.current?.setDefaultForm;
+      if (canSet) {
+        return true;
+      }
+
+      await sleep(30);
+      retries--;
+    }
+
+    throw new Error("setDefaultForm not found");
+  };
+
+  const loaded = () => {
+    ref.current.setDefaultForm(defaultForm);
+    ref.current.addEventListener("blokay:executed", () => {
+      onExecuted && onExecuted();
+    });
+  };
+
   useEffect(() => {
-    setWebComponent("table-component");
+    (async () => {
+      setWebComponent("table-component");
+      await waitLoadComponent();
+      loaded();
+    })();
   }, [resource]);
 
   const getComponentName = () => {
@@ -23,12 +59,7 @@ export default function Poly({ resource = "" }) {
     return null;
   }
 
-  return (
-    <div
-      className={`dark:border-white/10 border-neutral-300 border rounded-xl  overflow-y-auto max-h-full h-full p-5 bg-neutral-100 dark:bg-transparent `}
-      dangerouslySetInnerHTML={{
-        __html: `<${getComponentName()} resource="${resource}" className="w-full h-full"  />`,
-      }}
-    />
-  );
+  const Component: any = getComponentName();
+
+  return <Component ref={ref} resource={resource} defaultform={defaultForm} />;
 }

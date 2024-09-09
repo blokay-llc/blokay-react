@@ -72,7 +72,7 @@ export function BlockField({ row, form, errors, setForm }: BlockFieldProps) {
 }
 
 type FiltersProps = {
-  block: BlockType;
+  filters: BlockType["filters"];
   onBack?: any;
   execute: (form: any) => Promise<any>;
   title: string;
@@ -81,12 +81,12 @@ export function Filters(props: FiltersProps) {
   const [form, setForm] = useState<any>({});
   const [errors, setErrors]: any = useState({});
   const [loading, setLoading]: any = useState(false);
-  const { onBack, title, execute, block } = props;
+  const { onBack, title, execute, filters } = props;
 
   const handleSubmit = () => {
     const errorsTmp: any = {};
-    if (block?.filters?.fields) {
-      for (const field of block.filters.fields) {
+    if (filters?.fields) {
+      for (const field of filters.fields) {
         if (!form[field.name] && field.isRequired) {
           errorsTmp[field.name] = "The field is required";
         }
@@ -117,9 +117,9 @@ export function Filters(props: FiltersProps) {
           <h2 className="bl-block-form-title">{title}</h2>
         </div>
 
-        {block.filters?.fields && (
+        {filters.fields && (
           <div className="bl-block-form-fields">
-            {block.filters.fields.map((row: any, index: number) => (
+            {filters.fields.map((row: any, index: number) => (
               <div
                 key={index}
                 className={`${
@@ -139,7 +139,7 @@ export function Filters(props: FiltersProps) {
 
         <div className="bl-block-form-footer">
           <DS.Button
-            text={block.filters?.button || "Generate"}
+            text={filters?.button || "Generate"}
             onClick={handleSubmit}
             variant="secondary"
             size="md"

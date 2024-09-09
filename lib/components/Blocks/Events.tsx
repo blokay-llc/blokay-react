@@ -4,8 +4,12 @@ import Poly from "./Poly";
 
 type EventsProps = {
   defaultform?: any;
+  onExecuted?: any;
 };
-function EventsHandler({ defaultform = {} }: EventsProps, ref: any) {
+function EventsHandler(
+  { defaultform = {}, onExecuted = null }: EventsProps,
+  ref: any
+) {
   const subBlockDefault: any = {
     blockId: null,
     blockKey: "",
@@ -42,6 +46,17 @@ function EventsHandler({ defaultform = {} }: EventsProps, ref: any) {
     functions,
   }));
 
+  const handleBlockExecuted = ({ event }: any) => {
+    console.log(event);
+
+    // if (
+    //         !result.type || result.type == "error" || result.type == "message"
+    //       ) {
+    modalRef.current.hideModal();
+    onExecuted && onExecuted();
+    // }
+  };
+
   return (
     <>
       <Modal
@@ -58,18 +73,9 @@ function EventsHandler({ defaultform = {} }: EventsProps, ref: any) {
             // onChangeForm={() => {
             //   setHasChanges(true);
             // }}
+            onExecuted={handleBlockExecuted}
             resource={subBlock.blockKey}
-            // defaultForm={subBlock.form}
-            // onExec={(result: any) => {
-            //   if (
-            //     !result.type ||
-            //     result.type == "error" ||
-            //     result.type == "message"
-            //   ) {
-            //     modalRef.current.hideModal();
-            //     onExecuted && onExecuted();
-            //   }
-            // }}
+            defaultForm={subBlock.form}
           />
         )}
       </Modal>

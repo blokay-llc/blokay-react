@@ -8,6 +8,7 @@ import Table from "./components/Blocks/Table/Table";
 import ChartDoughnut from "./components/Blocks/ChartDoughnut";
 import ChartLine from "./components/Blocks/ChartLine";
 import Values from "./components/Blocks/Values";
+import { ContextRoot, BlokayRoot } from "./providers/BlokayRoot";
 
 export {
   DS,
@@ -19,4 +20,6 @@ export {
   ChartDoughnut,
   ChartLine,
   Values,
+  ContextRoot,
+  BlokayRoot,
 };

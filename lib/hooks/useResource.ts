@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { BlockType } from "../types/Block";
 import useSession from "./useSession";
 import useApi from "./useApi";
+import { ContextRoot } from "../providers/BlokayRoot";
 
 const saveData = (data: any, fileName: string) => {
   const a: any = document.createElement("a");
@@ -21,12 +22,12 @@ const useResource = (resource: string) => {
   const jwt = (window as any).BLOKAY_JWT;
   const session = useSession(jwt);
   const api = useApi("https://app.blokay.com/api/", session);
+  const { webComponent, setException, defaultForm } = useContext(ContextRoot);
 
   const [block, setBlock] = useState<BlockType | null>(null);
   const [response, setResponse] = useState<any>(null);
   const [form, setForm] = useState<any>({});
   const [loading, setLoading] = useState(false);
-  const [exception, setException]: any = useState(null);
 
   const get = async () => {
     if (loading) return;
@@ -56,14 +57,24 @@ const useResource = (resource: string) => {
 
   const execute = async (form: any = {}) => {
     try {
+      setException(null);
       setLoading(true);
       const req = {
         blockKey: resource,
-        form,
+        form: {
+          ...(defaultForm || {}),
+        },
       };
       setForm(form);
       const result = await api.blockExec(req, jwt);
+      if (result.response?.type === "exception") {
+        throw result.response?.content;
+      }
       setResponse(result.response);
+
+      if (webComponent) {
+        webComponent.dispatch("blokay:executed", result);
+      }
       return result;
     } catch (error) {
       setException(error);
@@ -104,7 +115,6 @@ const useResource = (resource: string) => {
 
   return {
     reload,
-    exception,
     execute,
     response,
     block,
