@@ -2,13 +2,13 @@ import * as DS from "../DS/Index";
 import { useState } from "react";
 import { BlockType } from "../../types/Block";
 
-type BlockFieldProps = {
+type DrawFieldProps = {
   row: any;
   form: any;
   errors: any;
   setForm: any;
 };
-export function BlockField({ row, form, errors, setForm }: BlockFieldProps) {
+export function DrawField({ row, form, errors, setForm }: DrawFieldProps) {
   if (row.type == "hidden") {
     return <></>;
   }
@@ -77,13 +77,13 @@ type FiltersProps = {
   execute: (form: any) => Promise<any>;
   title: string;
 };
-export function Filters(props: FiltersProps) {
+export function DrawForm(props: FiltersProps) {
   const [form, setForm] = useState<any>({});
   const [errors, setErrors]: any = useState({});
   const [loading, setLoading]: any = useState(false);
   const { onBack, title, execute, filters } = props;
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const errorsTmp: any = {};
     if (filters?.fields) {
       for (const field of filters.fields) {
@@ -98,11 +98,11 @@ export function Filters(props: FiltersProps) {
     setLoading(true);
     setErrors({});
 
-    execute(form)
-      .then(() => {})
-      .catch((err) => {
-        console.log(err);
-      });
+    try {
+      await execute(form);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -124,7 +124,7 @@ export function Filters(props: FiltersProps) {
                 key={index}
                 className={`${row.grid == 6 ? "col-span-1" : "col-span-2"} `}
               >
-                <BlockField
+                <DrawField
                   row={row}
                   form={form}
                   errors={errors}

@@ -1,12 +1,18 @@
 import { useEffect, useState, useRef } from "react";
+import useSession from "../../hooks/useSession";
+import useApi from "../../hooks/useApi";
 
 export default function Poly({
   resource = "",
   defaultForm = {},
   onExecuted = null,
 }: any) {
+  const jwt = (window as any).BLOKAY_JWT;
+  const session = useSession(jwt);
+  const api = useApi("https://app.blokay.com/api/", session);
+
   const [webComponent, setWebComponent] = useState({
-    key: "",
+    webComponent: "",
     urlStyles: "",
   });
 
@@ -39,21 +45,30 @@ export default function Poly({
   };
 
   useEffect(() => {
-    (async () => {
+    const get = async () => {
       if (!resource) return;
-      setWebComponent({
-        key: "table-component",
-        urlStyles: "https://static.blokay.com/bl/5439d989ab4b.css",
-      });
+      const req: any = {
+        blockKey: resource,
+      };
+      const result = await api.blockGet(req, jwt);
+      setWebComponent(result.Block.Component);
+    };
+
+    get();
+  }, [resource]);
+
+  useEffect(() => {
+    (async () => {
+      if (!webComponent?.webComponent) return;
       await waitLoadComponent();
       loaded();
     })();
-  }, [resource]);
+  }, [webComponent]);
 
   const getComponentName = () => {
     const suffix = (window as any)._blokayInstance.getSuffix();
     const prefix = (window as any)._blokayInstance.getSuffix();
-    const component = webComponent.key;
+    const component = webComponent.webComponent;
     if (suffix) {
       return `${component}-${suffix}`;
     }
@@ -63,7 +78,7 @@ export default function Poly({
     return component;
   };
 
-  if (!webComponent?.key) {
+  if (!webComponent?.webComponent) {
     return null;
   }
 
